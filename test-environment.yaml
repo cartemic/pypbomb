@@ -10,7 +10,7 @@ dependencies:
   - pytest-cov
   - pint>=0.7.2
   - pandas
-  - cantera
+  - cantera=2.4.0
   - mock
   - codecov
   - scipy
