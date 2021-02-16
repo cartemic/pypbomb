@@ -24,7 +24,7 @@ and was written as part of my PhD research in the
 `propulsion lab <http://research.engr.oregonstate.edu/blunckgroup/propulsion-laboratory>`_
 at Oregon Sate University.
 
-Project files can be found `here <https://cartemic.github.io/pypbomb/>`_.
+Project files can be found `here <https://github.com/cartemic/pypbomb>`_.
 
 .. toctree::
    :maxdepth: 1
