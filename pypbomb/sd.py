@@ -21,67 +21,33 @@ import numpy as np
 # noinspection SpellCheckingInspection
 def cj_curve_fit(x, y):
     """
-        Determines least squares fit of parabolic data. This is a vectorized
-        version of ``sdtoolbox.PostShock.LSQ_CJspeed``.
+    Determines least squares fit of parabolic data. This is a vectorized
+    version of ``sdtoolbox.PostShock.LSQ_CJspeed`` using ``np.linalg.lstsq``.
 
-        Parameters
-        ----------
-        x : np.array
-            Independent data points for curve fitting
-        y : np.array
-            Dependent data points for curve fitting
-
-        Returns
-        -------
-        tuple
-            A tuple containing ``(a, b, c, r_squared)`` where ``a``, ``b``, and
-            ``c`` are the coefficients of quadratic function
-            :math:`ax^2 + bx + c = 0` and ``r_squared`` is the :math:`R^2` value
-            of the curve fit.
-        """
-    # enforce numpy and float dtype
-    x = np.array(x, dtype=float)
-    y = np.array(y, dtype=float)
-    n = float(x.size)
-
-    # Calculate Sums
-    sum_x = np.sum(x)
-    sum_x2 = np.sum(np.power(x, 2))
-    sum_x3 = np.sum(np.power(x, 3))
-    sum_x4 = np.sum(np.power(x, 4))
-    sum_y = np.sum(y)
-    sum_xy = np.sum(y * x)
-    sum_x2y = np.sum(y * np.power(x, 2))
-
-    # intermediate steps
-    m = sum_y / n
-    den = (sum_x3 * n - sum_x2 * sum_x)
-    temp = (
-        den * (sum_x * sum_x2 - sum_x3 * n) +
-        sum_x2 * sum_x2 * (sum_x * sum_x - n * sum_x2) -
-        sum_x4 * n * (sum_x * sum_x - sum_x2 * n)
-    )
-    temp2 = (
-        den * (sum_y * sum_x2 - sum_x2y * n) +
-        (sum_xy * n - sum_y * sum_x) * (sum_x4 * n - sum_x2 * sum_x2)
-    )
-
-    # calculate curve fit coefficients
-    b = temp2 / temp
-    a = 1. / den * (
-        n * sum_xy -
-        sum_y * sum_x -
-        b * (sum_x2 * n - sum_x * sum_x)
-    )
-    c = 1. / n * (sum_y - a * sum_x2 - b * sum_x)
-
-    # calculate sums of squares as well as R^2
-    f = a * np.power(x, 2) + b * x + c
-    sse = np.sum(np.power(y - f, 2))
-    sst = np.sum(np.power(y - m, 2))
-    r_squared = 1 - sse / sst
-
-    return a, b, c, r_squared
+    Parameters
+    ----------
+    x : np.array
+        Independent data points for curve fitting
+    y : np.array
+        Dependent data points for curve fitting
+    Returns
+    -------
+    tuple
+        A tuple containing ``(a, b, c, r_squared)`` where ``a``, ``b``, and
+        ``c`` are the coefficients of quadratic function
+        :math:`ax^2 + bx + c = 0` and ``r_squared`` is the :math:`R^2` value
+        of the curve fit.
+    """
+    x = np.array((
+        np.ones(len(x)),
+        x,
+        x**2,
+    )).T
+    fit = np.linalg.lstsq(x, y, rcond=-1)
+    thetas = fit[0]
+    ss_res = fit[1][0]
+    ss_tot = np.sum(np.square(y - np.mean(y)))
+    return (*np.flip(thetas), 1 - ss_res / ss_tot)
 
 
 class Detonation:
