@@ -202,14 +202,20 @@
 <div class="section" id="module-pypbomb.sd">
 <span id="pypbomb-sd"></span><h1>pypbomb.sd<a class="headerlink" href="#module-pypbomb.sd" title="Permalink to this headline">¶</a></h1>
 <p>Pypbomb requires the use of some functionality from the shock and detonation
-toolbox from the Explosion Dynamics Laboratory at Cal Tech:
-<a class="reference external" href="https://shepherd.caltech.edu/EDL/PublicResources/sdt/">https://shepherd.caltech.edu/EDL/PublicResources/sdt/</a>. SDToolbox is, as yet,
-not installable via pip or conda, and not all of its functions  are needed for
-this package. Therefore, the functions needed for pypbomb’s purposes are located
-here, in <code class="docutils literal notranslate"><span class="pre">pypbomb.sd</span></code>. Some of these functions, such as
+toolbox from the Explosion Dynamics Laboratory at Cal Tech [1]. SDToolbox is,
+as yet, not installable via pip or conda, and not all of its functions are
+needed for this package. Therefore, the functions needed for pypbomb’s
+purposes are located here, in <code class="docutils literal notranslate"><span class="pre">pypbomb.sd</span></code>. Some of these functions, such as
 <code class="docutils literal notranslate"><span class="pre">Detonation.cj_speed</span></code>, have been modified to speed up the calculation process.
 If you are planning to do any sort of actual detonation work outside of tube
 design it is recommended to use the full SDToolbox.</p>
+<dl class="simple">
+<dt>[1] SDToolbox Numerical Tools for Shock and Detonation Wave Modeling,</dt><dd><p>Explosion Dynamics Laboratory, Contributors: S. Browne, J. Ziegler,
+N. Bitter, B. Schmidt, J. Lawson and J. E. Shepherd
+California Institute of Technology, Pasadena, CA USA
+<a class="reference external" href="http://shepherd.caltech.edu/EDL/PublicResources/sdt/">http://shepherd.caltech.edu/EDL/PublicResources/sdt/</a></p>
+</dd>
+</dl>
 <dl class="py class">
 <dt id="pypbomb.sd.Detonation">
 <em class="property">class </em><code class="sig-prename descclassname">pypbomb.sd.</code><code class="sig-name descname">Detonation</code><a class="headerlink" href="#pypbomb.sd.Detonation" title="Permalink to this definition">¶</a></dt>
