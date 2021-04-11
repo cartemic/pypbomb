@@ -213,9 +213,9 @@ flange temperature and tube pressure.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>max_pressure</strong> (<em>pint.Quantity</em><em> or </em><em>tuple</em>) – Maximum pressure within the system as a quantity or tuple of
+<li><p><strong>max_pressure</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Maximum pressure within the system as a quantity or tuple of
 <code class="docutils literal notranslate"><span class="pre">(magnitude,</span> <span class="pre">&quot;units&quot;)</span></code></p></li>
-<li><p><strong>temperature</strong> (<em>pint.Quantity</em><em> or </em><em>tuple</em>) – Flange temperature as a quantity or tuple of
+<li><p><strong>temperature</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Flange temperature as a quantity or tuple of
 <code class="docutils literal notranslate"><span class="pre">(magnitude,</span> <span class="pre">&quot;units&quot;)</span></code></p></li>
 <li><p><strong>material</strong> (<em>str</em>) – Flange material (see <code class="docutils literal notranslate"><span class="pre">Flange.available_materials</span></code>)</p></li>
 <li><p><strong>unit_registry</strong> (<em>pint.UnitRegistry</em><em>, </em><em>optional</em>) – Pint unit registry, if output within a particular registry is
@@ -240,7 +240,7 @@ class at the desired temperature.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>flange_class</strong> (<em>str</em>) – Class of the flange to evaluate, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;900&quot;</span></code></p></li>
-<li><p><strong>temperature</strong> (<em>pint.Quantity</em>) – Flange temperature</p></li>
+<li><p><strong>temperature</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Flange temperature</p></li>
 <li><p><strong>material</strong> (<em>str</em>) – Flange material (see <code class="docutils literal notranslate"><span class="pre">Flange.available_materials</span></code>)</p></li>
 </ul>
 </dd>
@@ -262,7 +262,7 @@ class at the desired pressure.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>flange_class</strong> (<em>str</em>) – Class of the flange to evaluate, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;900&quot;</span></code></p></li>
-<li><p><strong>pressure</strong> (<em>pint.Quantity</em>) – System pressure</p></li>
+<li><p><strong>pressure</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – System pressure</p></li>
 <li><p><strong>material</strong> (<em>str</em>) – Flange material (see <code class="docutils literal notranslate"><span class="pre">Flange.available_materials</span></code>)</p></li>
 </ul>
 </dd>

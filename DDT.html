@@ -213,7 +213,7 @@ blockage ratio within a pipe of given inner diameter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pipe_id</strong> (<em>pint.Quantity</em>) – Length scale representing the inner diameter of the pipe used for
+<li><p><strong>pipe_id</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Length scale representing the inner diameter of the pipe used for
 the detonation tube</p></li>
 <li><p><strong>blockage_ratio</strong> (<em>float</em>) – Ratio of blocked area to total cross-sectional area, <span class="math notranslate nohighlight">\(0 &lt; BR
 &lt; 1\)</span></p></li>
@@ -240,8 +240,8 @@ tube.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>tube_inner_diameter</strong> (<em>pint.Quantity</em>) – Inner diameter of the detonation tube</p></li>
-<li><p><strong>blockage_diameter</strong> (<em>pint.Quantity</em>) – Outer diameter of the blockage used to create the Shchelkin spiral
+<li><p><strong>tube_inner_diameter</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Inner diameter of the detonation tube</p></li>
+<li><p><strong>blockage_diameter</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Outer diameter of the blockage used to create the Shchelkin spiral
 (i.e. a Shchelkin spiral made from 1/2” round stock would be
 <code class="docutils literal notranslate"><span class="pre">blockage_diameter=quant(0.5,</span> <span class="pre">&quot;inch&quot;)</span></code></p></li>
 <li><p><strong>unit_registry</strong> (<em>pint.UnitRegistry</em>) – Unit registry for managing units to prevent conflicts with parent
@@ -276,9 +276,9 @@ vol. 34, no. 4, pp. 499–550, Aug. 2008.
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>blockage_ratio</strong> (<em>float</em>) – Ratio of blocked area to total cross-sectional area, <span class="math notranslate nohighlight">\(0 &lt; BR
 &lt; 1\)</span></p></li>
-<li><p><strong>tube_diameter</strong> (<em>pint.Quantity</em>) – Internal diameter of the detonation tube</p></li>
-<li><p><strong>initial_temperature</strong> (<em>pint.Quantity</em>) – Mixture initial temperature</p></li>
-<li><p><strong>initial_pressure</strong> (<em>pint.Quantity</em>) – Mixture initial pressure</p></li>
+<li><p><strong>tube_diameter</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Internal diameter of the detonation tube</p></li>
+<li><p><strong>initial_temperature</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Mixture initial temperature</p></li>
+<li><p><strong>initial_pressure</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Mixture initial pressure</p></li>
 <li><p><strong>species_dict</strong> (<em>dict</em>) – Dictionary containing the species in the mixture as keys, with total
 moles or mole fractions as values</p></li>
 <li><p><strong>mechanism</strong> (<em>str</em>) – Mechanism file name for Cantera. See <code class="docutils literal notranslate"><span class="pre">tools.find_mechanisms()</span></code> for

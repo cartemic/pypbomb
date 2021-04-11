@@ -212,15 +212,15 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>max_pressure</strong> (<em>pint.Quantity</em>) – Tube maximum pressure</p></li>
-<li><p><strong>window_area</strong> (<em>pint.Quantity</em>) – Window area exposed to high pressure environment</p></li>
-<li><p><strong>num_bolts</strong> (<em>int</em>) – Number of bolts used to secure each viewing window</p></li>
+<li><p><strong>max_pressure</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Tube maximum pressure</p></li>
+<li><p><strong>window_area</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Window area exposed to high pressure environment</p></li>
+<li><p><strong>num_bolts</strong> (<em>int</em><em> or </em><em>np.ndarray</em>) – Number of bolts used to secure each viewing window</p></li>
 <li><p><strong>thread_size</strong> (<em>str</em>) – Size of threads to be evaluated, e.g. <code class="docutils literal notranslate"><span class="pre">1/4-20</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">1/2-6</span></code></p></li>
 <li><p><strong>thread_class</strong> (<em>str</em>) – Class of threads to be evaluated, <code class="docutils literal notranslate"><span class="pre">&quot;2&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;3&quot;</span></code>. (<code class="docutils literal notranslate"><span class="pre">&quot;A&quot;</span></code> or
 <code class="docutils literal notranslate"><span class="pre">&quot;B&quot;</span></code> are automatically appended for internal/external threads)</p></li>
-<li><p><strong>bolt_max_tensile</strong> (<em>pint.Quantity</em>) – Pint quantity of bolt (ext. thread) tensile failure stress</p></li>
-<li><p><strong>plate_max_tensile</strong> (<em>pint.Quantity</em>) – Pint quantity of plate (int. thread) tensile failure stress</p></li>
-<li><p><strong>engagement_length</strong> (<em>pint.Quantity</em>) – Pint quantity of total thread engagement length</p></li>
+<li><p><strong>bolt_max_tensile</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Pint quantity of bolt (ext. thread) tensile failure stress</p></li>
+<li><p><strong>plate_max_tensile</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Pint quantity of plate (int. thread) tensile failure stress</p></li>
+<li><p><strong>engagement_length</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Pint quantity of total thread engagement length</p></li>
 <li><p><strong>unit_registry</strong> (<em>pint.UnitRegistry</em>) – Keeps output consistent with parent registry, avoiding conflicts</p></li>
 </ul>
 </dd>
@@ -250,9 +250,9 @@ Machinery’s Handbook, 26th edition.</p>
 <li><p><strong>thread_size</strong> (<em>str</em>) – Size of threads to be evaluated, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;1/4-20&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;1</span> <span class="pre">1/2-6&quot;</span></code></p></li>
 <li><p><strong>thread_class</strong> (<em>str</em>) – Class of threads to be evaluated, <code class="docutils literal notranslate"><span class="pre">&quot;2&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;3&quot;</span></code>. (<code class="docutils literal notranslate"><span class="pre">&quot;A&quot;</span></code> or
 <code class="docutils literal notranslate"><span class="pre">&quot;B&quot;</span></code> are automatically appended for internal/external threads)</p></li>
-<li><p><strong>bolt_max_tensile</strong> (<em>pint.Quantity</em>) – Pint quantity of bolt (external thread) tensile failure stress</p></li>
-<li><p><strong>plate_max_tensile</strong> (<em>pint.Quantity</em>) – Pint quantity of plate (internal thread) tensile failure stress</p></li>
-<li><p><strong>engagement_length</strong> (<em>pint.Quantity</em>) – Pint quantity of total thread engagement length</p></li>
+<li><p><strong>bolt_max_tensile</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Pint quantity of bolt (external thread) tensile failure stress</p></li>
+<li><p><strong>plate_max_tensile</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Pint quantity of plate (internal thread) tensile failure stress</p></li>
+<li><p><strong>engagement_length</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Pint quantity of total thread engagement length</p></li>
 <li><p><strong>unit_registry</strong> (<em>pint.UnitRegistry</em>) – Unit registry for managing units to prevent conflicts with parent
 unit registry</p></li>
 </ul>

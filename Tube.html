@@ -212,16 +212,16 @@ tube.</p>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>tube_id</strong> (<em>pint.Quantity</em>) – Inner diameter of tube</p></li>
-<li><p><strong>tube_od</strong> (<em>pint.Quantity</em>) – Outer diameter of tube
+<li><p><strong>tube_id</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Inner diameter of tube</p></li>
+<li><p><strong>tube_od</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Outer diameter of tube
 Internal diameter of the detonation tube</p></li>
-<li><p><strong>initial_temperature</strong> (<em>pint.Quantity</em>) – Mixture initial temperature</p></li>
+<li><p><strong>initial_temperature</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Mixture initial temperature</p></li>
 <li><p><strong>species_dict</strong> (<em>dict</em>) – Dictionary containing the species in the mixture as keys, with total
 moles or mole fractions as values</p></li>
 <li><p><strong>mechanism</strong> (<em>str</em>) – Mechanism file name for Cantera</p></li>
-<li><p><strong>max_pressure</strong> (<em>pint.Quantity</em>) – Maximum allowable pressure within the tube</p></li>
-<li><p><strong>elastic_modulus</strong> (<em>pint.Quantity</em>) – Elastic modulus of tube material</p></li>
-<li><p><strong>density</strong> (<em>pint.Quantity</em>) – Density of tube material</p></li>
+<li><p><strong>max_pressure</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Maximum allowable pressure within the tube</p></li>
+<li><p><strong>elastic_modulus</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Elastic modulus of tube material</p></li>
+<li><p><strong>density</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Density of tube material</p></li>
 <li><p><strong>poisson_ratio</strong> (<em>float</em>) – Poisson ratio of tube material</p></li>
 <li><p><strong>plus_or_minus</strong> (<em>float</em>) – For dynamic load factor calculation, <code class="docutils literal notranslate"><span class="pre">plus_or_minus</span></code> defines
 the band about the critical velocity which is considered
@@ -262,9 +262,9 @@ PV Publishing, Inc., 2001, p. 14.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>tube_id</strong> (<em>pint.Quantity</em>) – Inner diameter of tube</p></li>
-<li><p><strong>tube_od</strong> (<em>pint.Quantity</em>) – Outer diameter of tube</p></li>
-<li><p><strong>max_stress</strong> (<em>pint.Quantity</em>) – Maximum allowable stress in tube material (e.g. from ASME B31.1)</p></li>
+<li><p><strong>tube_id</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Inner diameter of tube</p></li>
+<li><p><strong>tube_od</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Outer diameter of tube</p></li>
+<li><p><strong>max_stress</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Maximum allowable stress in tube material (e.g. from ASME B31.1)</p></li>
 <li><p><strong>safety_factor</strong> (<em>float</em><em>, </em><em>optional</em>) – Desired safety factor</p></li>
 </ul>
 </dd>
@@ -285,7 +285,7 @@ initial temperature</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>initial_temperature</strong> (<em>pint.Quantity</em>) – </p></li>
+<li><p><strong>initial_temperature</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – </p></li>
 <li><p><strong>material</strong> (<em>str</em>) – Pipe material (see <code class="docutils literal notranslate"><span class="pre">Tube.available_materials</span></code>)</p></li>
 <li><p><strong>welded</strong> (<em>bool</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> for welded pipe; <code class="docutils literal notranslate"><span class="pre">False</span></code> for seamless</p></li>
 <li><p><strong>unit_registry</strong> (<em>pint.UnitRegistry</em>) – Unit registry for managing units to prevent conflicts with parent
@@ -316,11 +316,11 @@ Internal Gas Detonation</em>. Journal of Pressure Vessel Technology,
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>tube_id</strong> (<em>pint.Quantity</em>) – Inner diameter of tube</p></li>
-<li><p><strong>tube_od</strong> (<em>pint.Quantity</em>) – Outer diameter of tube</p></li>
-<li><p><strong>cj_velocity</strong> (<em>pint.Quantity</em>) – CJ velocity</p></li>
-<li><p><strong>elastic_modulus</strong> (<em>pint.Quantity</em>) – Elastic modulus of tube material</p></li>
-<li><p><strong>density</strong> (<em>pint.Quantity</em>) – Density of tube material</p></li>
+<li><p><strong>tube_id</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Inner diameter of tube</p></li>
+<li><p><strong>tube_od</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Outer diameter of tube</p></li>
+<li><p><strong>cj_velocity</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – CJ velocity</p></li>
+<li><p><strong>elastic_modulus</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Elastic modulus of tube material</p></li>
+<li><p><strong>density</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Density of tube material</p></li>
 <li><p><strong>poisson_ratio</strong> (<em>float</em>) – Poisson ratio of tube material</p></li>
 <li><p><strong>plus_or_minus</strong> (<em>float</em><em>, </em><em>optional</em>) – Defines the band about the critical velocity which is considered
 “approximately equal to” – the default value of 0.1 means plus
