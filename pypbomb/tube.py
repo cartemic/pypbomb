@@ -336,22 +336,22 @@ class Bolt:
 
         Parameters
         ----------
-        max_pressure : pint.Quantity
+        max_pressure : pint.Quantity or Tuple[float, str]
             Tube maximum pressure
-        window_area : pint.Quantity
+        window_area : pint.Quantity or Tuple[float, str]
             Window area exposed to high pressure environment
-        num_bolts : int
+        num_bolts : int or np.ndarray
             Number of bolts used to secure each viewing window
         thread_size : str
             Size of threads to be evaluated, e.g. ``1/4-20`` or ``1 1/2-6``
         thread_class : str
             Class of threads to be evaluated, ``"2"`` or ``"3"``. (``"A"`` or
             ``"B"`` are automatically appended for internal/external threads)
-        bolt_max_tensile : pint.Quantity
+        bolt_max_tensile : pint.Quantity or Tuple[float, str]
             Pint quantity of bolt (ext. thread) tensile failure stress
-        plate_max_tensile : pint.Quantity
+        plate_max_tensile : pint.Quantity or Tuple[float, str]
             Pint quantity of plate (int. thread) tensile failure stress
-        engagement_length : pint.Quantity
+        engagement_length : pint.Quantity or Tuple[float, str]
             Pint quantity of total thread engagement length
         unit_registry : pint.UnitRegistry
             Keeps output consistent with parent registry, avoiding conflicts
@@ -470,11 +470,11 @@ class Bolt:
         thread_class : str
             Class of threads to be evaluated, ``"2"`` or ``"3"``. (``"A"`` or
             ``"B"`` are automatically appended for internal/external threads)
-        bolt_max_tensile : pint.Quantity
+        bolt_max_tensile : pint.Quantity or Tuple[float, str]
             Pint quantity of bolt (external thread) tensile failure stress
-        plate_max_tensile : pint.Quantity
+        plate_max_tensile : pint.Quantity or Tuple[float, str]
             Pint quantity of plate (internal thread) tensile failure stress
-        engagement_length : pint.Quantity
+        engagement_length : pint.Quantity or Tuple[float, str]
             Pint quantity of total thread engagement length
         unit_registry : pint.UnitRegistry
             Unit registry for managing units to prevent conflicts with parent
@@ -703,7 +703,7 @@ class DDT:
 
         Parameters
         ----------
-        pipe_id : pint.Quantity
+        pipe_id : pint.Quantity or Tuple[float, str]
             Length scale representing the inner diameter of the pipe used for
             the detonation tube
         blockage_ratio : float
@@ -753,9 +753,9 @@ class DDT:
 
         Parameters
         ----------
-        tube_inner_diameter : pint.Quantity
+        tube_inner_diameter : pint.Quantity or Tuple[float, str]
             Inner diameter of the detonation tube
-        blockage_diameter : pint.Quantity
+        blockage_diameter : pint.Quantity or Tuple[float, str]
             Outer diameter of the blockage used to create the Shchelkin spiral
             (i.e. a Shchelkin spiral made from 1/2" round stock would be
             ``blockage_diameter=quant(0.5, "inch")``
@@ -830,11 +830,11 @@ class DDT:
         blockage_ratio : float
             Ratio of blocked area to total cross-sectional area, :math:`0 < BR
             < 1`
-        tube_diameter : pint.Quantity
+        tube_diameter : pint.Quantity or Tuple[float, str]
             Internal diameter of the detonation tube
-        initial_temperature : pint.Quantity
+        initial_temperature : pint.Quantity or Tuple[float, str]
             Mixture initial temperature
-        initial_pressure : pint.Quantity
+        initial_pressure : pint.Quantity or Tuple[float, str]
             Mixture initial pressure
         species_dict : dict
             Dictionary containing the species in the mixture as keys, with total
@@ -1038,16 +1038,16 @@ class Window:
 
         Parameters
         ----------
-        length : pint.Quantity
+        length : pint.Quantity or Tuple[float, str]
             Window unsupported (viewing) length
-        width : pint.Quantity
+        width : pint.Quantity or Tuple[float, str]
             Window unsupported (viewing) width
-        thickness : pint.Quantity
+        thickness : pint.Quantity or Tuple[float, str]
             Window thickness
-        pressure : pint.Quantity
+        pressure : pint.Quantity or Tuple[float, str]
             Design pressure differential across window at which factor of
             safety is to be calculated
-        rupture_modulus : pint.Quantity
+        rupture_modulus : pint.Quantity or Tuple[float, str]
             Rupture modulus of desired window material
         unit_registry : pint.UnitRegistry
             Keeps output consistent with parent registry, avoiding conflicts
@@ -1131,16 +1131,16 @@ class Window:
 
         Parameters
         ----------
-        length : pint.Quantity
+        length : pint.Quantity or Tuple[float, str]
             Window unsupported (viewing) length
-        width : pint.Quantity
+        width : pint.Quantity or Tuple[float, str]
             Window unsupported (viewing) width
         safety_factor : float
             Safety factor
-        pressure : pint.Quantity
+        pressure : pint.Quantity or Tuple[float, str]
             Design pressure differential across window at which factor of
             safety is to be calculated
-        rupture_modulus : pint.Quantity
+        rupture_modulus : pint.Quantity or Tuple[float, str]
             Rupture modulus of desired window material
         unit_registry : pint.UnitRegistry
             Keeps output consistent with parent registry, avoiding conflicts
@@ -1229,7 +1229,7 @@ class Tube:
 
         Parameters
         ----------
-        initial_temperature : pint.Quantity
+        initial_temperature : pint.Quantity or Tuple[float, str]
         material : str
             Pipe material (see ``Tube.available_materials``)
         welded : bool
@@ -1354,15 +1354,15 @@ class Tube:
 
         Parameters
         ----------
-        tube_id : pint.Quantity
+        tube_id : pint.Quantity or Tuple[float, str]
             Inner diameter of tube
-        tube_od : pint.Quantity
+        tube_od : pint.Quantity or Tuple[float, str]
             Outer diameter of tube
-        cj_velocity : pint.Quantity
+        cj_velocity : pint.Quantity or Tuple[float, str]
             CJ velocity
-        elastic_modulus : pint.Quantity
+        elastic_modulus : pint.Quantity or Tuple[float, str]
             Elastic modulus of tube material
-        density : pint.Quantity
+        density : pint.Quantity or Tuple[float, str]
             Density of tube material
         poisson_ratio : float
             Poisson ratio of tube material
@@ -1434,11 +1434,11 @@ class Tube:
 
         Parameters
         ----------
-        tube_id : pint.Quantity
+        tube_id : pint.Quantity or Tuple[float, str]
             Inner diameter of tube
-        tube_od : pint.Quantity
+        tube_od : pint.Quantity or Tuple[float, str]
             Outer diameter of tube
-        max_stress : pint.Quantity
+        max_stress : pint.Quantity or Tuple[float, str]
             Maximum allowable stress in tube material (e.g. from ASME B31.1)
         safety_factor : float, optional
             Desired safety factor
@@ -1479,23 +1479,23 @@ class Tube:
         """
         Parameters
         ----------
-        tube_id : pint.Quantity
+        tube_id : pint.Quantity or Tuple[float, str]
             Inner diameter of tube
-        tube_od : pint.Quantity
+        tube_od : pint.Quantity or Tuple[float, str]
             Outer diameter of tube
             Internal diameter of the detonation tube
-        initial_temperature : pint.Quantity
+        initial_temperature : pint.Quantity or Tuple[float, str]
             Mixture initial temperature
         species_dict : dict
             Dictionary containing the species in the mixture as keys, with total
             moles or mole fractions as values
         mechanism : str
             Mechanism file name for Cantera
-        max_pressure : pint.Quantity
+        max_pressure : pint.Quantity or Tuple[float, str]
             Maximum allowable pressure within the tube
-        elastic_modulus : pint.Quantity
+        elastic_modulus : pint.Quantity or Tuple[float, str]
             Elastic modulus of tube material
-        density : pint.Quantity
+        density : pint.Quantity or Tuple[float, str]
             Density of tube material
         poisson_ratio : float
             Poisson ratio of tube material
@@ -1806,10 +1806,10 @@ class Flange:
 
         Parameters
         ----------
-        max_pressure : pint.Quantity or tuple
+        max_pressure : pint.Quantity or Tuple[float, str]
             Maximum pressure within the system as a quantity or tuple of
             ``(magnitude, "units")``
-        temperature : pint.Quantity or tuple
+        temperature : pint.Quantity or Tuple[float, str]
             Flange temperature as a quantity or tuple of
             ``(magnitude, "units")``
         material : str
@@ -1905,7 +1905,7 @@ class Flange:
         ----------
         flange_class : str
             Class of the flange to evaluate, e.g. ``"900"``
-        temperature : pint.Quantity
+        temperature : pint.Quantity or Tuple[float, str]
             Flange temperature
         material : str
             Flange material (see ``Flange.available_materials``)
@@ -1966,7 +1966,7 @@ class Flange:
         ----------
         flange_class : str
             Class of the flange to evaluate, e.g. ``"900"``
-        pressure : pint.Quantity
+        pressure : pint.Quantity or Tuple[float, str]
             System pressure
         material : str
             Flange material (see ``Flange.available_materials``)

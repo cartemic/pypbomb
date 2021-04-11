@@ -99,9 +99,9 @@ def get_eq_sound_speed(
 
     Parameters
     ----------
-    temperature : pint.Quantity
+    temperature : pint.Quantity or Tuple[float, str]
         Mixture initial temperature
-    pressure : pint.Quantity
+    pressure : pint.Quantity or Tuple[float, str]
         Mixture initial pressure
     species : dict or str
         Species definition for cantera
@@ -115,7 +115,7 @@ def get_eq_sound_speed(
 
     Returns
     -------
-    sound_speed : pint.Quantity
+    sound_speed : pint.Quantity or Tuple[float, str]
         local speed of sound
     """
     quant = unit_registry.Quantity
@@ -180,9 +180,9 @@ def calculate_reflected_shock_state(
 
     Parameters
     ----------
-    initial_temperature : pint.Quantity
+    initial_temperature : pint.Quantity or Tuple[float, str]
         Mixture initial temperature
-    initial_pressure : pint.Quantity
+    initial_pressure : pint.Quantity or Tuple[float, str]
         Mixture initial pressure
     species_dict : dict
         Dictionary of initial reactant mixture
