@@ -19,10 +19,13 @@ try:
 except ModuleNotFoundError:
     system("conda install -c cantera cantera -y")
 
+good_pint_version = "0.11"
 try:
     import pint
+    if pint.__version__ != good_pint_version:
+        raise ModuleNotFoundError
 except ModuleNotFoundError:
-    system("conda install -c conda-forge pint -y")
+    system(f"conda install -c conda-forge pint={good_pint_version} -y")
 
 with open(path.join(here, "pypbomb", "_version.py")) as f:
     __version__ = ""
