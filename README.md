@@ -3,6 +3,7 @@
 [![Travis build badge](https://api.travis-ci.com/cartemic/pypbomb.svg?branch=master)](https://travis-ci.com/github/cartemic/pypbomb)
 [![Codecov badge](https://codecov.io/gh/cartemic/pypbomb/branch/master/graph/badge.svg)](https://codecov.io/gh/cartemic/pypbomb)
 [![Documentation badge](https://github.com/cartemic/pypbomb/workflows/Documentation/badge.svg)](https://cartemic.github.io/pypbomb/)
+[![status](https://joss.theoj.org/papers/288143539a2e4f5ab1b83cbee4e17052/status.svg)](https://joss.theoj.org/papers/288143539a2e4f5ab1b83cbee4e17052)
 
 ---
 
