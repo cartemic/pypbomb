@@ -1879,7 +1879,7 @@ class Flange:
         df_limits = df_limits.applymap(
             lambda x: x.to_base_units().magnitude
         )
-        df_interp = pd.DataFrame(columns=df_limits.columns)
+        df_interp = pd.DataFrame(columns=df_limits.columns, dtype=np.float64)
         df_interp["Temperature"] = [temperature.to_base_units().magnitude]
         df_interp = pd.concat((df_limits, df_interp)).set_index("Temperature")
         with warnings.catch_warnings():
@@ -1942,7 +1942,7 @@ class Flange:
             lambda x: x.to_base_units().magnitude
         )
 
-        df_interp = pd.DataFrame(columns=df_limits.columns)
+        df_interp = pd.DataFrame(columns=df_limits.columns, dtype=np.float64)
         df_interp["Temperature"] = [temperature.to_base_units().magnitude]
         df_interp = pd.concat((df_limits, df_interp)).set_index("Temperature")
         with warnings.catch_warnings():
@@ -2003,7 +2003,7 @@ class Flange:
             lambda x: x.to_base_units().magnitude
         )[["Temperature", flange_class]]
 
-        df_interp = pd.DataFrame(columns=df_limits.columns)
+        df_interp = pd.DataFrame(columns=df_limits.columns, dtype=np.float64)
         df_interp[flange_class] = [pressure.to_base_units().magnitude]
         df_interp = pd.concat((df_limits, df_interp)).set_index(flange_class)
         with warnings.catch_warnings():
