@@ -25,12 +25,7 @@ jobs:
     # nbsphinx needs pandoc
     - uses: r-lib/actions/setup-pandoc@v1
 
-    # I hacked this together. If you separate the conda stuff into a different
-    # step it does stupid, stupid things with your conda envs. Don't do it. No.
-    # Unfortunately sphinx-action doesn't seem to like nbsphinx, so I'm striking
-    # out on my own here. I am a noob. If any of this looks dumb, that's likely
-    # why.
-    - name: Run, Ronnie, Run
+    - name: Build HTML
       run: |
         pip install -r requirements.txt
         pip install -r docs/requirements.txt
