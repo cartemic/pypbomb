@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pypbomb.thermochem &mdash; pypbomb 1.1.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>pypbomb.thermochem &mdash; pypbomb 1.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/tweaks.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "tex2jax_ignore|mathjax_ignore|document", "processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -40,11 +39,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p><span class="caption-text">Installation</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing pypbomb</a></li>
 </ul>
-<p><span class="caption-text">API</span></p>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Tube.html">Tube</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Flange.html">Flange</a></li>
@@ -56,7 +55,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">pypbomb.thermochem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="units.html">pypbomb.units</a></li>
 </ul>
-<p><span class="caption-text">Example</span></p>
+<p class="caption" role="heading"><span class="caption-text">Example</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="example.html">Using Pypbomb</a></li>
 </ul>
@@ -114,12 +113,12 @@
 <p>This module contains functions for performing thermochemical calculations using
 <code class="docutils literal notranslate"><span class="pre">cantera</span></code> and <code class="docutils literal notranslate"><span class="pre">pypbomb.sd</span></code>.</p>
 <dl class="py function">
-<dt id="pypbomb.thermochem.calculate_laminar_flame_speed">
-<code class="sig-prename descclassname">pypbomb.thermochem.</code><code class="sig-name descname">calculate_laminar_flame_speed</code><span class="sig-paren">(</span><em class="sig-param">initial_temperature</em>, <em class="sig-param">initial_pressure</em>, <em class="sig-param">species</em>, <em class="sig-param">mechanism</em>, <em class="sig-param">phase_specification=''</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.thermochem.calculate_laminar_flame_speed" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.thermochem.calculate_laminar_flame_speed">
+<span class="sig-prename descclassname"><span class="pre">pypbomb.thermochem.</span></span><span class="sig-name descname"><span class="pre">calculate_laminar_flame_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initial_temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mechanism</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase_specification=''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.thermochem.calculate_laminar_flame_speed" title="Permalink to this definition"></a></dt>
 <dd><p>This function uses cantera to calculate the laminar flame speed of a given
 gas mixture.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>initial_temperature</strong> (<em>pint.Quantity</em>) – Mixture initial temperature</p></li>
 <li><p><strong>initial_pressure</strong> (<em>pint.Quantity</em>) – Mixture initial pressure</p></li>
@@ -130,22 +129,22 @@ gas mixture.</p>
 unit registry</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Laminar flame speed</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pint.Quantity</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pypbomb.thermochem.calculate_reflected_shock_state">
-<code class="sig-prename descclassname">pypbomb.thermochem.</code><code class="sig-name descname">calculate_reflected_shock_state</code><span class="sig-paren">(</span><em class="sig-param">initial_temperature</em>, <em class="sig-param">initial_pressure</em>, <em class="sig-param">species_dict</em>, <em class="sig-param">mechanism</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em>, <em class="sig-param">use_multiprocessing=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.thermochem.calculate_reflected_shock_state" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.thermochem.calculate_reflected_shock_state">
+<span class="sig-prename descclassname"><span class="pre">pypbomb.thermochem.</span></span><span class="sig-name descname"><span class="pre">calculate_reflected_shock_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initial_temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mechanism</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_multiprocessing=False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.thermochem.calculate_reflected_shock_state" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates the thermodynamic and chemical state of a reflected shock
 using customized sdtoolbox functions.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>initial_temperature</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Mixture initial temperature</p></li>
 <li><p><strong>initial_pressure</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Mixture initial pressure</p></li>
@@ -156,7 +155,7 @@ using customized sdtoolbox functions.</p>
 but requires the function to be run from <code class="docutils literal notranslate"><span class="pre">__main__</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><p>Dictionary containing keys</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">reflected</span></code> and</p></li>
@@ -169,39 +168,39 @@ but requires the function to be run from <code class="docutils literal notransla
 </ul>
 </p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pypbomb.thermochem.find_mechanisms">
-<code class="sig-prename descclassname">pypbomb.thermochem.</code><code class="sig-name descname">find_mechanisms</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">return_directory</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.thermochem.find_mechanisms" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.thermochem.find_mechanisms">
+<span class="sig-prename descclassname"><span class="pre">pypbomb.thermochem.</span></span><span class="sig-name descname"><span class="pre">find_mechanisms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return_directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.thermochem.find_mechanisms" title="Permalink to this definition"></a></dt>
 <dd><p>Figure out which mechanisms the local cantera install has access to.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>return_directory</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether or not to return the location of the mechanism files as well
 as its contents. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Set of available mechanisms in the cantera data directory. If
 <cite>return_directory</cite> is set to True, a tuple is returned where the first
 item is the set of available mechanisms, and the second is the location
 of the cantera data directory.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>set or tuple</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pypbomb.thermochem.get_eq_sound_speed">
-<code class="sig-prename descclassname">pypbomb.thermochem.</code><code class="sig-name descname">get_eq_sound_speed</code><span class="sig-paren">(</span><em class="sig-param">temperature</em>, <em class="sig-param">pressure</em>, <em class="sig-param">species</em>, <em class="sig-param">mechanism</em>, <em class="sig-param">phase_specification=''</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.thermochem.get_eq_sound_speed" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.thermochem.get_eq_sound_speed">
+<span class="sig-prename descclassname"><span class="pre">pypbomb.thermochem.</span></span><span class="sig-name descname"><span class="pre">get_eq_sound_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mechanism</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase_specification=''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.thermochem.get_eq_sound_speed" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates the equilibrium speed of sound in a mixture</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>temperature</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Mixture initial temperature</p></li>
 <li><p><strong>pressure</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Mixture initial pressure</p></li>
@@ -212,10 +211,10 @@ of the cantera data directory.</p>
 unit registry</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>sound_speed</strong> – local speed of sound</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pint.Quantity or Tuple[float, str]</p>
 </dd>
 </dl>

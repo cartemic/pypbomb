@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using Pypbomb &mdash; pypbomb 1.1.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>Using Pypbomb &mdash; pypbomb 1.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/tweaks.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "tex2jax_ignore|mathjax_ignore|document", "processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -39,11 +40,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p><span class="caption-text">Installation</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing pypbomb</a></li>
 </ul>
-<p><span class="caption-text">API</span></p>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Tube.html">Tube</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Flange.html">Flange</a></li>
@@ -55,7 +56,7 @@
 <li class="toctree-l1"><a class="reference internal" href="thermochem.html">pypbomb.thermochem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="units.html">pypbomb.units</a></li>
 </ul>
-<p><span class="caption-text">Example</span></p>
+<p class="caption" role="heading"><span class="caption-text">Example</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Using Pypbomb</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Determine-tube-size-and-operating-limits">Determine tube size and operating limits</a></li>
@@ -376,24 +377,24 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from itertools import product
-import warnings
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 
-import cantera as ct
-import numpy as np
-import pandas as pd
-import pint
-import seaborn as sns
-from matplotlib import pyplot as plt
-from matplotlib.ticker import MaxNLocator
+<span class="kn">import</span> <span class="nn">cantera</span> <span class="k">as</span> <span class="nn">ct</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pint</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">MaxNLocator</span>
 
-from pypbomb import Tube, Flange, DDT, Window, Bolt
+<span class="kn">from</span> <span class="nn">pypbomb</span> <span class="kn">import</span> <span class="n">Tube</span><span class="p">,</span> <span class="n">Flange</span><span class="p">,</span> <span class="n">DDT</span><span class="p">,</span> <span class="n">Window</span><span class="p">,</span> <span class="n">Bolt</span>
 
-ureg = pint.UnitRegistry()
-quant = ureg.Quantity
+<span class="n">ureg</span> <span class="o">=</span> <span class="n">pint</span><span class="o">.</span><span class="n">UnitRegistry</span><span class="p">()</span>
+<span class="n">quant</span> <span class="o">=</span> <span class="n">ureg</span><span class="o">.</span><span class="n">Quantity</span>
 
-sns.set_context(&quot;notebook&quot;)
-sns.set_style(&quot;white&quot;)
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;notebook&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -404,12 +405,12 @@ sns.set_style(&quot;white&quot;)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fuel = &quot;C3H8&quot;
-oxidizer = &quot;O2:1 N2:3.76&quot;
-material = &quot;316L&quot;
-mechanism = &quot;gri30.cti&quot;
-gas = ct.Solution(mechanism)
-gas.set_equivalence_ratio(1, fuel, oxidizer)
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fuel</span> <span class="o">=</span> <span class="s2">&quot;C3H8&quot;</span>
+<span class="n">oxidizer</span> <span class="o">=</span> <span class="s2">&quot;O2:1 N2:3.76&quot;</span>
+<span class="n">material</span> <span class="o">=</span> <span class="s2">&quot;316L&quot;</span>
+<span class="n">mechanism</span> <span class="o">=</span> <span class="s2">&quot;gri30.cti&quot;</span>
+<span class="n">gas</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">Solution</span><span class="p">(</span><span class="n">mechanism</span><span class="p">)</span>
+<span class="n">gas</span><span class="o">.</span><span class="n">set_equivalence_ratio</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">fuel</span><span class="p">,</span> <span class="n">oxidizer</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -418,7 +419,7 @@ gas.set_equivalence_ratio(1, fuel, oxidizer)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>material = &quot;316L&quot;
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">material</span> <span class="o">=</span> <span class="s2">&quot;316L&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -427,13 +428,13 @@ gas.set_equivalence_ratio(1, fuel, oxidizer)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>potential_sizes = [&quot;1&quot;, &quot;3&quot;, &quot;4&quot;, &quot;6&quot;]
-common_sizes = set(Tube.get_available_pipe_schedules(potential_sizes[0]))
-for size in potential_sizes[1:]:
-    common_sizes.intersection_update(
-        set(Tube.get_available_pipe_schedules(size))
-    )
-common_sizes
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">potential_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">]</span>
+<span class="n">common_sizes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">Tube</span><span class="o">.</span><span class="n">get_available_pipe_schedules</span><span class="p">(</span><span class="n">potential_sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">potential_sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="n">common_sizes</span><span class="o">.</span><span class="n">intersection_update</span><span class="p">(</span>
+        <span class="nb">set</span><span class="p">(</span><span class="n">Tube</span><span class="o">.</span><span class="n">get_available_pipe_schedules</span><span class="p">(</span><span class="n">size</span><span class="p">))</span>
+    <span class="p">)</span>
+<span class="n">common_sizes</span>
 </pre></div>
 </div>
 </div>
@@ -451,7 +452,7 @@ common_sizes
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>potential_schedules = [&quot;40&quot;, &quot;80&quot;, &quot;XXH&quot;]
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">potential_schedules</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;40&quot;</span><span class="p">,</span> <span class="s2">&quot;80&quot;</span><span class="p">,</span> <span class="s2">&quot;XXH&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -460,10 +461,10 @@ common_sizes
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>initial_temperatures = quant(
-    np.linspace(20, 400, 6),
-    &quot;degC&quot;
-)
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">initial_temperatures</span> <span class="o">=</span> <span class="n">quant</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+    <span class="s2">&quot;degC&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -480,93 +481,93 @@ common_sizes
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>calculate_results = True
-results_file = &quot;tube_size_results.h5&quot;
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_results</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">results_file</span> <span class="o">=</span> <span class="s2">&quot;tube_size_results.h5&quot;</span>
 
-combinations = list(
-    product(
-        potential_schedules,
-        potential_sizes,
-        initial_temperatures
-    )
-)
-if calculate_results:
-    results = pd.DataFrame(
-        columns=[
-            &quot;schedule&quot;,
-            &quot;size&quot;,
-            &quot;max initial pressure (psi)&quot;,
-            &quot;initial temperature (F)&quot;,
-            &quot;tube_temp&quot;,
-            &quot;max_pressure&quot;,
-            &quot;DLF&quot;,
-        ]
-    )
-    for i, (schedule, size, initial_temperature) in enumerate(combinations):
-        dims = Tube.get_dimensions(
-            size,
-            schedule,
-            unit_registry=ureg
-        )
-        max_stress = Tube.calculate_max_stress(
-            initial_temperature,
-            material,
-            welded=False,
-            unit_registry=ureg
-        )
-        max_pressure = Tube.calculate_max_pressure(
-            dims[&quot;inner_diameter&quot;],
-            dims[&quot;outer_diameter&quot;],
-            max_stress
-        )
-        elastic_modulus = Tube.get_elastic_modulus(material, ureg)
-        density = Tube.get_density(material, ureg)
-        poisson = Tube.get_poisson(material)
-        initial_pressure, dlf = Tube.calculate_max_initial_pressure(
-            dims[&quot;inner_diameter&quot;],
-            dims[&quot;outer_diameter&quot;],
-            initial_temperature,
-            gas.mole_fraction_dict(),
-            mechanism,
-            max_pressure.to(&quot;Pa&quot;),
-            elastic_modulus,
-            density,
-            poisson,
-            use_multiprocessing=False,
-            return_dlf=True
-        )
+<span class="n">combinations</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+    <span class="n">product</span><span class="p">(</span>
+        <span class="n">potential_schedules</span><span class="p">,</span>
+        <span class="n">potential_sizes</span><span class="p">,</span>
+        <span class="n">initial_temperatures</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="k">if</span> <span class="n">calculate_results</span><span class="p">:</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+            <span class="s2">&quot;schedule&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;size&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;max initial pressure (psi)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;initial temperature (F)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tube_temp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;max_pressure&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;DLF&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">schedule</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">initial_temperature</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">combinations</span><span class="p">):</span>
+        <span class="n">dims</span> <span class="o">=</span> <span class="n">Tube</span><span class="o">.</span><span class="n">get_dimensions</span><span class="p">(</span>
+            <span class="n">size</span><span class="p">,</span>
+            <span class="n">schedule</span><span class="p">,</span>
+            <span class="n">unit_registry</span><span class="o">=</span><span class="n">ureg</span>
+        <span class="p">)</span>
+        <span class="n">max_stress</span> <span class="o">=</span> <span class="n">Tube</span><span class="o">.</span><span class="n">calculate_max_stress</span><span class="p">(</span>
+            <span class="n">initial_temperature</span><span class="p">,</span>
+            <span class="n">material</span><span class="p">,</span>
+            <span class="n">welded</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">unit_registry</span><span class="o">=</span><span class="n">ureg</span>
+        <span class="p">)</span>
+        <span class="n">max_pressure</span> <span class="o">=</span> <span class="n">Tube</span><span class="o">.</span><span class="n">calculate_max_pressure</span><span class="p">(</span>
+            <span class="n">dims</span><span class="p">[</span><span class="s2">&quot;inner_diameter&quot;</span><span class="p">],</span>
+            <span class="n">dims</span><span class="p">[</span><span class="s2">&quot;outer_diameter&quot;</span><span class="p">],</span>
+            <span class="n">max_stress</span>
+        <span class="p">)</span>
+        <span class="n">elastic_modulus</span> <span class="o">=</span> <span class="n">Tube</span><span class="o">.</span><span class="n">get_elastic_modulus</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">ureg</span><span class="p">)</span>
+        <span class="n">density</span> <span class="o">=</span> <span class="n">Tube</span><span class="o">.</span><span class="n">get_density</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">ureg</span><span class="p">)</span>
+        <span class="n">poisson</span> <span class="o">=</span> <span class="n">Tube</span><span class="o">.</span><span class="n">get_poisson</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
+        <span class="n">initial_pressure</span><span class="p">,</span> <span class="n">dlf</span> <span class="o">=</span> <span class="n">Tube</span><span class="o">.</span><span class="n">calculate_max_initial_pressure</span><span class="p">(</span>
+            <span class="n">dims</span><span class="p">[</span><span class="s2">&quot;inner_diameter&quot;</span><span class="p">],</span>
+            <span class="n">dims</span><span class="p">[</span><span class="s2">&quot;outer_diameter&quot;</span><span class="p">],</span>
+            <span class="n">initial_temperature</span><span class="p">,</span>
+            <span class="n">gas</span><span class="o">.</span><span class="n">mole_fraction_dict</span><span class="p">(),</span>
+            <span class="n">mechanism</span><span class="p">,</span>
+            <span class="n">max_pressure</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;Pa&quot;</span><span class="p">),</span>
+            <span class="n">elastic_modulus</span><span class="p">,</span>
+            <span class="n">density</span><span class="p">,</span>
+            <span class="n">poisson</span><span class="p">,</span>
+            <span class="n">use_multiprocessing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">return_dlf</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
 
-        current_results = pd.Series(dtype=&quot;object&quot;)
-        current_results[&quot;schedule&quot;] = schedule
-        current_results[&quot;size&quot;] = size
-        current_results[&quot;max initial pressure (psi)&quot;] = \
-        initial_pressure.to(&quot;psi&quot;).magnitude
-        current_results[&quot;initial temperature (F)&quot;] = \
-            initial_temperature.to(&quot;degF&quot;).magnitude
-        current_results[&quot;tube_temp&quot;] = initial_temperature
-        current_results[&quot;max_pressure&quot;] = max_pressure
-        current_results[&quot;inner_diameter&quot;] = dims[&quot;inner_diameter&quot;]
-        current_results[&quot;DLF&quot;] = dlf
-        results = pd.concat(
-            (results, current_results.to_frame().T),
-            ignore_index=True
-        )
+        <span class="n">current_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;object&quot;</span><span class="p">)</span>
+        <span class="n">current_results</span><span class="p">[</span><span class="s2">&quot;schedule&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">schedule</span>
+        <span class="n">current_results</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">size</span>
+        <span class="n">current_results</span><span class="p">[</span><span class="s2">&quot;max initial pressure (psi)&quot;</span><span class="p">]</span> <span class="o">=</span> \
+        <span class="n">initial_pressure</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;psi&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">magnitude</span>
+        <span class="n">current_results</span><span class="p">[</span><span class="s2">&quot;initial temperature (F)&quot;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">initial_temperature</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;degF&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">magnitude</span>
+        <span class="n">current_results</span><span class="p">[</span><span class="s2">&quot;tube_temp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">initial_temperature</span>
+        <span class="n">current_results</span><span class="p">[</span><span class="s2">&quot;max_pressure&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">max_pressure</span>
+        <span class="n">current_results</span><span class="p">[</span><span class="s2">&quot;inner_diameter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dims</span><span class="p">[</span><span class="s2">&quot;inner_diameter&quot;</span><span class="p">]</span>
+        <span class="n">current_results</span><span class="p">[</span><span class="s2">&quot;DLF&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dlf</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">current_results</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="p">),</span>
+            <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
 
-    float_keys = [
-        &quot;max initial pressure (psi)&quot;,
-        &quot;initial temperature (F)&quot;,
-        &quot;DLF&quot;
-    ]
-    results[float_keys] = results[float_keys].astype(float)
+    <span class="n">float_keys</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;max initial pressure (psi)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;initial temperature (F)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DLF&quot;</span>
+    <span class="p">]</span>
+    <span class="n">results</span><span class="p">[</span><span class="n">float_keys</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">float_keys</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
 
-    with warnings.catch_warnings():
-        warnings.simplefilter(&quot;ignore&quot;)
-        with pd.HDFStore(results_file, &quot;w&quot;) as store:
-            store.put(&quot;data&quot;, results)
+    <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="n">results_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">store</span><span class="p">:</span>
+            <span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
 
-else:
-    with pd.HDFStore(results_file, &quot;r&quot;) as store:
-        results = store.data
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="n">results_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">store</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -574,16 +575,16 @@ else:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.relplot(
-    x=&quot;initial temperature (F)&quot;,
-    y=&quot;max initial pressure (psi)&quot;,
-    col=&quot;size&quot;,
-    style=&quot;schedule&quot;,
-    kind=&quot;line&quot;,
-    data=results,
-    aspect=0.5
-)
-sns.despine()
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;initial temperature (F)&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;max initial pressure (psi)&quot;</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="s2">&quot;size&quot;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="s2">&quot;schedule&quot;</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">results</span><span class="p">,</span>
+    <span class="n">aspect</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -599,14 +600,14 @@ sns.despine()
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.catplot(
-    x=&quot;schedule&quot;,
-    y=&quot;DLF&quot;,
-    col=&quot;size&quot;,
-    kind=&quot;bar&quot;,
-    data=results,
-    aspect=0.5
-);
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;schedule&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;DLF&quot;</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="s2">&quot;size&quot;</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">results</span><span class="p">,</span>
+    <span class="n">aspect</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -622,22 +623,22 @@ sns.despine()
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>nps_main = &quot;6&quot;
-schedule_main = &quot;80&quot;
-results_main = results[
-    (results[&quot;size&quot;] == nps_main) &amp;
-    (results[&quot;schedule&quot;] == schedule_main)
-].copy()
-results_original = results_main[
-    [&quot;max initial pressure (psi)&quot;,
-     &quot;initial temperature (F)&quot;]].astype(float)
-results_main.drop(
-    [&quot;max initial pressure (psi)&quot;,
-     &quot;initial temperature (F)&quot;],
-    axis=1,
-    inplace=True
-)
-results_main
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nps_main</span> <span class="o">=</span> <span class="s2">&quot;6&quot;</span>
+<span class="n">schedule_main</span> <span class="o">=</span> <span class="s2">&quot;80&quot;</span>
+<span class="n">results_main</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">nps_main</span><span class="p">)</span> <span class="o">&amp;</span>
+    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;schedule&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">schedule_main</span><span class="p">)</span>
+<span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">results_original</span> <span class="o">=</span> <span class="n">results_main</span><span class="p">[</span>
+    <span class="p">[</span><span class="s2">&quot;max initial pressure (psi)&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;initial temperature (F)&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">results_main</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;max initial pressure (psi)&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;initial temperature (F)&quot;</span><span class="p">],</span>
+    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">results_main</span>
 </pre></div>
 </div>
 </div>
@@ -736,25 +737,25 @@ results_main
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>nps_mix = &quot;1&quot;
-schedule_mix = &quot;40&quot;
-results_mix = results[
-    (results[&quot;size&quot;] == nps_mix) &amp;
-    (results[&quot;schedule&quot;] == schedule_mix)
-].drop(
-    [&quot;max initial pressure (psi)&quot;,
-     &quot;initial temperature (F)&quot;,
-     &quot;inner_diameter&quot;],
-    axis=1
-)
-results_mix[&quot;max_main_pressure&quot;] = results_main[&quot;max_pressure&quot;].values
-results_mix[&quot;safe&quot;] = (results_mix[&quot;max_pressure&quot;] &gt;
-                       results_mix[&quot;max_main_pressure&quot;])
-if all(results_mix[&quot;safe&quot;]):
-    print(&quot;Mix tube is safe :)&quot;)
-else:
-    print(&quot;Mix tube is unsafe :(&quot;)
-results_mix
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nps_mix</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span>
+<span class="n">schedule_mix</span> <span class="o">=</span> <span class="s2">&quot;40&quot;</span>
+<span class="n">results_mix</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">nps_mix</span><span class="p">)</span> <span class="o">&amp;</span>
+    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;schedule&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">schedule_mix</span><span class="p">)</span>
+<span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;max initial pressure (psi)&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;initial temperature (F)&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;inner_diameter&quot;</span><span class="p">],</span>
+    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+<span class="n">results_mix</span><span class="p">[</span><span class="s2">&quot;max_main_pressure&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results_main</span><span class="p">[</span><span class="s2">&quot;max_pressure&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">results_mix</span><span class="p">[</span><span class="s2">&quot;safe&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">results_mix</span><span class="p">[</span><span class="s2">&quot;max_pressure&quot;</span><span class="p">]</span> <span class="o">&gt;</span>
+                       <span class="n">results_mix</span><span class="p">[</span><span class="s2">&quot;max_main_pressure&quot;</span><span class="p">])</span>
+<span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">results_mix</span><span class="p">[</span><span class="s2">&quot;safe&quot;</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mix tube is safe :)&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mix tube is unsafe :(&quot;</span><span class="p">)</span>
+<span class="n">results_mix</span>
 </pre></div>
 </div>
 </div>
@@ -873,16 +874,16 @@ Mix tube is safe :)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>results_main[&quot;flange class&quot;] = results_main.apply(
-    lambda x: Flange.get_class(
-        x[&quot;max_pressure&quot;],
-        x[&quot;tube_temp&quot;],
-        material,
-        ureg
-    ),
-    axis=1
-)
-results_main[&quot;flange class&quot;].max()
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_main</span><span class="p">[</span><span class="s2">&quot;flange class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results_main</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Flange</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span>
+        <span class="n">x</span><span class="p">[</span><span class="s2">&quot;max_pressure&quot;</span><span class="p">],</span>
+        <span class="n">x</span><span class="p">[</span><span class="s2">&quot;tube_temp&quot;</span><span class="p">],</span>
+        <span class="n">material</span><span class="p">,</span>
+        <span class="n">ureg</span>
+    <span class="p">),</span>
+    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+<span class="n">results_main</span><span class="p">[</span><span class="s2">&quot;flange class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -902,16 +903,16 @@ results_main[&quot;flange class&quot;].max()
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>results_mix[&quot;flange class&quot;] = results_mix.apply(
-    lambda x: Flange.get_class(
-        x[&quot;max_main_pressure&quot;],
-        x[&quot;tube_temp&quot;],
-        material,
-        ureg
-    ),
-    axis=1
-)
-results_mix[&quot;flange class&quot;].max()
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_mix</span><span class="p">[</span><span class="s2">&quot;flange class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results_mix</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Flange</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span>
+        <span class="n">x</span><span class="p">[</span><span class="s2">&quot;max_main_pressure&quot;</span><span class="p">],</span>
+        <span class="n">x</span><span class="p">[</span><span class="s2">&quot;tube_temp&quot;</span><span class="p">],</span>
+        <span class="n">material</span><span class="p">,</span>
+        <span class="n">ureg</span>
+    <span class="p">),</span>
+    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+<span class="n">results_mix</span><span class="p">[</span><span class="s2">&quot;flange class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -935,16 +936,16 @@ results_mix[&quot;flange class&quot;].max()
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>window_height = quant(5.75, &quot;in&quot;)
-window_lengths = np.linspace(0.25, 7, 100)
-window_thicknesses = Window.minimum_thickness(
-    length=window_height,
-    width=quant(window_lengths, &quot;in&quot;),
-    safety_factor=4,
-    pressure=results_main[&quot;max_pressure&quot;].max(),
-    rupture_modulus=(197.9, &quot;MPa&quot;),
-    unit_registry=ureg
-).to(&quot;in&quot;).magnitude
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">window_height</span> <span class="o">=</span> <span class="n">quant</span><span class="p">(</span><span class="mf">5.75</span><span class="p">,</span> <span class="s2">&quot;in&quot;</span><span class="p">)</span>
+<span class="n">window_lengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">window_thicknesses</span> <span class="o">=</span> <span class="n">Window</span><span class="o">.</span><span class="n">minimum_thickness</span><span class="p">(</span>
+    <span class="n">length</span><span class="o">=</span><span class="n">window_height</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="n">quant</span><span class="p">(</span><span class="n">window_lengths</span><span class="p">,</span> <span class="s2">&quot;in&quot;</span><span class="p">),</span>
+    <span class="n">safety_factor</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">pressure</span><span class="o">=</span><span class="n">results_main</span><span class="p">[</span><span class="s2">&quot;max_pressure&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+    <span class="n">rupture_modulus</span><span class="o">=</span><span class="p">(</span><span class="mf">197.9</span><span class="p">,</span> <span class="s2">&quot;MPa&quot;</span><span class="p">),</span>
+    <span class="n">unit_registry</span><span class="o">=</span><span class="n">ureg</span>
+<span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;in&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">magnitude</span>
 </pre></div>
 </div>
 </div>
@@ -952,28 +953,28 @@ window_thicknesses = Window.minimum_thickness(
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>max_desired_thickness = 1  # inch
-plt.plot(window_lengths, window_thicknesses, &quot;k&quot;)
-plt.fill_between(
-    window_lengths[window_thicknesses &lt;= max_desired_thickness],
-    window_thicknesses[window_thicknesses &lt;= max_desired_thickness],
-    0,
-    color=&quot;g&quot;,
-    alpha=0.25,
-    zorder=-1
-)
-plt.xlim([window_lengths.min(), window_lengths.max()])
-plt.ylim([0, plt.ylim()[1]])
-plt.xlabel(&quot;Window length (in)&quot;)
-plt.ylabel(&quot;Window thickness (in)&quot;)
-plt.title(
-    &quot;Window minimum thickness vs. length\n&quot;
-    &quot;Max length {:3.2f} in at {:3.2f} in. thick&quot;.format(
-        window_lengths[window_thicknesses &lt;= max_desired_thickness].max(),
-        max_desired_thickness
-    )
-)
-sns.despine()
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_desired_thickness</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># inch</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">window_lengths</span><span class="p">,</span> <span class="n">window_thicknesses</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+    <span class="n">window_lengths</span><span class="p">[</span><span class="n">window_thicknesses</span> <span class="o">&lt;=</span> <span class="n">max_desired_thickness</span><span class="p">],</span>
+    <span class="n">window_thicknesses</span><span class="p">[</span><span class="n">window_thicknesses</span> <span class="o">&lt;=</span> <span class="n">max_desired_thickness</span><span class="p">],</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
+    <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">window_lengths</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">window_lengths</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Window length (in)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Window thickness (in)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
+    <span class="s2">&quot;Window minimum thickness vs. length</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="s2">&quot;Max length </span><span class="si">{:3.2f}</span><span class="s2"> in at </span><span class="si">{:3.2f}</span><span class="s2"> in. thick&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">window_lengths</span><span class="p">[</span><span class="n">window_thicknesses</span> <span class="o">&lt;=</span> <span class="n">max_desired_thickness</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+        <span class="n">max_desired_thickness</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -989,14 +990,14 @@ sns.despine()
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>window_length = quant(2.25, &quot;in&quot;)
-Window.safety_factor(
-    window_length,
-    window_height,
-    quant(1, &quot;in&quot;),
-    pressure=results_main[&quot;max_pressure&quot;].max(),
-    rupture_modulus=quant(197.9, &quot;MPa&quot;),
-)
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">window_length</span> <span class="o">=</span> <span class="n">quant</span><span class="p">(</span><span class="mf">2.25</span><span class="p">,</span> <span class="s2">&quot;in&quot;</span><span class="p">)</span>
+<span class="n">Window</span><span class="o">.</span><span class="n">safety_factor</span><span class="p">(</span>
+    <span class="n">window_length</span><span class="p">,</span>
+    <span class="n">window_height</span><span class="p">,</span>
+    <span class="n">quant</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;in&quot;</span><span class="p">),</span>
+    <span class="n">pressure</span><span class="o">=</span><span class="n">results_main</span><span class="p">[</span><span class="s2">&quot;max_pressure&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+    <span class="n">rupture_modulus</span><span class="o">=</span><span class="n">quant</span><span class="p">(</span><span class="mf">197.9</span><span class="p">,</span> <span class="s2">&quot;MPa&quot;</span><span class="p">),</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1018,48 +1019,48 @@ Window.safety_factor(
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>num_bolts = np.array(range(1, 25))
-bolt_safety_factors = Bolt.calculate_safety_factors(
-    max_pressure=results_main[&quot;max_pressure&quot;].max(),
-    window_area = window_length * window_height,
-    num_bolts=num_bolts,
-    thread_size=&quot;1/4-28&quot;,
-    thread_class=&quot;2&quot;,
-    bolt_max_tensile=(150, &quot;kpsi&quot;),  # grade 8
-    plate_max_tensile=(485, &quot;MPa&quot;),  # 316L,
-    engagement_length=(0.5, &quot;in&quot;),
-    unit_registry=ureg
-)
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_bolts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+<span class="n">bolt_safety_factors</span> <span class="o">=</span> <span class="n">Bolt</span><span class="o">.</span><span class="n">calculate_safety_factors</span><span class="p">(</span>
+    <span class="n">max_pressure</span><span class="o">=</span><span class="n">results_main</span><span class="p">[</span><span class="s2">&quot;max_pressure&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+    <span class="n">window_area</span> <span class="o">=</span> <span class="n">window_length</span> <span class="o">*</span> <span class="n">window_height</span><span class="p">,</span>
+    <span class="n">num_bolts</span><span class="o">=</span><span class="n">num_bolts</span><span class="p">,</span>
+    <span class="n">thread_size</span><span class="o">=</span><span class="s2">&quot;1/4-28&quot;</span><span class="p">,</span>
+    <span class="n">thread_class</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">,</span>
+    <span class="n">bolt_max_tensile</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="s2">&quot;kpsi&quot;</span><span class="p">),</span>  <span class="c1"># grade 8</span>
+    <span class="n">plate_max_tensile</span><span class="o">=</span><span class="p">(</span><span class="mi">485</span><span class="p">,</span> <span class="s2">&quot;MPa&quot;</span><span class="p">),</span>  <span class="c1"># 316L,</span>
+    <span class="n">engagement_length</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;in&quot;</span><span class="p">),</span>
+    <span class="n">unit_registry</span><span class="o">=</span><span class="n">ureg</span>
+<span class="p">)</span>
 
-fig, ax = plt.subplots()
-ax.plot(
-    num_bolts,
-    bolt_safety_factors[&quot;bolt&quot;],
-    &quot;k--&quot;,
-    label=&quot;bolt&quot;
-)
-ax.plot(
-    num_bolts,
-    bolt_safety_factors[&quot;plate&quot;],
-    &quot;k-.&quot;,
-    label=&quot;plate&quot;
-)
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">num_bolts</span><span class="p">,</span>
+    <span class="n">bolt_safety_factors</span><span class="p">[</span><span class="s2">&quot;bolt&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;k--&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;bolt&quot;</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">num_bolts</span><span class="p">,</span>
+    <span class="n">bolt_safety_factors</span><span class="p">[</span><span class="s2">&quot;plate&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;k-.&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;plate&quot;</span>
+<span class="p">)</span>
 
-ax.xaxis.set_major_locator(MaxNLocator(integer=True))
-ax.legend()
-ax.set_ylim([0, ax.get_ylim()[1]])
-ax.set_xlim([num_bolts.min()-1, num_bolts.max()+1])
-ax.set_xlabel(&quot;Number of bolts&quot;)
-ax.set_ylabel(&quot;Safety factor&quot;)
-ax.set_title(&quot;Bolt and plate safety factors vs. number of bolts&quot;)
-ax.fill_between(
-    ax.get_xlim(),
-    2,
-    zorder=-1,
-    color=&quot;r&quot;,
-    alpha=0.25,
-)
-sns.despine()
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MaxNLocator</span><span class="p">(</span><span class="n">integer</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">num_bolts</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_bolts</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Number of bolts&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Safety factor&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Bolt and plate safety factors vs. number of bolts&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">(),</span>
+    <span class="mi">2</span><span class="p">,</span>
+    <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1081,13 +1082,13 @@ blockage ratio and tube diameter, meaning that its only geometric assumption is 
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>main_id = results_main[&quot;inner_diameter&quot;].iloc[0]
-target_blockage_diameter = DDT.calculate_blockage_diameter(
-    main_id,
-    0.45,
-    unit_registry=ureg
-)
-print(&quot;Target blockage diameter: {:3.2f}&quot;.format(target_blockage_diameter))
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">main_id</span> <span class="o">=</span> <span class="n">results_main</span><span class="p">[</span><span class="s2">&quot;inner_diameter&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">target_blockage_diameter</span> <span class="o">=</span> <span class="n">DDT</span><span class="o">.</span><span class="n">calculate_blockage_diameter</span><span class="p">(</span>
+    <span class="n">main_id</span><span class="p">,</span>
+    <span class="mf">0.45</span><span class="p">,</span>
+    <span class="n">unit_registry</span><span class="o">=</span><span class="n">ureg</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Target blockage diameter: </span><span class="si">{:3.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target_blockage_diameter</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1103,12 +1104,12 @@ Target blockage diameter: 0.74 inch
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>blockage_actual = DDT.calculate_blockage_ratio(
-    main_id,
-    (0.75, &quot;in&quot;),
-    unit_registry=ureg
-)
-print(&quot;Actual blockage ratio: {:4.1f}%&quot;.format(blockage_actual*100))
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blockage_actual</span> <span class="o">=</span> <span class="n">DDT</span><span class="o">.</span><span class="n">calculate_blockage_ratio</span><span class="p">(</span>
+    <span class="n">main_id</span><span class="p">,</span>
+    <span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="s2">&quot;in&quot;</span><span class="p">),</span>
+    <span class="n">unit_registry</span><span class="o">=</span><span class="n">ureg</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Actual blockage ratio: </span><span class="si">{:4.1f}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">blockage_actual</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1124,16 +1125,16 @@ Actual blockage ratio: 45.3%
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>runup = DDT.calculate_run_up(
-    blockage_actual,
-    main_id,
-    (70, &quot;degF&quot;),
-    (1, &quot;atm&quot;),
-    gas.mole_fraction_dict(),
-    mechanism,
-    unit_registry=ureg
-)
-print(&quot;Runup distance: {:1.2f}&quot;.format(runup.to(&quot;millifurlong&quot;)))
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">runup</span> <span class="o">=</span> <span class="n">DDT</span><span class="o">.</span><span class="n">calculate_run_up</span><span class="p">(</span>
+    <span class="n">blockage_actual</span><span class="p">,</span>
+    <span class="n">main_id</span><span class="p">,</span>
+    <span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="s2">&quot;degF&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;atm&quot;</span><span class="p">),</span>
+    <span class="n">gas</span><span class="o">.</span><span class="n">mole_fraction_dict</span><span class="p">(),</span>
+    <span class="n">mechanism</span><span class="p">,</span>
+    <span class="n">unit_registry</span><span class="o">=</span><span class="n">ureg</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Runup distance: </span><span class="si">{:1.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">runup</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;millifurlong&quot;</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -1154,72 +1155,72 @@ Runup distance: 6.14 millifurlong
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>results_file = &quot;second_mixture_results.h5&quot;
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_file</span> <span class="o">=</span> <span class="s2">&quot;second_mixture_results.h5&quot;</span>
 
-calculate_results = True
-new_fuel = &quot;H2&quot;
-new_oxidizer = &quot;O2&quot;
-gas2 = ct.Solution(mechanism)
-gas2.set_equivalence_ratio(1, new_fuel, new_oxidizer)
+<span class="n">calculate_results</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">new_fuel</span> <span class="o">=</span> <span class="s2">&quot;H2&quot;</span>
+<span class="n">new_oxidizer</span> <span class="o">=</span> <span class="s2">&quot;O2&quot;</span>
+<span class="n">gas2</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">Solution</span><span class="p">(</span><span class="n">mechanism</span><span class="p">)</span>
+<span class="n">gas2</span><span class="o">.</span><span class="n">set_equivalence_ratio</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">new_fuel</span><span class="p">,</span> <span class="n">new_oxidizer</span><span class="p">)</span>
 
-if calculate_results:
-    results = pd.DataFrame(
-        columns=[
-            &quot;max initial pressure (psi)&quot;,
-            &quot;initial temperature (F)&quot;,
-        ]
-    )
-    for i, initial_temperature in enumerate(initial_temperatures):
-        dims = Tube.get_dimensions(
-            nps_main,
-            schedule_main,
-            unit_registry=ureg
-        )
-        max_stress = Tube.calculate_max_stress(
-            initial_temperature,
-            material,
-            welded=False,
-            unit_registry=ureg
-        )
-        max_pressure = Tube.calculate_max_pressure(
-            dims[&quot;inner_diameter&quot;],
-            dims[&quot;outer_diameter&quot;],
-            max_stress
-        )
-        elastic_modulus = Tube.get_elastic_modulus(material, ureg)
-        density = Tube.get_density(material, ureg)
-        poisson = Tube.get_poisson(material)
-        initial_pressure = Tube.calculate_max_initial_pressure(
-            dims[&quot;inner_diameter&quot;],
-            dims[&quot;outer_diameter&quot;],
-            initial_temperature,
-            gas2.mole_fraction_dict(),
-            mechanism,
-            max_pressure.to(&quot;Pa&quot;),
-            elastic_modulus,
-            density,
-            poisson,
-            use_multiprocessing=False
-        )
+<span class="k">if</span> <span class="n">calculate_results</span><span class="p">:</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+            <span class="s2">&quot;max initial pressure (psi)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;initial temperature (F)&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">initial_temperature</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">initial_temperatures</span><span class="p">):</span>
+        <span class="n">dims</span> <span class="o">=</span> <span class="n">Tube</span><span class="o">.</span><span class="n">get_dimensions</span><span class="p">(</span>
+            <span class="n">nps_main</span><span class="p">,</span>
+            <span class="n">schedule_main</span><span class="p">,</span>
+            <span class="n">unit_registry</span><span class="o">=</span><span class="n">ureg</span>
+        <span class="p">)</span>
+        <span class="n">max_stress</span> <span class="o">=</span> <span class="n">Tube</span><span class="o">.</span><span class="n">calculate_max_stress</span><span class="p">(</span>
+            <span class="n">initial_temperature</span><span class="p">,</span>
+            <span class="n">material</span><span class="p">,</span>
+            <span class="n">welded</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">unit_registry</span><span class="o">=</span><span class="n">ureg</span>
+        <span class="p">)</span>
+        <span class="n">max_pressure</span> <span class="o">=</span> <span class="n">Tube</span><span class="o">.</span><span class="n">calculate_max_pressure</span><span class="p">(</span>
+            <span class="n">dims</span><span class="p">[</span><span class="s2">&quot;inner_diameter&quot;</span><span class="p">],</span>
+            <span class="n">dims</span><span class="p">[</span><span class="s2">&quot;outer_diameter&quot;</span><span class="p">],</span>
+            <span class="n">max_stress</span>
+        <span class="p">)</span>
+        <span class="n">elastic_modulus</span> <span class="o">=</span> <span class="n">Tube</span><span class="o">.</span><span class="n">get_elastic_modulus</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">ureg</span><span class="p">)</span>
+        <span class="n">density</span> <span class="o">=</span> <span class="n">Tube</span><span class="o">.</span><span class="n">get_density</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">ureg</span><span class="p">)</span>
+        <span class="n">poisson</span> <span class="o">=</span> <span class="n">Tube</span><span class="o">.</span><span class="n">get_poisson</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
+        <span class="n">initial_pressure</span> <span class="o">=</span> <span class="n">Tube</span><span class="o">.</span><span class="n">calculate_max_initial_pressure</span><span class="p">(</span>
+            <span class="n">dims</span><span class="p">[</span><span class="s2">&quot;inner_diameter&quot;</span><span class="p">],</span>
+            <span class="n">dims</span><span class="p">[</span><span class="s2">&quot;outer_diameter&quot;</span><span class="p">],</span>
+            <span class="n">initial_temperature</span><span class="p">,</span>
+            <span class="n">gas2</span><span class="o">.</span><span class="n">mole_fraction_dict</span><span class="p">(),</span>
+            <span class="n">mechanism</span><span class="p">,</span>
+            <span class="n">max_pressure</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;Pa&quot;</span><span class="p">),</span>
+            <span class="n">elastic_modulus</span><span class="p">,</span>
+            <span class="n">density</span><span class="p">,</span>
+            <span class="n">poisson</span><span class="p">,</span>
+            <span class="n">use_multiprocessing</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
 
-        current_results = pd.Series(dtype=&quot;object&quot;)
-        current_results[&quot;max initial pressure (psi)&quot;] = \
-        initial_pressure.to(&quot;psi&quot;).magnitude
-        current_results[&quot;initial temperature (F)&quot;] = \
-            initial_temperature.to(&quot;degF&quot;).magnitude
-        results = pd.concat(
-            (results, current_results.to_frame().T),
-            ignore_index=True
-        )
+        <span class="n">current_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;object&quot;</span><span class="p">)</span>
+        <span class="n">current_results</span><span class="p">[</span><span class="s2">&quot;max initial pressure (psi)&quot;</span><span class="p">]</span> <span class="o">=</span> \
+        <span class="n">initial_pressure</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;psi&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">magnitude</span>
+        <span class="n">current_results</span><span class="p">[</span><span class="s2">&quot;initial temperature (F)&quot;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">initial_temperature</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;degF&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">magnitude</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">current_results</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="p">),</span>
+            <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
 
-    with warnings.catch_warnings():
-        warnings.simplefilter(&quot;ignore&quot;)
-        with pd.HDFStore(results_file, &quot;w&quot;) as store:
-            store.put(&quot;data&quot;, results)
+    <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="n">results_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">store</span><span class="p">:</span>
+            <span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
 
-else:
-    with pd.HDFStore(results_file, &quot;r&quot;) as store:
-        results = store.data
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="n">results_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">store</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -1227,17 +1228,17 @@ else:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>results_original[&quot;mixture&quot;] = &quot;original&quot;
-results[&quot;mixture&quot;] = &quot;new&quot;
-sns.lineplot(
-    x=&quot;initial temperature (F)&quot;,
-    y=&quot;max initial pressure (psi)&quot;,
-    data=pd.concat((results_original, results)),
-    style=&quot;mixture&quot;,
-    color=&quot;k&quot;,
-)
-plt.title(&quot;Mixture comparison\nMax safe initial pressure vs. Temperature&quot;)
-sns.despine()
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_original</span><span class="p">[</span><span class="s2">&quot;mixture&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;original&quot;</span>
+<span class="n">results</span><span class="p">[</span><span class="s2">&quot;mixture&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;new&quot;</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;initial temperature (F)&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;max initial pressure (psi)&quot;</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">results_original</span><span class="p">,</span> <span class="n">results</span><span class="p">)),</span>
+    <span class="n">style</span><span class="o">=</span><span class="s2">&quot;mixture&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mixture comparison</span><span class="se">\n</span><span class="s2">Max safe initial pressure vs. Temperature&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

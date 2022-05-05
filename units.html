@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pypbomb.units &mdash; pypbomb 1.1.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>pypbomb.units &mdash; pypbomb 1.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/tweaks.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "tex2jax_ignore|mathjax_ignore|document", "processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -40,11 +39,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p><span class="caption-text">Installation</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing pypbomb</a></li>
 </ul>
-<p><span class="caption-text">API</span></p>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Tube.html">Tube</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Flange.html">Flange</a></li>
@@ -56,7 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="thermochem.html">pypbomb.thermochem</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">pypbomb.units</a></li>
 </ul>
-<p><span class="caption-text">Example</span></p>
+<p class="caption" role="heading"><span class="caption-text">Example</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="example.html">Using Pypbomb</a></li>
 </ul>
@@ -113,8 +112,8 @@
 <span id="pypbomb-units"></span><h1>pypbomb.units<a class="headerlink" href="#module-pypbomb.units" title="Permalink to this headline"></a></h1>
 <p>Extra unit management tools for pint quantities</p>
 <dl class="py function">
-<dt id="pypbomb.units.check_pint_quantity">
-<code class="sig-prename descclassname">pypbomb.units.</code><code class="sig-name descname">check_pint_quantity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">quantity</span></em>, <em class="sig-param"><span class="n">dimension_type</span></em>, <em class="sig-param"><span class="n">ensure_positive</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.units.check_pint_quantity" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.units.check_pint_quantity">
+<span class="sig-prename descclassname"><span class="pre">pypbomb.units.</span></span><span class="sig-name descname"><span class="pre">check_pint_quantity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quantity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimension_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_positive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.units.check_pint_quantity" title="Permalink to this definition"></a></dt>
 <dd><p>Checks to make sure that a quantity is an instance of a pint quantity, and
 that it has the correct units. Currently supported dimension types:</p>
 <blockquote>
@@ -129,7 +128,7 @@ that it has the correct units. Currently supported dimension types:</p>
 </ul>
 </div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>quantity</strong> (<em>pint.Quantity</em>) – Pint quantity which is to be checked for dimensionality</p></li>
 <li><p><strong>dimension_type</strong> (<em>str</em>) – Dimensionality that quantity should have</p></li>
@@ -137,31 +136,31 @@ that it has the correct units. Currently supported dimension types:</p>
 for positivity</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if no errors are raised</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pypbomb.units.parse_quant_input">
-<code class="sig-prename descclassname">pypbomb.units.</code><code class="sig-name descname">parse_quant_input</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">quant_input</span></em>, <em class="sig-param"><span class="n">unit_registry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.units.parse_quant_input" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.units.parse_quant_input">
+<span class="sig-prename descclassname"><span class="pre">pypbomb.units.</span></span><span class="sig-name descname"><span class="pre">parse_quant_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quant_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.units.parse_quant_input" title="Permalink to this definition"></a></dt>
 <dd><p>Converts a tuple of <code class="docutils literal notranslate"><span class="pre">(magnitude,</span> <span class="pre">&quot;units&quot;)</span></code> to a pint quantity or
 converts a pint quantity to the local registry.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>quant_input</strong> (<em>pint.Quantity</em><em> or </em><em>tuple</em>) – Iterable or quantity to be parsed</p></li>
 <li><p><strong>unit_registry</strong> (<em>pint.UnitRegistry</em>) – Unit registry to be used for pint quantities</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Input as a pint quantity</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pint.Quantity</p>
 </dd>
 </dl>

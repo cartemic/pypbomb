@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pypbomb.tube &mdash; pypbomb 1.1.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>pypbomb.tube &mdash; pypbomb 1.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/tweaks.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "tex2jax_ignore|mathjax_ignore|document", "processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -40,11 +41,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p><span class="caption-text">Installation</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing pypbomb</a></li>
 </ul>
-<p><span class="caption-text">API</span></p>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Tube.html">Tube</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Flange.html">Flange</a></li>
@@ -63,7 +64,7 @@
 <li class="toctree-l1"><a class="reference internal" href="thermochem.html">pypbomb.thermochem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="units.html">pypbomb.units</a></li>
 </ul>
-<p><span class="caption-text">Example</span></p>
+<p class="caption" role="heading"><span class="caption-text">Example</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="example.html">Using Pypbomb</a></li>
 </ul>
@@ -124,15 +125,15 @@ for convenience, but may also be accessed via <code class="docutils literal notr
 <span class="target" id="module-pypbomb.tube"></span><section id="bolt">
 <h2>Bolt<a class="headerlink" href="#bolt" title="Permalink to this headline"></a></h2>
 <dl class="py class">
-<dt id="pypbomb.tube.Bolt">
-<em class="property">class </em><code class="sig-prename descclassname">pypbomb.tube.</code><code class="sig-name descname">Bolt</code><a class="headerlink" href="#pypbomb.tube.Bolt" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Bolt">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypbomb.tube.</span></span><span class="sig-name descname"><span class="pre">Bolt</span></span><a class="headerlink" href="#pypbomb.tube.Bolt" title="Permalink to this definition"></a></dt>
 <dd><p>Methods relating to bolt calculations and property lookup.</p>
 <dl class="py method">
-<dt id="pypbomb.tube.Bolt.calculate_safety_factors">
-<em class="property">classmethod </em><code class="sig-name descname">calculate_safety_factors</code><span class="sig-paren">(</span><em class="sig-param">max_pressure</em>, <em class="sig-param">window_area</em>, <em class="sig-param">num_bolts</em>, <em class="sig-param">thread_size</em>, <em class="sig-param">thread_class</em>, <em class="sig-param">bolt_max_tensile</em>, <em class="sig-param">plate_max_tensile</em>, <em class="sig-param">engagement_length</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Bolt.calculate_safety_factors" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Bolt.calculate_safety_factors">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_safety_factors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_area</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_bolts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thread_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thread_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bolt_max_tensile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plate_max_tensile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engagement_length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Bolt.calculate_safety_factors" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates bolt and plate safety factors for viewing window bolts</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>max_pressure</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Tube maximum pressure</p></li>
 <li><p><strong>window_area</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Window area exposed to high pressure environment</p></li>
@@ -146,7 +147,7 @@ for convenience, but may also be accessed via <code class="docutils literal notr
 <li><p><strong>unit_registry</strong> (<em>pint.UnitRegistry</em>) – Keeps output consistent with parent registry, avoiding conflicts</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><p>Dictionary giving factors of safety for window bolts and the plate</p>
 <p>that they are screwed into. Keys:</p>
 <ul class="simple">
@@ -155,19 +156,19 @@ for convenience, but may also be accessed via <code class="docutils literal notr
 </ul>
 </p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.tube.Bolt.calculate_stress_areas">
-<em class="property">static </em><code class="sig-name descname">calculate_stress_areas</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">thread_size</span></em>, <em class="sig-param"><span class="n">thread_class</span></em>, <em class="sig-param"><span class="n">bolt_max_tensile</span></em>, <em class="sig-param"><span class="n">plate_max_tensile</span></em>, <em class="sig-param"><span class="n">engagement_length</span></em>, <em class="sig-param"><span class="n">unit_registry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Bolt.calculate_stress_areas" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Bolt.calculate_stress_areas">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_stress_areas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thread_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thread_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bolt_max_tensile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plate_max_tensile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engagement_length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Bolt.calculate_stress_areas" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates internal and external thread stress areas using formulas in
 Machinery’s Handbook, 26th edition.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>thread_size</strong> (<em>str</em>) – Size of threads to be evaluated, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;1/4-20&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;1</span> <span class="pre">1/2-6&quot;</span></code></p></li>
 <li><p><strong>thread_class</strong> (<em>str</em>) – Class of threads to be evaluated, <code class="docutils literal notranslate"><span class="pre">&quot;2&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;3&quot;</span></code>. (<code class="docutils literal notranslate"><span class="pre">&quot;A&quot;</span></code> or
@@ -179,7 +180,7 @@ Machinery’s Handbook, 26th edition.</p>
 unit registry</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><p>Dictionary with the following keys:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;plate</span> <span class="pre">area&quot;</span></code>: Stress area of internal threads within the plate</p></li>
@@ -190,21 +191,21 @@ from stripping.</p></li>
 </ul>
 </p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.tube.Bolt.get_thread_property">
-<em class="property">static </em><code class="sig-name descname">get_thread_property</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">thread_property</span></em>, <em class="sig-param"><span class="n">thread_size</span></em>, <em class="sig-param"><span class="n">thread_class</span></em>, <em class="sig-param"><span class="n">unit_registry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Bolt.get_thread_property" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Bolt.get_thread_property">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_thread_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thread_property</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thread_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thread_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Bolt.get_thread_property" title="Permalink to this definition"></a></dt>
 <dd><p>Finds a thread property, such as minor diameter, using a dataframe from
 import_thread_specs(). import_thread_specs is not directly called here
 to save time by not reading from disk every time a property is
 requested.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>thread_property</strong> (<em>str</em>) – Property that is desired, such as <code class="docutils literal notranslate"><span class="pre">&quot;minor</span> <span class="pre">diameter&quot;</span></code></p></li>
 <li><p><strong>thread_size</strong> (<em>str</em>) – Thread size for desired property, such as <code class="docutils literal notranslate"><span class="pre">&quot;1/4-20&quot;</span></code> or
@@ -215,10 +216,10 @@ requested.</p>
 unit registry</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Property requested, as a pint quantity with units of inches</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pint.Quantity</p>
 </dd>
 </dl>
@@ -230,16 +231,16 @@ unit registry</p></li>
 <section id="ddt">
 <h2>DDT<a class="headerlink" href="#ddt" title="Permalink to this headline"></a></h2>
 <dl class="py class">
-<dt id="pypbomb.tube.DDT">
-<em class="property">class </em><code class="sig-prename descclassname">pypbomb.tube.</code><code class="sig-name descname">DDT</code><a class="headerlink" href="#pypbomb.tube.DDT" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.DDT">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypbomb.tube.</span></span><span class="sig-name descname"><span class="pre">DDT</span></span><a class="headerlink" href="#pypbomb.tube.DDT" title="Permalink to this definition"></a></dt>
 <dd><p>Methods for estimating the deflagration-to-detonation transition (DDT).</p>
 <dl class="py method">
-<dt id="pypbomb.tube.DDT.calculate_blockage_diameter">
-<em class="property">static </em><code class="sig-name descname">calculate_blockage_diameter</code><span class="sig-paren">(</span><em class="sig-param">pipe_id</em>, <em class="sig-param">blockage_ratio</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.DDT.calculate_blockage_diameter" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.DDT.calculate_blockage_diameter">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_blockage_diameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pipe_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blockage_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.DDT.calculate_blockage_diameter" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates the diameter of a Shchelkin spiral corresponding to a given
 blockage ratio within a pipe of given inner diameter.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>pipe_id</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Length scale representing the inner diameter of the pipe used for
 the detonation tube</p></li>
@@ -249,24 +250,24 @@ the detonation tube</p></li>
 unit registry</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Shchelkin spiral diameter inside a tube of <cite>pipe_id</cite> inner diameter
 giving a blockage ratio of <cite>blockage_ratio</cite>. Units are the same as
 pipe_id.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pint.Quantity</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.tube.DDT.calculate_blockage_ratio">
-<em class="property">static </em><code class="sig-name descname">calculate_blockage_ratio</code><span class="sig-paren">(</span><em class="sig-param">tube_inner_diameter</em>, <em class="sig-param">blockage_diameter</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.DDT.calculate_blockage_ratio" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.DDT.calculate_blockage_ratio">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_blockage_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tube_inner_diameter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blockage_diameter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.DDT.calculate_blockage_ratio" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates the blockage ratio of a Shchelkin spiral within a detonation
 tube.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>tube_inner_diameter</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Inner diameter of the detonation tube</p></li>
 <li><p><strong>blockage_diameter</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Outer diameter of the blockage used to create the Shchelkin spiral
@@ -276,18 +277,18 @@ tube.</p>
 unit registry</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Ratio of blocked to open area (between 0 and 1)</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.tube.DDT.calculate_run_up">
-<em class="property">static </em><code class="sig-name descname">calculate_run_up</code><span class="sig-paren">(</span><em class="sig-param">blockage_ratio</em>, <em class="sig-param">tube_diameter</em>, <em class="sig-param">initial_temperature</em>, <em class="sig-param">initial_pressure</em>, <em class="sig-param">species_dict</em>, <em class="sig-param">mechanism</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em>, <em class="sig-param">phase_specification=''</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.DDT.calculate_run_up" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.DDT.calculate_run_up">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_run_up</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blockage_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tube_diameter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mechanism</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase_specification=''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.DDT.calculate_run_up" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates the runup distance needed for a detonation to develop from a
 deflagration for a given blockage ratio, tube diameter, and mixture.
 This is accomplished using equations collected by Ciccarelli and
@@ -300,7 +301,7 @@ detonation in ducts</em>, Progress in Energy and Combustion Science,
 vol. 34, no. 4, pp. 499–550, Aug. 2008.
 <a class="reference external" href="https://doi.org/10.1016/j.pecs.2007.11.002">https://doi.org/10.1016/j.pecs.2007.11.002</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>blockage_ratio</strong> (<em>float</em>) – Ratio of blocked area to total cross-sectional area, <span class="math notranslate nohighlight">\(0 &lt; BR
 &lt; 1\)</span></p></li>
@@ -319,10 +320,10 @@ specification viscosity calculations will fail, resulting in
 an error for all blockage ratios less than 0.3.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Predicted DDT distance</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pint.Quantity</p>
 </dd>
 </dl>
@@ -334,16 +335,16 @@ an error for all blockage ratios less than 0.3.</p></li>
 <section id="flange">
 <h2>Flange<a class="headerlink" href="#flange" title="Permalink to this headline"></a></h2>
 <dl class="py class">
-<dt id="pypbomb.tube.Flange">
-<em class="property">class </em><code class="sig-prename descclassname">pypbomb.tube.</code><code class="sig-name descname">Flange</code><a class="headerlink" href="#pypbomb.tube.Flange" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Flange">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypbomb.tube.</span></span><span class="sig-name descname"><span class="pre">Flange</span></span><a class="headerlink" href="#pypbomb.tube.Flange" title="Permalink to this definition"></a></dt>
 <dd><p>Methods pertaining to flange class and max pressure calculations</p>
 <dl class="py method">
-<dt id="pypbomb.tube.Flange.get_class">
-<em class="property">static </em><code class="sig-name descname">get_class</code><span class="sig-paren">(</span><em class="sig-param">max_pressure</em>, <em class="sig-param">temperature</em>, <em class="sig-param">material</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Flange.get_class" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Flange.get_class">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Flange.get_class" title="Permalink to this definition"></a></dt>
 <dd><p>Finds the minimum allowable flange class per ASME B16.5 for a given
 flange temperature and tube pressure.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>max_pressure</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Maximum pressure within the system as a quantity or tuple of
 <code class="docutils literal notranslate"><span class="pre">(magnitude,</span> <span class="pre">&quot;units&quot;)</span></code></p></li>
@@ -354,54 +355,54 @@ flange temperature and tube pressure.</p>
 desired</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Minimum allowable flange class</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.tube.Flange.get_max_pressure">
-<em class="property">static </em><code class="sig-name descname">get_max_pressure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">flange_class</span></em>, <em class="sig-param"><span class="n">temperature</span></em>, <em class="sig-param"><span class="n">material</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Flange.get_max_pressure" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Flange.get_max_pressure">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_max_pressure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flange_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Flange.get_max_pressure" title="Permalink to this definition"></a></dt>
 <dd><p>Finds the max allowable pressure for a flange of a given material and
 class at the desired temperature.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>flange_class</strong> (<em>str</em>) – Class of the flange to evaluate, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;900&quot;</span></code></p></li>
 <li><p><strong>temperature</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Flange temperature</p></li>
 <li><p><strong>material</strong> (<em>str</em>) – Flange material (see <code class="docutils literal notranslate"><span class="pre">Flange.available_materials</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Maximum allowable pressure</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pint.Quantity</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.tube.Flange.get_max_temperature">
-<em class="property">static </em><code class="sig-name descname">get_max_temperature</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">flange_class</span></em>, <em class="sig-param"><span class="n">pressure</span></em>, <em class="sig-param"><span class="n">material</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Flange.get_max_temperature" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Flange.get_max_temperature">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_max_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flange_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Flange.get_max_temperature" title="Permalink to this definition"></a></dt>
 <dd><p>Finds the max allowable temperature for a flange of a given material and
 class at the desired pressure.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>flange_class</strong> (<em>str</em>) – Class of the flange to evaluate, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;900&quot;</span></code></p></li>
 <li><p><strong>pressure</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – System pressure</p></li>
 <li><p><strong>material</strong> (<em>str</em>) – Flange material (see <code class="docutils literal notranslate"><span class="pre">Flange.available_materials</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Max allowable flange temperature</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pint.Quantity</p>
 </dd>
 </dl>
@@ -413,15 +414,15 @@ class at the desired pressure.</p>
 <section id="tube">
 <h2>Tube<a class="headerlink" href="#tube" title="Permalink to this headline"></a></h2>
 <dl class="py class">
-<dt id="pypbomb.tube.Tube">
-<em class="property">class </em><code class="sig-prename descclassname">pypbomb.tube.</code><code class="sig-name descname">Tube</code><a class="headerlink" href="#pypbomb.tube.Tube" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Tube">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypbomb.tube.</span></span><span class="sig-name descname"><span class="pre">Tube</span></span><a class="headerlink" href="#pypbomb.tube.Tube" title="Permalink to this definition"></a></dt>
 <dd><p>Methods for designing and determining operational limits of a detonation
 tube.</p>
 <dl class="py method">
-<dt id="pypbomb.tube.Tube.calculate_max_initial_pressure">
-<em class="property">classmethod </em><code class="sig-name descname">calculate_max_initial_pressure</code><span class="sig-paren">(</span><em class="sig-param">tube_id</em>, <em class="sig-param">tube_od</em>, <em class="sig-param">initial_temperature</em>, <em class="sig-param">species_dict</em>, <em class="sig-param">mechanism</em>, <em class="sig-param">max_pressure</em>, <em class="sig-param">elastic_modulus</em>, <em class="sig-param">density</em>, <em class="sig-param">poisson_ratio</em>, <em class="sig-param">plus_or_minus=0.1</em>, <em class="sig-param">use_dynamic_load_factor=True</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em>, <em class="sig-param">error_tol=0.0001</em>, <em class="sig-param">max_iterations=500</em>, <em class="sig-param">use_multiprocessing=False</em>, <em class="sig-param">max_pressure_state='reflected'</em>, <em class="sig-param">return_dlf=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Tube.calculate_max_initial_pressure" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Tube.calculate_max_initial_pressure">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_max_initial_pressure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tube_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tube_od</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mechanism</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elastic_modulus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poisson_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plus_or_minus=0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_dynamic_load_factor=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_tol=0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iterations=500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_multiprocessing=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_pressure_state='reflected'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_dlf=False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Tube.calculate_max_initial_pressure" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>tube_id</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Inner diameter of tube</p></li>
 <li><p><strong>tube_od</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Outer diameter of tube
@@ -450,28 +451,28 @@ are considered ‘good enough’</p></li>
 <li><p><strong>return_dlf</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, dynamic load factor will be returned</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><p>Initial mixture pressure corresponding to the tube’s maximum
 allowable pressure.</p>
 <p>If <cite>return_dlf</cite> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, this will be a list, with item
 0 being the initial pressure and item 1 being DLF</p>
 </p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pint.Quantity or Tuple[pint.Quantity, float]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.tube.Tube.calculate_max_pressure">
-<em class="property">static </em><code class="sig-name descname">calculate_max_pressure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tube_id</span></em>, <em class="sig-param"><span class="n">tube_od</span></em>, <em class="sig-param"><span class="n">max_stress</span></em>, <em class="sig-param"><span class="n">safety_factor</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Tube.calculate_max_pressure" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Tube.calculate_max_pressure">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_max_pressure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tube_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tube_od</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_stress</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">safety_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Tube.calculate_max_pressure" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates the maximum allowable pressure from the tube dimensions
 and stress limits using the basic longitudinal joint formula [1].</p>
 <p>[1] E. F. Megyesy, <em>Pressure vessel handbook</em>, Oklahoma City, OK:
 PV Publishing, Inc., 2001, p. 14.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>tube_id</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Inner diameter of tube</p></li>
 <li><p><strong>tube_od</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Outer diameter of tube</p></li>
@@ -479,22 +480,22 @@ PV Publishing, Inc., 2001, p. 14.</p>
 <li><p><strong>safety_factor</strong> (<em>float</em><em>, </em><em>optional</em>) – Desired safety factor</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Pressure resulting in maximum allowable stress</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pint.Quantity</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.tube.Tube.calculate_max_stress">
-<em class="property">classmethod </em><code class="sig-name descname">calculate_max_stress</code><span class="sig-paren">(</span><em class="sig-param">initial_temperature</em>, <em class="sig-param">material</em>, <em class="sig-param">welded</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Tube.calculate_max_stress" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Tube.calculate_max_stress">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_max_stress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initial_temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">welded</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Tube.calculate_max_stress" title="Permalink to this definition"></a></dt>
 <dd><p>Finds the maximum allowable stress of a tube material at the tube’s
 initial temperature</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>initial_temperature</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – </p></li>
 <li><p><strong>material</strong> (<em>str</em>) – Pipe material (see <code class="docutils literal notranslate"><span class="pre">Tube.available_materials</span></code>)</p></li>
@@ -503,18 +504,18 @@ initial temperature</p>
 unit registry</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Maximum allowable tube stress</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pint.Quantity</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.tube.Tube.dynamic_load_factor">
-<em class="property">static </em><code class="sig-name descname">dynamic_load_factor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tube_id</span></em>, <em class="sig-param"><span class="n">tube_od</span></em>, <em class="sig-param"><span class="n">cj_velocity</span></em>, <em class="sig-param"><span class="n">elastic_modulus</span></em>, <em class="sig-param"><span class="n">density</span></em>, <em class="sig-param"><span class="n">poisson_ratio</span></em>, <em class="sig-param"><span class="n">plus_or_minus</span><span class="o">=</span><span class="default_value">0.1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Tube.dynamic_load_factor" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Tube.dynamic_load_factor">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dynamic_load_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tube_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tube_od</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cj_velocity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elastic_modulus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poisson_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plus_or_minus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Tube.dynamic_load_factor" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates the dynamic load factor (DLF) by which a detonation tube’s
 static analysis should be scaled in order to account for the tube’s
 response to transient pressures. DLF calculation is based on the work of
@@ -525,7 +526,7 @@ is assumed, thus <cite>plus_or_minus=0.1</cite>.</p>
 Internal Gas Detonation</em>. Journal of Pressure Vessel Technology,
 131(3), 031204. <a class="reference external" href="https://doi.org/10.1115/1.3089497">https://doi.org/10.1115/1.3089497</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>tube_id</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Inner diameter of tube</p></li>
 <li><p><strong>tube_od</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Outer diameter of tube</p></li>
@@ -538,60 +539,60 @@ Internal Gas Detonation</em>. Journal of Pressure Vessel Technology,
 or minus ten percent</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Factor by which the tube’s static maximum pressure should be
 de-rated to account for transient response to detonation waves</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.tube.Tube.get_available_pipe_schedules">
-<em class="property">static </em><code class="sig-name descname">get_available_pipe_schedules</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pipe_size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Tube.get_available_pipe_schedules" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Tube.get_available_pipe_schedules">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_available_pipe_schedules</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pipe_size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Tube.get_available_pipe_schedules" title="Permalink to this definition"></a></dt>
 <dd><p>Gets available pipe schedules for a given nominal size</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>pipe_size</strong> (<em>str</em>) – Nominal pipe size (see <code class="docutils literal notranslate"><span class="pre">Tube.available_pipe_sizes</span></code>)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>List of available pipe schedules</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.tube.Tube.get_density">
-<em class="property">classmethod </em><code class="sig-name descname">get_density</code><span class="sig-paren">(</span><em class="sig-param">material</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Tube.get_density" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Tube.get_density">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Tube.get_density" title="Permalink to this definition"></a></dt>
 <dd><p>Gets the density for a valid tube material. For valid materials see
 <code class="docutils literal notranslate"><span class="pre">Tube.available_materials</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>material</strong> (<em>str</em>) – Pipe material (see <code class="docutils literal notranslate"><span class="pre">Tube.available_materials</span></code>)</p></li>
 <li><p><strong>unit_registry</strong> (<em>pint.UnitRegistry</em><em>, </em><em>optional</em>) – Unit registry for managing units to prevent conflicts with parent
 unit registry</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Density</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pint.Quantity</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.tube.Tube.get_dimensions">
-<em class="property">classmethod </em><code class="sig-name descname">get_dimensions</code><span class="sig-paren">(</span><em class="sig-param">pipe_size</em>, <em class="sig-param">pipe_schedule</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Tube.get_dimensions" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Tube.get_dimensions">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_dimensions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pipe_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipe_schedule</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Tube.get_dimensions" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>pipe_size</strong> (<em>str</em>) – Nominal pipe size (see <code class="docutils literal notranslate"><span class="pre">Tube.available_pipe_sizes</span></code>)</p></li>
 <li><p><strong>pipe_schedule</strong> (<em>str</em>) – Pipe schedule (see <code class="docutils literal notranslate"><span class="pre">Tube.get_available_pipe_schedules</span></code> for a list
@@ -600,7 +601,7 @@ of available schedules for <cite>pipe_size</cite>)</p></li>
 unit registry</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><p>Dictionary of pipe dimensions with the keys:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;inner_diameter&quot;</span></code></p></li>
@@ -609,47 +610,47 @@ unit registry</p></li>
 </ul>
 </p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.tube.Tube.get_elastic_modulus">
-<em class="property">classmethod </em><code class="sig-name descname">get_elastic_modulus</code><span class="sig-paren">(</span><em class="sig-param">material</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Tube.get_elastic_modulus" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Tube.get_elastic_modulus">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_elastic_modulus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Tube.get_elastic_modulus" title="Permalink to this definition"></a></dt>
 <dd><p>Gets the elastic modulus for a valid tube material. For valid materials
 see <code class="docutils literal notranslate"><span class="pre">Tube.available_materials</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>material</strong> (<em>str</em>) – Pipe material (see <code class="docutils literal notranslate"><span class="pre">Tube.available_materials</span></code>)</p></li>
 <li><p><strong>unit_registry</strong> (<em>pint.UnitRegistry</em><em>, </em><em>optional</em>) – Unit registry for managing units to prevent conflicts with parent
 unit registry</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Elastic modulus</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pint.Quantity</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.tube.Tube.get_poisson">
-<em class="property">classmethod </em><code class="sig-name descname">get_poisson</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">material</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Tube.get_poisson" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Tube.get_poisson">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_poisson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Tube.get_poisson" title="Permalink to this definition"></a></dt>
 <dd><p>Gets the Poisson ratio for a valid tube material. For valid materials
 see <code class="docutils literal notranslate"><span class="pre">Tube.available_materials</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>material</strong> (<em>str</em>) – Pipe material (see <code class="docutils literal notranslate"><span class="pre">Tube.available_materials</span></code>)</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Poisson ratio (unitless)</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -661,16 +662,16 @@ see <code class="docutils literal notranslate"><span class="pre">Tube.available_
 <section id="window">
 <h2>Window<a class="headerlink" href="#window" title="Permalink to this headline"></a></h2>
 <dl class="py class">
-<dt id="pypbomb.tube.Window">
-<em class="property">class </em><code class="sig-prename descclassname">pypbomb.tube.</code><code class="sig-name descname">Window</code><a class="headerlink" href="#pypbomb.tube.Window" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Window">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypbomb.tube.</span></span><span class="sig-name descname"><span class="pre">Window</span></span><a class="headerlink" href="#pypbomb.tube.Window" title="Permalink to this definition"></a></dt>
 <dd><p>Methods for the design of viewing windows for optical access.</p>
 <dl class="py method">
-<dt id="pypbomb.tube.Window.minimum_thickness">
-<em class="property">classmethod </em><code class="sig-name descname">minimum_thickness</code><span class="sig-paren">(</span><em class="sig-param">length</em>, <em class="sig-param">width</em>, <em class="sig-param">safety_factor</em>, <em class="sig-param">pressure</em>, <em class="sig-param">rupture_modulus</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Window.minimum_thickness" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Window.minimum_thickness">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">minimum_thickness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">safety_factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rupture_modulus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Window.minimum_thickness" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates the thickness of a clamped rectangular window which gives
 the desired safety factor</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>length</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Window unsupported (viewing) length</p></li>
 <li><p><strong>width</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Window unsupported (viewing) width</p></li>
@@ -681,23 +682,23 @@ safety is to be calculated</p></li>
 <li><p><strong>unit_registry</strong> (<em>pint.UnitRegistry</em>) – Keeps output consistent with parent registry, avoiding conflicts</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Window thickness</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pint.Quantity</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.tube.Window.safety_factor">
-<em class="property">classmethod </em><code class="sig-name descname">safety_factor</code><span class="sig-paren">(</span><em class="sig-param">length</em>, <em class="sig-param">width</em>, <em class="sig-param">thickness</em>, <em class="sig-param">pressure</em>, <em class="sig-param">rupture_modulus</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Window.safety_factor" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.tube.Window.safety_factor">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">safety_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rupture_modulus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Window.safety_factor" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates the safety factor of a clamped rectangular
 window given window dimensions, design pressure, and material rupture
 modulus</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>length</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Window unsupported (viewing) length</p></li>
 <li><p><strong>width</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Window unsupported (viewing) width</p></li>
@@ -708,10 +709,10 @@ safety is to be calculated</p></li>
 <li><p><strong>unit_registry</strong> (<em>pint.UnitRegistry</em>) – Keeps output consistent with parent registry, avoiding conflicts</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Window factor of safety</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>

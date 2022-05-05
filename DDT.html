@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DDT &mdash; pypbomb 1.1.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>DDT &mdash; pypbomb 1.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/tweaks.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "tex2jax_ignore|mathjax_ignore|document", "processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -40,11 +41,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p><span class="caption-text">Installation</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing pypbomb</a></li>
 </ul>
-<p><span class="caption-text">API</span></p>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Tube.html">Tube</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Flange.html">Flange</a></li>
@@ -56,7 +57,7 @@
 <li class="toctree-l1"><a class="reference internal" href="thermochem.html">pypbomb.thermochem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="units.html">pypbomb.units</a></li>
 </ul>
-<p><span class="caption-text">Example</span></p>
+<p class="caption" role="heading"><span class="caption-text">Example</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="example.html">Using Pypbomb</a></li>
 </ul>
@@ -112,16 +113,16 @@
 <section id="ddt">
 <h1>DDT<a class="headerlink" href="#ddt" title="Permalink to this headline"></a></h1>
 <dl class="py class">
-<dt id="pypbomb.DDT">
-<em class="property">class </em><code class="sig-prename descclassname">pypbomb.</code><code class="sig-name descname">DDT</code><a class="headerlink" href="#pypbomb.DDT" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.DDT">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypbomb.</span></span><span class="sig-name descname"><span class="pre">DDT</span></span><a class="headerlink" href="#pypbomb.DDT" title="Permalink to this definition"></a></dt>
 <dd><p>Methods for estimating the deflagration-to-detonation transition (DDT).</p>
 <dl class="py method">
-<dt id="pypbomb.DDT.calculate_blockage_diameter">
-<em class="property">static </em><code class="sig-name descname">calculate_blockage_diameter</code><span class="sig-paren">(</span><em class="sig-param">pipe_id</em>, <em class="sig-param">blockage_ratio</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.DDT.calculate_blockage_diameter" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.DDT.calculate_blockage_diameter">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_blockage_diameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pipe_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blockage_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.DDT.calculate_blockage_diameter" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates the diameter of a Shchelkin spiral corresponding to a given
 blockage ratio within a pipe of given inner diameter.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>pipe_id</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Length scale representing the inner diameter of the pipe used for
 the detonation tube</p></li>
@@ -131,24 +132,24 @@ the detonation tube</p></li>
 unit registry</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Shchelkin spiral diameter inside a tube of <cite>pipe_id</cite> inner diameter
 giving a blockage ratio of <cite>blockage_ratio</cite>. Units are the same as
 pipe_id.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pint.Quantity</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.DDT.calculate_blockage_ratio">
-<em class="property">static </em><code class="sig-name descname">calculate_blockage_ratio</code><span class="sig-paren">(</span><em class="sig-param">tube_inner_diameter</em>, <em class="sig-param">blockage_diameter</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.DDT.calculate_blockage_ratio" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.DDT.calculate_blockage_ratio">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_blockage_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tube_inner_diameter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blockage_diameter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.DDT.calculate_blockage_ratio" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates the blockage ratio of a Shchelkin spiral within a detonation
 tube.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>tube_inner_diameter</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Inner diameter of the detonation tube</p></li>
 <li><p><strong>blockage_diameter</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Outer diameter of the blockage used to create the Shchelkin spiral
@@ -158,18 +159,18 @@ tube.</p>
 unit registry</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Ratio of blocked to open area (between 0 and 1)</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.DDT.calculate_run_up">
-<em class="property">static </em><code class="sig-name descname">calculate_run_up</code><span class="sig-paren">(</span><em class="sig-param">blockage_ratio</em>, <em class="sig-param">tube_diameter</em>, <em class="sig-param">initial_temperature</em>, <em class="sig-param">initial_pressure</em>, <em class="sig-param">species_dict</em>, <em class="sig-param">mechanism</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em>, <em class="sig-param">phase_specification=''</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.DDT.calculate_run_up" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.DDT.calculate_run_up">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_run_up</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blockage_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tube_diameter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mechanism</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase_specification=''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.DDT.calculate_run_up" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates the runup distance needed for a detonation to develop from a
 deflagration for a given blockage ratio, tube diameter, and mixture.
 This is accomplished using equations collected by Ciccarelli and
@@ -182,7 +183,7 @@ detonation in ducts</em>, Progress in Energy and Combustion Science,
 vol. 34, no. 4, pp. 499–550, Aug. 2008.
 <a class="reference external" href="https://doi.org/10.1016/j.pecs.2007.11.002">https://doi.org/10.1016/j.pecs.2007.11.002</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>blockage_ratio</strong> (<em>float</em>) – Ratio of blocked area to total cross-sectional area, <span class="math notranslate nohighlight">\(0 &lt; BR
 &lt; 1\)</span></p></li>
@@ -201,10 +202,10 @@ specification viscosity calculations will fail, resulting in
 an error for all blockage ratios less than 0.3.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Predicted DDT distance</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pint.Quantity</p>
 </dd>
 </dl>

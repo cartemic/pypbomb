@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bolt &mdash; pypbomb 1.1.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>Bolt &mdash; pypbomb 1.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/tweaks.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "tex2jax_ignore|mathjax_ignore|document", "processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -40,11 +39,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p><span class="caption-text">Installation</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing pypbomb</a></li>
 </ul>
-<p><span class="caption-text">API</span></p>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Tube.html">Tube</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Flange.html">Flange</a></li>
@@ -56,7 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="thermochem.html">pypbomb.thermochem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="units.html">pypbomb.units</a></li>
 </ul>
-<p><span class="caption-text">Example</span></p>
+<p class="caption" role="heading"><span class="caption-text">Example</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="example.html">Using Pypbomb</a></li>
 </ul>
@@ -112,15 +111,15 @@
 <section id="bolt">
 <h1>Bolt<a class="headerlink" href="#bolt" title="Permalink to this headline"></a></h1>
 <dl class="py class">
-<dt id="pypbomb.Bolt">
-<em class="property">class </em><code class="sig-prename descclassname">pypbomb.</code><code class="sig-name descname">Bolt</code><a class="headerlink" href="#pypbomb.Bolt" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.Bolt">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypbomb.</span></span><span class="sig-name descname"><span class="pre">Bolt</span></span><a class="headerlink" href="#pypbomb.Bolt" title="Permalink to this definition"></a></dt>
 <dd><p>Methods relating to bolt calculations and property lookup.</p>
 <dl class="py method">
-<dt id="pypbomb.Bolt.calculate_safety_factors">
-<em class="property">classmethod </em><code class="sig-name descname">calculate_safety_factors</code><span class="sig-paren">(</span><em class="sig-param">max_pressure</em>, <em class="sig-param">window_area</em>, <em class="sig-param">num_bolts</em>, <em class="sig-param">thread_size</em>, <em class="sig-param">thread_class</em>, <em class="sig-param">bolt_max_tensile</em>, <em class="sig-param">plate_max_tensile</em>, <em class="sig-param">engagement_length</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.Bolt.calculate_safety_factors" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.Bolt.calculate_safety_factors">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_safety_factors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_area</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_bolts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thread_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thread_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bolt_max_tensile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plate_max_tensile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engagement_length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.Bolt.calculate_safety_factors" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates bolt and plate safety factors for viewing window bolts</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>max_pressure</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Tube maximum pressure</p></li>
 <li><p><strong>window_area</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Window area exposed to high pressure environment</p></li>
@@ -134,7 +133,7 @@
 <li><p><strong>unit_registry</strong> (<em>pint.UnitRegistry</em>) – Keeps output consistent with parent registry, avoiding conflicts</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><p>Dictionary giving factors of safety for window bolts and the plate</p>
 <p>that they are screwed into. Keys:</p>
 <ul class="simple">
@@ -143,19 +142,19 @@
 </ul>
 </p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.Bolt.calculate_stress_areas">
-<em class="property">static </em><code class="sig-name descname">calculate_stress_areas</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">thread_size</span></em>, <em class="sig-param"><span class="n">thread_class</span></em>, <em class="sig-param"><span class="n">bolt_max_tensile</span></em>, <em class="sig-param"><span class="n">plate_max_tensile</span></em>, <em class="sig-param"><span class="n">engagement_length</span></em>, <em class="sig-param"><span class="n">unit_registry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.Bolt.calculate_stress_areas" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.Bolt.calculate_stress_areas">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_stress_areas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thread_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thread_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bolt_max_tensile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plate_max_tensile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engagement_length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.Bolt.calculate_stress_areas" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates internal and external thread stress areas using formulas in
 Machinery’s Handbook, 26th edition.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>thread_size</strong> (<em>str</em>) – Size of threads to be evaluated, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;1/4-20&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;1</span> <span class="pre">1/2-6&quot;</span></code></p></li>
 <li><p><strong>thread_class</strong> (<em>str</em>) – Class of threads to be evaluated, <code class="docutils literal notranslate"><span class="pre">&quot;2&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;3&quot;</span></code>. (<code class="docutils literal notranslate"><span class="pre">&quot;A&quot;</span></code> or
@@ -167,7 +166,7 @@ Machinery’s Handbook, 26th edition.</p>
 unit registry</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><p>Dictionary with the following keys:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;plate</span> <span class="pre">area&quot;</span></code>: Stress area of internal threads within the plate</p></li>
@@ -178,21 +177,21 @@ from stripping.</p></li>
 </ul>
 </p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.Bolt.get_thread_property">
-<em class="property">static </em><code class="sig-name descname">get_thread_property</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">thread_property</span></em>, <em class="sig-param"><span class="n">thread_size</span></em>, <em class="sig-param"><span class="n">thread_class</span></em>, <em class="sig-param"><span class="n">unit_registry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.Bolt.get_thread_property" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.Bolt.get_thread_property">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_thread_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thread_property</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thread_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thread_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.Bolt.get_thread_property" title="Permalink to this definition"></a></dt>
 <dd><p>Finds a thread property, such as minor diameter, using a dataframe from
 import_thread_specs(). import_thread_specs is not directly called here
 to save time by not reading from disk every time a property is
 requested.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>thread_property</strong> (<em>str</em>) – Property that is desired, such as <code class="docutils literal notranslate"><span class="pre">&quot;minor</span> <span class="pre">diameter&quot;</span></code></p></li>
 <li><p><strong>thread_size</strong> (<em>str</em>) – Thread size for desired property, such as <code class="docutils literal notranslate"><span class="pre">&quot;1/4-20&quot;</span></code> or
@@ -203,10 +202,10 @@ requested.</p>
 unit registry</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Property requested, as a pint quantity with units of inches</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pint.Quantity</p>
 </dd>
 </dl>

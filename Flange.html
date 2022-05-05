@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flange &mdash; pypbomb 1.1.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>Flange &mdash; pypbomb 1.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/tweaks.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "tex2jax_ignore|mathjax_ignore|document", "processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -40,11 +39,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p><span class="caption-text">Installation</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing pypbomb</a></li>
 </ul>
-<p><span class="caption-text">API</span></p>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Tube.html">Tube</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Flange</a></li>
@@ -56,7 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="thermochem.html">pypbomb.thermochem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="units.html">pypbomb.units</a></li>
 </ul>
-<p><span class="caption-text">Example</span></p>
+<p class="caption" role="heading"><span class="caption-text">Example</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="example.html">Using Pypbomb</a></li>
 </ul>
@@ -112,16 +111,16 @@
 <section id="flange">
 <h1>Flange<a class="headerlink" href="#flange" title="Permalink to this headline"></a></h1>
 <dl class="py class">
-<dt id="pypbomb.Flange">
-<em class="property">class </em><code class="sig-prename descclassname">pypbomb.</code><code class="sig-name descname">Flange</code><a class="headerlink" href="#pypbomb.Flange" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.Flange">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypbomb.</span></span><span class="sig-name descname"><span class="pre">Flange</span></span><a class="headerlink" href="#pypbomb.Flange" title="Permalink to this definition"></a></dt>
 <dd><p>Methods pertaining to flange class and max pressure calculations</p>
 <dl class="py method">
-<dt id="pypbomb.Flange.get_class">
-<em class="property">static </em><code class="sig-name descname">get_class</code><span class="sig-paren">(</span><em class="sig-param">max_pressure</em>, <em class="sig-param">temperature</em>, <em class="sig-param">material</em>, <em class="sig-param">unit_registry=&lt;pint.registry.UnitRegistry object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.Flange.get_class" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.Flange.get_class">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.Flange.get_class" title="Permalink to this definition"></a></dt>
 <dd><p>Finds the minimum allowable flange class per ASME B16.5 for a given
 flange temperature and tube pressure.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>max_pressure</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Maximum pressure within the system as a quantity or tuple of
 <code class="docutils literal notranslate"><span class="pre">(magnitude,</span> <span class="pre">&quot;units&quot;)</span></code></p></li>
@@ -132,54 +131,54 @@ flange temperature and tube pressure.</p>
 desired</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Minimum allowable flange class</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.Flange.get_max_pressure">
-<em class="property">static </em><code class="sig-name descname">get_max_pressure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">flange_class</span></em>, <em class="sig-param"><span class="n">temperature</span></em>, <em class="sig-param"><span class="n">material</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.Flange.get_max_pressure" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.Flange.get_max_pressure">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_max_pressure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flange_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.Flange.get_max_pressure" title="Permalink to this definition"></a></dt>
 <dd><p>Finds the max allowable pressure for a flange of a given material and
 class at the desired temperature.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>flange_class</strong> (<em>str</em>) – Class of the flange to evaluate, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;900&quot;</span></code></p></li>
 <li><p><strong>temperature</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Flange temperature</p></li>
 <li><p><strong>material</strong> (<em>str</em>) – Flange material (see <code class="docutils literal notranslate"><span class="pre">Flange.available_materials</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Maximum allowable pressure</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pint.Quantity</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pypbomb.Flange.get_max_temperature">
-<em class="property">static </em><code class="sig-name descname">get_max_temperature</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">flange_class</span></em>, <em class="sig-param"><span class="n">pressure</span></em>, <em class="sig-param"><span class="n">material</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.Flange.get_max_temperature" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pypbomb.Flange.get_max_temperature">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_max_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flange_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.Flange.get_max_temperature" title="Permalink to this definition"></a></dt>
 <dd><p>Finds the max allowable temperature for a flange of a given material and
 class at the desired pressure.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>flange_class</strong> (<em>str</em>) – Class of the flange to evaluate, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;900&quot;</span></code></p></li>
 <li><p><strong>pressure</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – System pressure</p></li>
 <li><p><strong>material</strong> (<em>str</em>) – Flange material (see <code class="docutils literal notranslate"><span class="pre">Flange.available_materials</span></code>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Max allowable flange temperature</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pint.Quantity</p>
 </dd>
 </dl>
