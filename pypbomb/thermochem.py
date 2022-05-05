@@ -82,7 +82,7 @@ def calculate_laminar_flame_speed(
     flame.set_refine_criteria(ratio=3, slope=0.1, curve=0.1)
     flame.solve(loglevel=0)
 
-    return quant(flame.u[0], "m/s")
+    return quant(flame.velocity[0], "m/s")
 
 
 # noinspection SpellCheckingInspection
