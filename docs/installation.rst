@@ -4,6 +4,32 @@ Installation and Testing
 Installation
 ------------
 
+pybomb requires a few dependencies in order to operate. They are
+
+* `Cantera <https://cantera.org/>`_
+
+* `NumPy <https://numpy.org/>`_
+
+* `Pandas <https://pandas.pydata.org/>`_
+
+* `Pint <https://pint.readthedocs.io/en/stable/>`_, and
+
+* `SciPy <https://scipy.org/>`_.
+
+Note that at least a couple of these can be installed via multiple sources
+(e.g. pip, conda, your favorite package manager). If you install them manually
+your desired python interpreter must be able to access them, and your best bet
+for smooth operation is for them to be the versions specified in
+requirements.txt. The easiest option is to install pypbomb as described below
+and let pip sort it out for you.
+
+In addition the the listed dependencies, the ``sd`` portion of this package
+contains a small portion of
+`SDToolbox <https://shepherd.caltech.edu/EDL/PublicResources/sdt/>`_ adapted
+for use here in accordance with the licensing agreement and with permission
+from the authors. If you are planning to do more general detonation simulation
+work, it is a great resource.
+
 For Use
 ^^^^^^^
 
