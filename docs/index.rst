@@ -27,8 +27,8 @@ at Oregon Sate University.
 Project files can be found `here <https://github.com/cartemic/pypbomb>`_.
 
 .. toctree::
-   :maxdepth: 1
-   :caption: Installation
+   :maxdepth: 2
+   :caption: Installation and Testing
 
    installation
 
