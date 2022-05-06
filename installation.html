@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installing pypbomb &mdash; pypbomb 1.1.0 documentation</title>
+  <title>Installation and Testing &mdash; pypbomb 1.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/tweaks.css" type="text/css" />
@@ -39,10 +39,15 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Installation and Testing</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installing pypbomb</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#instructions">Instructions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation and Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#for-use">For Use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#for-development">For Development</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#testing">Testing</a></li>
 </ul>
 </li>
 </ul>
@@ -77,7 +82,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Installing pypbomb</li>
+      <li>Installation and Testing</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -111,43 +116,109 @@
     text-align: unset;
 }
 </style>
-<section id="installing-pypbomb">
-<h1>Installing pypbomb<a class="headerlink" href="#installing-pypbomb" title="Permalink to this headline"></a></h1>
-<p>Owing to some problems I have had using conda-build, pypbomb is
-installed using pip. However, cantera and pint are required, which
-means you should have conda installed. Don’t forget to activate the correct
-conda environment before installing pypbomb!</p>
-<section id="instructions">
-<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline"></a></h2>
+<section id="installation-and-testing">
+<h1>Installation and Testing<a class="headerlink" href="#installation-and-testing" title="Permalink to this headline"></a></h1>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h2>
+<p>pybomb requires a few dependencies in order to operate. They are</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cantera.org/">Cantera</a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/">NumPy</a></p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/">Pandas</a></p></li>
+<li><p><a class="reference external" href="https://pint.readthedocs.io/en/stable/">Pint</a>, and</p></li>
+<li><p><a class="reference external" href="https://scipy.org/">SciPy</a>.</p></li>
+</ul>
+<p>Note that at least a couple of these can be installed via multiple sources
+(e.g. pip, conda, your favorite package manager). If you install them manually
+your desired python interpreter must be able to access them, and your best bet
+for smooth operation is for them to be the versions specified in
+requirements.txt. The easiest option is to install pypbomb as described below
+and let pip sort it out for you.</p>
+<p>In addition the the listed dependencies, the <code class="docutils literal notranslate"><span class="pre">sd</span></code> portion of this package
+contains a small portion of
+<a class="reference external" href="https://shepherd.caltech.edu/EDL/PublicResources/sdt/">SDToolbox</a> adapted
+for use here in accordance with the licensing agreement and with permission
+from the authors. If you are planning to do more general detonation simulation
+work, it is a great resource.</p>
+<section id="for-use">
+<h3>For Use<a class="headerlink" href="#for-use" title="Permalink to this headline"></a></h3>
+<p>In order to use pypbomb, perform the following steps.</p>
 <ol class="arabic">
 <li><p>Download and extracted the latest release from
 <a class="reference external" href="https://github.com/cartemic/pypbomb/releases/latest">github</a> and navigate
 to the top level directory of pypbomb (e.g. <code class="docutils literal notranslate"><span class="pre">~/Downloads/pypbomb/</span></code>) in your
 terminal of choice.</p></li>
-<li><p>Install cantera:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda install -c cantera cantera
-</pre></div>
-</div>
-</li>
-<li><p>Install pint:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda install -c conda-forge pint
-</pre></div>
-</div>
-</li>
-<li><p>Install pypbomb:</p>
+<li><p>Install pypbomb using pip.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install .
 </pre></div>
 </div>
 </li>
-<li><p>You may now delete the pypbomb directory that you downloaded</p></li>
+<li><p>Delete the pypbomb directory that you downloaded, if desired.</p></li>
 </ol>
-<p>Alternatively, if you want to tweak pypbomb while using it for your own ends,
-move the pypbomb directory to where you want it, perform steps 1-3, and install
-pypbomb in development mode:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda develop .
+</section>
+<section id="for-development">
+<h3>For Development<a class="headerlink" href="#for-development" title="Permalink to this headline"></a></h3>
+<p>If you would like to modify pypbomb, the recommended method is to install it for
+development in a conda environment. For direction on creating a conda
+environment, see the
+<a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">conda documentation</a>.</p>
+<ol class="arabic">
+<li><p>Move the downloade pypbomb directory to where you want it to live
+permanently.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkdir ~/my/favorite/dir/
+$ mv pypbomb/ ~/my/favorite/dir/
 </pre></div>
 </div>
-<p>In this case, <em>do not</em> delete the downloaded pypbomb directory, since this is where pypbomb lives now.</p>
+</li>
+<li><p>Navigate to that location in the terminal of your choice.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/my/favorite/dir/pypbomb
+</pre></div>
+</div>
+</li>
+<li><p>Activate your conda environment and install the package requirements.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> activate myenv
+<span class="o">(</span>myenv<span class="o">)</span>$ pip install -r requirements.txt
+</pre></div>
+</div>
+</li>
+<li><p>Install pypbomb in development mode.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>myenv<span class="o">)</span>$ conda develop .
+</pre></div>
+</div>
+</li>
+</ol>
+<p>In this case, <em>do not</em> delete the pypbomb directory, since this is where pypbomb
+lives now. The source code is in pypbomb/pypbomb/.</p>
+<p>If you are planning to make changes to pypbomb, you may also wish to make
+changes to the documentation. The documentation is built using sphinx,
+and uses the readthedocs theme. Its source is located within pypbomb/docs/.
+If you’ve just installed pypbomb, now would be a good time to install the
+documentation dependencies.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>myenv<span class="o">)</span>$ pip install -r docs/requirements.txt
+</pre></div>
+</div>
+<p>Once that is out of the way, you are free to modify the files at will. To
+build them locally, run the following command from within the docs/ directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>myenv<span class="o">)</span>$ make clean html
+</pre></div>
+</div>
+<p>Sweet! Your new documentation should now be in pypbomb/docs/_build/html.</p>
+<p>If you’ve made and documented some modifications that you’d like to contribute,
+please feel free to submit a pull request to the develop branch of this repo.</p>
+</section>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline"></a></h2>
+<p>To test this code, you must first install the testing requirement (if you don’t
+have them already).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>myenv<span class="o">)</span>$ pip install -r requirements_test.txt
+</pre></div>
+</div>
+<p>Once you have the requirements installed you can test pypbomb and check the
+coverage from the top level pypbomb directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>myenv<span class="o">)</span>$ pytest -vv <span class="nv">cov</span><span class="o">=</span>./
+</pre></div>
+</div>
 </section>
 </section>
 
