@@ -625,7 +625,7 @@ class DDT:
             Dictionary containing the species in the mixture as keys, with total
             moles or mole fractions as values
         mechanism : str
-            Mechanism file name for Cantera. See ``tools.find_mechanisms()`` for
+            Mechanism file name for Cantera. See ``thermochem.find_mechanisms()`` for
             a list of installed mechanisms.
         unit_registry : pint.UnitRegistry
             Unit registry for managing units to prevent conflicts with parent
