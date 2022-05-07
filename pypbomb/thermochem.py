@@ -10,19 +10,18 @@ import cantera as ct
 import numpy as np
 import pint
 
-from . import units, sd
-
+from . import sd, units
 
 _U = pint.UnitRegistry()
 
 
 def calculate_laminar_flame_speed(
-        initial_temperature,
-        initial_pressure,
-        species,
-        mechanism,
-        phase_specification="",
-        unit_registry=_U
+    initial_temperature,
+    initial_pressure,
+    species,
+    mechanism,
+    phase_specification="",
+    unit_registry=_U,
 ):
     """
     This function uses cantera to calculate the laminar flame speed of a given
@@ -52,29 +51,15 @@ def calculate_laminar_flame_speed(
     gas = ct.Solution(mechanism, phase_specification)
     quant = unit_registry.Quantity
 
-    initial_pressure = units.parse_quant_input(
-        initial_pressure,
-        unit_registry
-    )
-    initial_temperature = units.parse_quant_input(
-        initial_temperature,
-        unit_registry
-    )
-    units.check_pint_quantity(
-        initial_pressure,
-        "pressure",
-        ensure_positive=True
-    )
-    units.check_pint_quantity(
-        initial_temperature,
-        "temperature",
-        ensure_positive=True
-    )
+    initial_pressure = units.parse_quant_input(initial_pressure, unit_registry)
+    initial_temperature = units.parse_quant_input(initial_temperature, unit_registry)
+    units.check_pint_quantity(initial_pressure, "pressure", ensure_positive=True)
+    units.check_pint_quantity(initial_temperature, "temperature", ensure_positive=True)
 
     gas.TPX = (
         initial_temperature.to("K").magnitude,
         initial_pressure.to("Pa").magnitude,
-        species
+        species,
     )
 
     # find laminar flame speed
@@ -86,14 +71,7 @@ def calculate_laminar_flame_speed(
 
 
 # noinspection SpellCheckingInspection
-def get_eq_sound_speed(
-        temperature,
-        pressure,
-        species,
-        mechanism,
-        phase_specification="",
-        unit_registry=_U
-):
+def get_eq_sound_speed(temperature, pressure, species, mechanism, phase_specification="", unit_registry=_U):
     """
     Calculates the equilibrium speed of sound in a mixture
 
@@ -120,31 +98,17 @@ def get_eq_sound_speed(
     """
     quant = unit_registry.Quantity
 
-    pressure = units.parse_quant_input(
-        pressure,
-        unit_registry
-    )
-    temperature = units.parse_quant_input(
-        temperature,
-        unit_registry
-    )
-    units.check_pint_quantity(
-        pressure,
-        "pressure",
-        ensure_positive=True
-    )
-    units.check_pint_quantity(
-        temperature,
-        "temperature",
-        ensure_positive=True
-    )
+    pressure = units.parse_quant_input(pressure, unit_registry)
+    temperature = units.parse_quant_input(temperature, unit_registry)
+    units.check_pint_quantity(pressure, "pressure", ensure_positive=True)
+    units.check_pint_quantity(temperature, "temperature", ensure_positive=True)
 
     working_gas = ct.Solution(mechanism, phase_specification)
     working_gas.TPX = [
         temperature.to("K").magnitude,
         pressure.to("Pa").magnitude,
-        species
-        ]
+        species,
+    ]
 
     pressures = np.zeros(2)
     densities = np.zeros(2)
@@ -161,18 +125,18 @@ def get_eq_sound_speed(
     densities[1] = working_gas.density
 
     # calculate sound speed
-    sound_speed = np.sqrt(np.diff(pressures)/np.diff(densities))[0]
+    sound_speed = np.sqrt(np.diff(pressures) / np.diff(densities))[0]
 
     return quant(sound_speed, "m/s")
 
 
 def calculate_reflected_shock_state(
-        initial_temperature,
-        initial_pressure,
-        species_dict,
-        mechanism,
-        unit_registry=_U,
-        use_multiprocessing=False
+    initial_temperature,
+    initial_pressure,
+    species_dict,
+    mechanism,
+    unit_registry=_U,
+    use_multiprocessing=False,
 ):
     """
     Calculates the thermodynamic and chemical state of a reflected shock
@@ -217,16 +181,8 @@ def calculate_reflected_shock_state(
     initial_temperature = initial_temperature.to("K").magnitude
     initial_pressure = initial_pressure.to("Pa").magnitude
 
-    initial_gas.TPX = [
-        initial_temperature,
-        initial_pressure,
-        species_dict
-    ]
-    reflected_gas.TPX = [
-        initial_temperature,
-        initial_pressure,
-        species_dict
-    ]
+    initial_gas.TPX = [initial_temperature, initial_pressure, species_dict]
+    reflected_gas.TPX = [initial_temperature, initial_pressure, species_dict]
 
     # get CJ state
     cj_calcs = sd.Detonation.cj_speed(
@@ -235,39 +191,24 @@ def calculate_reflected_shock_state(
         species_dict,
         mechanism,
         return_state=True,
-        use_multiprocessing=use_multiprocessing
+        use_multiprocessing=use_multiprocessing,
     )
 
     # get reflected state
-    [_,
-     reflected_speed,
-     reflected_gas] = sd.Reflection.reflect(
-        initial_gas,
-        cj_calcs["cj state"],
-        reflected_gas,
-        cj_calcs["cj speed"]
+    [_, reflected_speed, reflected_gas] = sd.Reflection.reflect(
+        initial_gas, cj_calcs["cj state"], reflected_gas, cj_calcs["cj speed"]
     )
 
     return {
-        "reflected": {
-            "speed": quant(
-                reflected_speed,
-                "m/s"
-            ),
-            "state": reflected_gas
-        },
+        "reflected": {"speed": quant(reflected_speed, "m/s"), "state": reflected_gas},
         "cj": {
-            "speed": quant(
-                cj_calcs["cj speed"],
-                "m/s"),
-            "state": cj_calcs["cj state"]
-        }
+            "speed": quant(cj_calcs["cj speed"], "m/s"),
+            "state": cj_calcs["cj state"],
+        },
     }
 
 
-def find_mechanisms(
-        return_directory=False
-):
+def find_mechanisms(return_directory=False):
     """
     Figure out which mechanisms the local cantera install has access to.
 
@@ -285,13 +226,9 @@ def find_mechanisms(
         item is the set of available mechanisms, and the second is the location
         of the cantera data directory.
     """
-    mechanism_path = os.path.join(
-        os.path.split(os.path.abspath(ct.__file__))[0],
-        "data"
-    )
+    mechanism_path = os.path.join(os.path.split(os.path.abspath(ct.__file__))[0], "data")
 
-    available = {item for item in os.listdir(mechanism_path) if
-                 (".cti" in item) or (".xml" in item)}
+    available = {item for item in os.listdir(mechanism_path) if (".cti" in item) or (".xml" in item)}
 
     if return_directory:
         return available, mechanism_path

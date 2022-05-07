@@ -17,17 +17,13 @@ def test_calculate_laminar_flame_speed():
     species = {
         "CH4": 0.095057034220532327,
         "O2": 0.19011406844106465,
-        "N2": 0.71482889733840305
+        "N2": 0.71482889733840305,
     }
     good_result = 0.39  # value approximated from Law fig. 7.7.7
     test_flame_speed = thermochem.calculate_laminar_flame_speed(
-        initial_temperature,
-        initial_pressure,
-        species,
-        "gri30.cti"
+        initial_temperature, initial_pressure, species, "gri30.cti"
     )
-    assert abs(test_flame_speed.magnitude - good_result) / \
-        good_result < 0.05
+    assert abs(test_flame_speed.magnitude - good_result) / good_result < 0.05
 
 
 def test_get_eq_sound_speed():
@@ -42,12 +38,7 @@ def test_get_eq_sound_speed():
     press = _Q(1, "atm")
     species = {"O2": 1, "N2": 3.76}
     mechanism = "gri30.cti"
-    c_test = thermochem.get_eq_sound_speed(
-        temp,
-        press,
-        species,
-        mechanism
-    )
+    c_test = thermochem.get_eq_sound_speed(temp, press, species, mechanism)
 
     assert abs(c_ideal - c_test.to("m/s").magnitude) / c_ideal <= 0.005
 
@@ -59,13 +50,7 @@ def test_calculate_reflected_shock_state():
     initial_pressure = _Q(1, "atm")
     species_dict = {"H2": 1, "O2": 0.5}
     mechanism = "gri30.cti"
-    thermochem.calculate_reflected_shock_state(
-        initial_temperature,
-        initial_pressure,
-        species_dict,
-        mechanism,
-        _U
-    )
+    thermochem.calculate_reflected_shock_state(initial_temperature, initial_pressure, species_dict, mechanism, _U)
 
 
 class TestFindMechanisms:
