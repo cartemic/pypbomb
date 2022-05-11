@@ -37,17 +37,17 @@ $$X_{S} = \frac{D \gamma}{C} \left[ \frac{1}{\kappa} \ln \left( \gamma \frac{D}{
 
 where $\kappa=0.4$, $K=5.5$, $C=0.2$,
 
-$$ \frac{D}{h} = \frac{2}{1 - \sqrt{1-BR}} $$,
+$$ \frac{D}{h} = \frac{2}{1 - \sqrt{1-BR}} $$
 
 and
 
-$$ \gamma = \left[ \frac{a_{p}}{\eta (\sigma - 1)^{2}S_{L}} \left( \frac{\delta}{D} \right)^{\frac{1}{3}} \right]^{\frac{1}{2m + 7/3}} $$,
+$$ \gamma = \left[ \frac{a_{p}}{\eta (\sigma - 1)^{2}S_{L}} \left( \frac{\delta}{D} \right)^{\frac{1}{3}} \right]^{\frac{1}{2m + 7/3}} $$
 
-where $S_{L}$ is the mixture's laminar flame speed, $\delta = \nu / S_{L}$ is the mixture's laminar flame thickness, $\nu$ is the kinematic viscosity, $\eta=2.1$, and $m=-0.18$ [@ciccarelli]. For blockage ratios $0.3 \leq BR \leq 0.75$, the run-up length is estimated to be
+where $S_{L}$ is the mixture's laminar flame speed, $\delta = \nu / S_{L}$ is the mixture's laminar flame thickness, $\nu$ is the kinematic viscosity, $\sigma$ is the product/reactant density ratio, $\eta=2.1$, and $m=-0.18$ [@ciccarelli]. For blockage ratios $0.3 \leq BR \leq 0.75$, the run-up length is estimated to be
 
 $$ X_{S} \approx a \frac{D a_{p}(1 - BR)}{20 S_{L} (1 + b BR)(\sigma - 1)} $$
 
-where $a=2$, $b=1.5$, and $a_{p}$ is the speed of sound within the products [@ciccarelli].
+where $a=2$, $b=1.5$, and $a_{p}$ is the speed of sound within the products [@ciccarelli]. Run-up length for blockage ratios $0.1 < BR < 0.3$ are estimated by linearly interpolating between the two formulas, each evaluated at the relevant endpoint. Blockage ratios greater than 0.75 are not considered.
 
 Finally, `pypbomb` provides some tools to facilitate the inclusion of optical access in the detonation tube. Historically, the structure of detonations have typically been studied using soot covered foils inserted along the wall or end-cap of detonation tubes [@Lee2008]. More recently, however, researchers have begun using high speed photography to study detonation waves, including PLIF and focusing schlieren methods [@Pintgen2003; @Mevel2015; @Rankin2016; @Radulescu2007; @Stevens2015]. In some cases, soot foil and schlieren techniques have been used simultaneously [@Kellenberger2017]. If optical access is desired, window thickness and factor of safety calculations can be quickly performed for clamped rectangular windows using `pypbomb.Window` [@crystran]. These calculations do not account for loads applied to the window due to contact with the detonation tube or window retainers; it is critical that windows be isolated from contact with any hard surfaces. In our tube this was accomplished using rubber gaskets on the faces of the windows as well as around the periphery. In addition to window calculations, `pypbomb.Bolt` allows the user to estimate bolt stress areas and safety factors in order to keep the windows intact and prevent bolts from pulling out of the tube [@machinery].
 
