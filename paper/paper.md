@@ -31,7 +31,23 @@ The design of a detonation tube requires many considerations, including estimati
 
 Once the operational limits of a tube are determined, flanges can be sized. `pypbomb.Flange` looks up the minimum necessary flange class based on the maximum tube pressure and temperature based on the standards set forth in ASME B16.5-2003 [@asmeb165]. Although they are used here to provide an estimate of minimum flange class, ASME codes do not account for impulsive loads such as those caused by detonations. Therefore further analysis should be conducted on a per-flange basis, using the recommended flange size as an initial design.
 
-A successful detonation tube design must account for the deflagration-to-detonation transition (DDT). DDT is usually achieved using a series of blockages, which causes the combustion wave to undergo local accelerations, thereby aiding in the DDT process [@ciccarelli]. The blockages must be properly sized, and must continue for a minimum (mixture specific) distance in order to maximize the probability of a successful transition to detonation. To this end, `pypbomb.DDT` contains tools for Shchelkin spiral blockage ratio and diameter calculations, and allows the user to estimate the necessary DDT run-up length for a desired mixture using Cantera [@ciccarelli; @cantera].
+A successful detonation tube design must account for the deflagration-to-detonation transition (DDT). DDT is usually achieved using a series of blockages, which causes the combustion wave to undergo local accelerations, thereby aiding in the DDT process [@ciccarelli]. The blockages must be properly sized, and must continue for a minimum (mixture specific) distance in order to maximize the probability of a successful transition to detonation. To this end, `pypbomb.DDT` contains tools for Shchelkin spiral blockage ratio and diameter calculations, and allows the user to estimate the necessary DDT run-up length for a desired mixture using Cantera [@ciccarelli; @cantera]. For blockage ratios $BR \leq 0.1$ the run-up length, $X_{S}$, inside a tube of diameter $D$ is estimated to be
+
+$$X_{S} = \frac{D \gamma}{C} \left[ \frac{1}{\kappa} \ln \left( \gamma \frac{D}{h} \right) + K \right]$$
+
+where $\kappa=0.4$, $K=5.5$, $C=0.2$,
+
+$$ \frac{D}{h} = \frac{2}{1 - \sqrt{1-BR}} $$,
+
+and
+
+$$ \gamma = \left[ \frac{a_{p}}{\eta (\sigma - 1)^{2}S_{L}} \left( \frac{\delta}{D} \right)^{\frac{1}{3}} \right]^{\frac{1}{2m + 7/3}} $$,
+
+where $S_{L}$ is the mixture's laminar flame speed, $\delta = \nu / S_{L}$ is the mixture's laminar flame thickness, $\nu$ is the kinematic viscosity, $\eta=2.1$, and $m=-0.18$ [@ciccarelli]. For blockage ratios $0.3 \leq BR \leq 0.75$, the run-up length is estimated to be
+
+$$ X_{S} \approx a \frac{D a_{p}(1 - BR)}{20 S_{L} (1 + b BR)(\sigma - 1)} $$
+
+where $a=2$, $b=1.5$, and $a_{p}$ is the speed of sound within the products [@ciccarelli].
 
 Finally, `pypbomb` provides some tools to facilitate the inclusion of optical access in the detonation tube. Historically, the structure of detonations have typically been studied using soot covered foils inserted along the wall or end-cap of detonation tubes [@Lee2008]. More recently, however, researchers have begun using high speed photography to study detonation waves, including PLIF and focusing schlieren methods [@Pintgen2003; @Mevel2015; @Rankin2016; @Radulescu2007; @Stevens2015]. In some cases, soot foil and schlieren techniques have been used simultaneously [@Kellenberger2017]. If optical access is desired, window thickness and factor of safety calculations can be quickly performed for clamped rectangular windows using `pypbomb.Window` [@crystran]. These calculations do not account for loads applied to the window due to contact with the detonation tube or window retainers; it is critical that windows be isolated from contact with any hard surfaces. In our tube this was accomplished using rubber gaskets on the faces of the windows as well as around the periphery. In addition to window calculations, `pypbomb.Bolt` allows the user to estimate bolt stress areas and safety factors in order to keep the windows intact and prevent bolts from pulling out of the tube [@machinery].
 
