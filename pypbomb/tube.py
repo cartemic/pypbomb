@@ -946,11 +946,13 @@ class Tube:
             material_limits = MATERIAL_LIMITS["seamless"][["Temp", material]]
         material_limits.columns = ["temperature", "stress"]
 
-        material_limits = pd.Series(
-            data=[quant(t, "ksi") for t in material_limits["stress"].values],
-            index=[quant(t, "degF") for t in material_limits["temperature"].values],
-            name="stress",
-        )
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            material_limits = pd.Series(
+                data=[quant(t, "ksi") for t in material_limits["stress"].values],
+                index=[quant(t, "degF") for t in material_limits["temperature"].values],
+                name="stress",
+            )
 
         return material_limits
 
