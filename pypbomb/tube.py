@@ -867,6 +867,8 @@ class Tube:
     """
     Methods for designing and determining operational limits of a detonation
     tube.
+
+    For a list of available materials see ``Tube.available_materials``
     """
 
     available_pipe_sizes = list(PIPE_SCHEDULES.index.values)
@@ -1365,6 +1367,8 @@ class Tube:
 class Flange:
     """
     Methods pertaining to flange class and max pressure calculations
+
+    For a list of available materials see ``Flange.available_materials``
     """
 
     available_materials = list(TUBE_MATERIALS.Grade[pd.notna(TUBE_MATERIALS.Group)].values)
