@@ -3,3 +3,7 @@ markupsafe<2.1.0
 nbsphinx
 sphinx
 sphinx-rtd-theme
+jupyter
+seaborn
+matplotlib
+tables
