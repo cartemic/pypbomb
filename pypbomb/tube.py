@@ -90,15 +90,17 @@ def _collect_tube_materials():
         # raise an exception if the file doesn't exist
         raise ValueError("\n" + file_name + " does not exist")
 
-    # apply units
-    df_materials["ElasticModulus"] = [
-        _Q(item, "GPa") for item in
-        df_materials["ElasticModulus"].values
-    ]
-    df_materials["Density"] = [
-        _Q(item, "g/cm^3") for item in
-        df_materials["Density"].values
-    ]
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        # apply units
+        df_materials["ElasticModulus"] = [
+            _Q(item, "GPa") for item in
+            df_materials["ElasticModulus"].values
+        ]
+        df_materials["Density"] = [
+            _Q(item, "g/cm^3") for item in
+            df_materials["Density"].values
+        ]
 
     return df_materials
 
@@ -247,24 +249,26 @@ def _get_flange_limits_from_csv():
         ):
             raise ValueError("\nPressure less than zero.")
 
-        # add units to temperature column
-        flange_limits["Temperature"] = [
-            _Q(temp, "degC") for temp in
-            flange_limits["Temperature"]
-        ]
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            # add units to temperature column
+            flange_limits["Temperature"] = [
+                _Q(temp, "degC") for temp in
+                flange_limits["Temperature"]
+            ]
 
-        # add units to pressure columns
-        for key in flange_limits.keys():
-            if key != "Temperature":
-                pressures = []
-                for pressure in flange_limits[key]:
-                    if pressure < 0:
-                        pressures.append(np.NaN)
-                    else:
-                        pressures.append(_Q(
-                            float(pressure), "bar")
-                        )
-                flange_limits[key] = pressures
+            # add units to pressure columns
+            for key in flange_limits.keys():
+                if key != "Temperature":
+                    pressures = []
+                    for pressure in flange_limits[key]:
+                        if pressure < 0:
+                            pressures.append(np.NaN)
+                        else:
+                            pressures.append(_Q(
+                                float(pressure), "bar")
+                            )
+                    flange_limits[key] = pressures
 
         group_flange_limits[group] = flange_limits
     return group_flange_limits
@@ -1879,7 +1883,7 @@ class Flange:
         df_limits = df_limits.applymap(
             lambda x: x.to_base_units().magnitude
         )
-        df_interp = pd.DataFrame(columns=df_limits.columns)
+        df_interp = pd.DataFrame(columns=df_limits.columns, dtype=np.float64)
         df_interp["Temperature"] = [temperature.to_base_units().magnitude]
         df_interp = pd.concat((df_limits, df_interp)).set_index("Temperature")
         with warnings.catch_warnings():
@@ -1942,7 +1946,7 @@ class Flange:
             lambda x: x.to_base_units().magnitude
         )
 
-        df_interp = pd.DataFrame(columns=df_limits.columns)
+        df_interp = pd.DataFrame(columns=df_limits.columns, dtype=np.float64)
         df_interp["Temperature"] = [temperature.to_base_units().magnitude]
         df_interp = pd.concat((df_limits, df_interp)).set_index("Temperature")
         with warnings.catch_warnings():
@@ -2003,7 +2007,7 @@ class Flange:
             lambda x: x.to_base_units().magnitude
         )[["Temperature", flange_class]]
 
-        df_interp = pd.DataFrame(columns=df_limits.columns)
+        df_interp = pd.DataFrame(columns=df_limits.columns, dtype=np.float64)
         df_interp[flange_class] = [pressure.to_base_units().magnitude]
         df_interp = pd.concat((df_limits, df_interp)).set_index(flange_class)
         with warnings.catch_warnings():

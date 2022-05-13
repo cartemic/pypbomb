@@ -25,26 +25,9 @@ jobs:
     # nbsphinx needs pandoc
     - uses: r-lib/actions/setup-pandoc@v1
 
-    # I hacked this together. If you separate the conda stuff into a different
-    # step it does stupid, stupid things with your conda envs. Don't do it. No.
-    # Unfortunately sphinx-action doesn't seem to like nbsphinx, so I'm striking
-    # out on my own here. I am a noob. If any of this looks dumb, that's likely
-    # why.
-    - name: Run, Ronnie, Run
+    - name: Build HTML
       run: |
-        wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-        bash miniconda.sh -b -p $HOME/miniconda
-        rm miniconda.sh
-        source $HOME/miniconda/etc/profile.d/conda.sh && conda activate
-        conda config --set always_yes yes --set changeps1 no
-        conda update -q conda
-        conda update -q --all
-        conda config --append channels conda-forge
-        conda env create -qf test-environment.yaml
-        conda info --envs
-        source activate test-environment
-        conda info --envs
-        pip install wheel setuptools
+        pip install -r requirements.txt
         pip install -r docs/requirements.txt
         cd docs/
         make clean html

@@ -1,40 +1,18 @@
 import sys
-from os import path, system
+from os import path
 
 from setuptools import setup
 
-here = path.abspath(path.dirname(__file__))
+HERE = path.abspath(path.dirname(__file__))
 
-# conda build is being a real jerk and claiming I don't have six (I do), so
-# we're going to do some hack-y stuff here. Force pint and cantera to conda
-# install and just... roll with it.
-if system("conda list"):
-    # nonzero return means failure... pls do the conda
-    # IDK how to test this yet so I'm just going to hope it works until told
-    # otherwise.
-    system("pip install conda")
-
-try:
-    import cantera
-except ModuleNotFoundError:
-    system("conda install -c cantera cantera -y")
-
-good_pint_version = "0.11"
-try:
-    import pint
-    if pint.__version__ != good_pint_version:
-        raise ModuleNotFoundError
-except ModuleNotFoundError:
-    system(f"conda install -c conda-forge pint={good_pint_version} -y")
-
-with open(path.join(here, "pypbomb", "_version.py")) as f:
+with open(path.join(HERE, "pypbomb", "_version.py")) as f:
     __version__ = ""
     exec(f.read())
 
-with open(path.join(here, "README.md")) as f:
+with open(path.join(HERE, "README.md")) as f:
     readme = f.read()
 
-with open(path.join(here, "CHANGELOG.md")) as f:
+with open(path.join(HERE, "CHANGELOG.md")) as f:
     changelog = f.read()
 
 
@@ -42,24 +20,22 @@ desc = readme + "\n\n" + changelog
 try:
     import pypandoc
     long_description = pypandoc.convert_text(desc, 'rst', format='md')
-    with open(path.join(here, 'README.rst'), 'w') as rst_readme:
+    with open(path.join(HERE, 'README.rst'), 'w') as rst_readme:
         rst_readme.write(long_description)
 except (ImportError, OSError, IOError):
     long_description = desc
 
-install_requires = [
-    # "cantera",  # we're not doing conda install anymore. is broken.
-    "numpy",
-    "pytest",
-    "pandas",
-    # "pint",     # we're not doing conda install anymore. is broken.
-    "six"
-]
-tests_require = [
-    "pytest",
-    "pytest-cov",
-    "mock",
-]
+
+def requirements_from_txt(fname: str):
+    txt_path = path.join(HERE, fname)
+    with open(txt_path, "r") as txt_file:
+        dependencies = txt_file.readlines()
+        dependencies = [d.strip() for d in dependencies]
+    return dependencies
+
+
+install_requires = requirements_from_txt("requirements.txt")
+tests_require = requirements_from_txt("requirements_test.txt")
 
 needs_pytest = {"pytest", "test", "ptr"}.intersection(sys.argv)
 setup_requires = ["pytest-runner"] if needs_pytest else []

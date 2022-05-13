@@ -1,3 +1,5 @@
-sphinx == 3.0.3
-sphinx-rtd-theme
+ipython
+markupsafe<2.1.0
 nbsphinx
+sphinx
+sphinx-rtd-theme
