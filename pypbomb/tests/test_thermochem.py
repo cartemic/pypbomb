@@ -21,7 +21,7 @@ def test_calculate_laminar_flame_speed():
     }
     good_result = 0.39  # value approximated from Law fig. 7.7.7
     test_flame_speed = thermochem.calculate_laminar_flame_speed(
-        initial_temperature, initial_pressure, species, "gri30.cti"
+        initial_temperature, initial_pressure, species, "gri30.yaml"
     )
     assert abs(test_flame_speed.magnitude - good_result) / good_result < 0.05
 
@@ -37,7 +37,7 @@ def test_get_eq_sound_speed():
     temp = _Q(20, "degC")
     press = _Q(1, "atm")
     species = {"O2": 1, "N2": 3.76}
-    mechanism = "gri30.cti"
+    mechanism = "gri30.yaml"
     c_test = thermochem.get_eq_sound_speed(temp, press, species, mechanism)
 
     assert abs(c_ideal - c_test.to("m/s").magnitude) / c_ideal <= 0.005
@@ -49,17 +49,18 @@ def test_calculate_reflected_shock_state():
     initial_temperature = _Q(80, "degF")
     initial_pressure = _Q(1, "atm")
     species_dict = {"H2": 1, "O2": 0.5}
-    mechanism = "gri30.cti"
+    mechanism = "gri30.yaml"
     thermochem.calculate_reflected_shock_state(initial_temperature, initial_pressure, species_dict, mechanism, _U)
 
 
 class TestFindMechanisms:
     def test_mechs_only(self):
-        assert "gri30.cti" in thermochem.find_mechanisms()
+        assert "gri30.yaml" in thermochem.find_mechanisms()
 
     def test_return_directory(self):
         checks = [False, False]
         mechs, path = thermochem.find_mechanisms(True)
-        checks[0] = "gri30.cti" in mechs
+        checks[0] = "gri30.yaml" in mechs
         checks[1] = os.path.exists(path)
+
         assert all(checks)

@@ -632,7 +632,7 @@ class DDT:
             unit registry
         phase_specification : str, optional
             Phase specification within the mechanism file used to evaluate
-            thermophysical properties. If ``gri30.cti`` is used with no phase
+            thermophysical properties. If ``gri30.yaml`` is used with no phase
             specification viscosity calculations will fail, resulting in
             an error for all blockage ratios less than 0.3.
 

@@ -25,7 +25,7 @@ class TestCalculateCJSpeed:
             101325,
             300,
             "H2:0.5333 O2:0.26667 AR:0.2",
-            "gri30.cti",
+            "gri30.yaml",
             False,  # use multiprocessing
             False,  # return r squared
             False,  # return state
@@ -45,7 +45,7 @@ class TestCalculateCJSpeed:
             101325,
             300,
             "H2:0.5333 O2:0.26667 AR:0.2",
-            "gri30.cti",
+            "gri30.yaml",
             True,  # use multiprocessing
             False,  # return r squared
             False,  # return state
@@ -64,7 +64,7 @@ class TestCalculateCJSpeed:
             101325,
             300,
             "H2:0.5333 O2:0.26667 AR:0.2",
-            "gri30.cti",
+            "gri30.yaml",
             True,  # use multiprocessing
             False,  # return r squared
             True,  # return state
@@ -83,7 +83,7 @@ class TestCalculateCJSpeed:
             101325,
             300,
             "H2:0.5333 O2:0.26667 AR:0.2",
-            "gri30.cti",
+            "gri30.yaml",
             True,  # use multiprocessing
             True,  # return r squared
             False,  # return state
@@ -102,7 +102,7 @@ class TestCalculateCJSpeed:
             101325,
             300,
             "H2:0.5333 O2:0.26667 AR:0.2",
-            "gri30.cti",
+            "gri30.yaml",
             True,  # use multiprocessing
             True,  # return r squared
             True,  # return state
@@ -121,7 +121,7 @@ class TestCalculateCJState:
     @staticmethod
     def test_good_input():
         # compare against SDToolbox results
-        mechanism = "gri30.cti"
+        mechanism = "gri30.yaml"
 
         initial_gas = Solution(mechanism)
         initial_gas.TPX = 300, 101325, {"H2": 1}
@@ -158,7 +158,7 @@ class TestCalculateCJState:
     @staticmethod
     def test_no_convergence():
         # ensure the proper warning is generated when solution doesn't converge
-        mechanism = "gri30.cti"
+        mechanism = "gri30.yaml"
 
         initial_gas = Solution(mechanism)
         initial_gas.TPX = 300, 101325, {"H2": 1}

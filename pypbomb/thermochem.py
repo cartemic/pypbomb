@@ -36,7 +36,7 @@ def calculate_laminar_flame_speed(
     species : dict or str
         Species definition for cantera
     mechanism : str
-        String of mechanism to use (e.g. ``gri30.cti``)
+        String of mechanism to use (e.g. ``gri30.yaml``)
     phase_specification : str, optional
         Phase specification for cantera solution
     unit_registry : pint.UnitRegistry, optional
@@ -151,7 +151,7 @@ def calculate_reflected_shock_state(
     species_dict : dict
         Dictionary of initial reactant mixture
     mechanism : str
-        Mechanism to use for chemical calculations, e.g. ``gri30.cti``
+        Mechanism to use for chemical calculations, e.g. ``gri30.yaml``
     unit_registry : pint.UnitRegistry, optional
         Pint unit registry
     use_multiprocessing : bool, optional
@@ -215,7 +215,7 @@ def find_mechanisms(return_directory=False):
     Parameters
     ----------
     return_directory : bool, optional
-        Whether or not to return the location of the mechanism files as well
+        Whether to return the location of the mechanism files as well
         as its contents. Defaults to ``False``.
 
     Returns
@@ -228,7 +228,8 @@ def find_mechanisms(return_directory=False):
     """
     mechanism_path = os.path.join(os.path.split(os.path.abspath(ct.__file__))[0], "data")
 
-    available = {item for item in os.listdir(mechanism_path) if (".cti" in item) or (".xml" in item)}
+    mechanism_filetypes = (".cti", ".xml", ".yaml")
+    available = {item for item in os.listdir(mechanism_path) if item.endswith(mechanism_filetypes)}
 
     if return_directory:
         return available, mechanism_path

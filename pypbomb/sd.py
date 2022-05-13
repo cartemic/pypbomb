@@ -250,7 +250,7 @@ class Detonation:
         species_mole_fractions : str or dict
             Reactant species mole fractions
         mechanism : str
-            Cti file containing mechanism data (e.g. ``gri30.cti``)
+            Cti file containing mechanism data (e.g. ``gri30.yaml``)
         use_multiprocessing : bool, optional
             Use multiprocessing to speed up CJ speed calculation
         return_r_squared : bool, optional
