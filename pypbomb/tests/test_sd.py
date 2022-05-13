@@ -8,7 +8,7 @@ from .. import sd
 
 
 def test_curve_fit():
-    abc = np.array([7., 2., 12., 1.])
+    abc = np.array([7.0, 2.0, 12.0, 1.0])
 
     x_values = np.linspace(0, 10, 100)
     y_values = abc[0] * np.power(x_values, 2) + abc[1] * x_values + abc[2]
@@ -24,17 +24,17 @@ class TestCalculateCJSpeed:
         test_args = [
             101325,
             300,
-            'H2:0.5333 O2:0.26667 AR:0.2',
-            'gri30.cti',
+            "H2:0.5333 O2:0.26667 AR:0.2",
+            "gri30.yaml",
             False,  # use multiprocessing
             False,  # return r squared
-            False   # return state
-            ]
+            False,  # return state
+        ]
 
         # CJ speed calculated by SDToolbox given *test_args
         original_cj_speed = 2353.2706464533471
 
-        test_speed = sd.Detonation.cj_speed(*test_args)['cj speed']
+        test_speed = sd.Detonation.cj_speed(*test_args)["cj speed"]
 
         assert np.allclose(original_cj_speed, test_speed)
 
@@ -44,17 +44,17 @@ class TestCalculateCJSpeed:
         test_args = [
             101325,
             300,
-            'H2:0.5333 O2:0.26667 AR:0.2',
-            'gri30.cti',
-            True,   # use multiprocessing
+            "H2:0.5333 O2:0.26667 AR:0.2",
+            "gri30.yaml",
+            True,  # use multiprocessing
             False,  # return r squared
-            False   # return state
+            False,  # return state
         ]
 
         # CJ speed calculated by SDToolbox given *test_args
         original_cj_speed = 2353.2706464533471
 
-        test_speed = sd.Detonation.cj_speed(*test_args)['cj speed']
+        test_speed = sd.Detonation.cj_speed(*test_args)["cj speed"]
 
         assert np.allclose(original_cj_speed, test_speed)
 
@@ -63,20 +63,17 @@ class TestCalculateCJSpeed:
         test_args = [
             101325,
             300,
-            'H2:0.5333 O2:0.26667 AR:0.2',
-            'gri30.cti',
-            True,   # use multiprocessing
+            "H2:0.5333 O2:0.26667 AR:0.2",
+            "gri30.yaml",
+            True,  # use multiprocessing
             False,  # return r squared
-            True    # return state
+            True,  # return state
         ]
         test_info = sd.Detonation.cj_speed(*test_args)
-        required_keys = {
-            'cj speed',
-            'cj state'
-        }
+        required_keys = {"cj speed", "cj state"}
 
         check_keys = len(required_keys.difference(test_info.keys())) == 0
-        check_state = isinstance(test_info['cj state'], Solution)
+        check_state = isinstance(test_info["cj state"], Solution)
 
         assert all([check_keys, check_state])
 
@@ -85,20 +82,17 @@ class TestCalculateCJSpeed:
         test_args = [
             101325,
             300,
-            'H2:0.5333 O2:0.26667 AR:0.2',
-            'gri30.cti',
-            True,   # use multiprocessing
-            True,   # return r squared
-            False   # return state
+            "H2:0.5333 O2:0.26667 AR:0.2",
+            "gri30.yaml",
+            True,  # use multiprocessing
+            True,  # return r squared
+            False,  # return state
         ]
         test_info = sd.Detonation.cj_speed(*test_args)
-        required_keys = {
-            'cj speed',
-            'R^2'
-        }
+        required_keys = {"cj speed", "R^2"}
 
         check_keys = len(required_keys.difference(test_info.keys())) == 0
-        check_r_squared = test_info['R^2'] >= 0.99
+        check_r_squared = test_info["R^2"] >= 0.99
 
         assert all([check_keys, check_r_squared])
 
@@ -107,22 +101,18 @@ class TestCalculateCJSpeed:
         test_args = [
             101325,
             300,
-            'H2:0.5333 O2:0.26667 AR:0.2',
-            'gri30.cti',
-            True,   # use multiprocessing
-            True,   # return r squared
-            True    # return state
+            "H2:0.5333 O2:0.26667 AR:0.2",
+            "gri30.yaml",
+            True,  # use multiprocessing
+            True,  # return r squared
+            True,  # return state
         ]
         test_info = sd.Detonation.cj_speed(*test_args)
-        required_keys = {
-            'cj speed',
-            'cj state',
-            'R^2'
-        }
+        required_keys = {"cj speed", "cj state", "R^2"}
 
         check_keys = len(required_keys.difference(test_info.keys())) == 0
-        check_state = isinstance(test_info['cj state'], Solution)
-        check_r_squared = test_info['R^2'] >= 0.99
+        check_state = isinstance(test_info["cj state"], Solution)
+        check_r_squared = test_info["R^2"] >= 0.99
 
         assert all([check_keys, check_state, check_r_squared])
 
@@ -131,25 +121,19 @@ class TestCalculateCJState:
     @staticmethod
     def test_good_input():
         # compare against SDToolbox results
-        mechanism = 'gri30.cti'
+        mechanism = "gri30.yaml"
 
         initial_gas = Solution(mechanism)
-        initial_gas.TPX = 300, 101325, {'H2': 1}
+        initial_gas.TPX = 300, 101325, {"H2": 1}
 
         working_gas = Solution(mechanism)
-        working_gas.TPX = 300, 101325 * 2, {'H2': 1}
+        working_gas.TPX = 300, 101325 * 2, {"H2": 1}
 
-        cj_calcs = sd.Detonation.cj_state(
-            working_gas,
-            initial_gas,
-            1e-5,
-            1e-5,
-            1.5
-        )
+        cj_calcs = sd.Detonation.cj_state(working_gas, initial_gas, 1e-5, 1e-5, 1.5)
 
         good_temp = 355.77590742266216
         good_press = 180244.9690980063
-        good_species = {'H': 2.8407416566652653e-30, 'H2': 1.0}
+        good_species = {"H": 2.8407416566652653e-30, "H2": 1.0}
 
         test_temp = cj_calcs[0].T
         check_temp = abs(test_temp - good_temp) / good_temp < 1e-7
@@ -167,32 +151,20 @@ class TestCalculateCJState:
         # make sure the species in each solution are the same
         test_species = cj_calcs[0].mole_fraction_dict()
         for species in good_species:
-            checks.append(
-                good_species[species] - test_species[species] < 1e-7
-            )
+            checks.append(good_species[species] - test_species[species] < 1e-7)
 
         assert all(checks)
 
     @staticmethod
     def test_no_convergence():
         # ensure the proper warning is generated when solution doesn't converge
-        mechanism = 'gri30.cti'
+        mechanism = "gri30.yaml"
 
         initial_gas = Solution(mechanism)
-        initial_gas.TPX = 300, 101325, {'H2': 1}
+        initial_gas.TPX = 300, 101325, {"H2": 1}
 
         working_gas = Solution(mechanism)
-        working_gas.TPX = 300, 101325 * 2, {'H2': 1}
+        working_gas.TPX = 300, 101325 * 2, {"H2": 1}
 
-        with pytest.warns(
-            Warning,
-            match='No convergence within 1 iterations'
-        ):
-            sd.Detonation.cj_state(
-                working_gas,
-                initial_gas,
-                1e-50,
-                1e-50,
-                1.5,
-                1
-            )
+        with pytest.warns(Warning, match="No convergence within 1 iterations"):
+            sd.Detonation.cj_state(working_gas, initial_gas, 1e-50, 1e-50, 1.5, 1)

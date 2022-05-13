@@ -19,8 +19,9 @@ with open(path.join(HERE, "CHANGELOG.md")) as f:
 desc = readme + "\n\n" + changelog
 try:
     import pypandoc
-    long_description = pypandoc.convert_text(desc, 'rst', format='md')
-    with open(path.join(HERE, 'README.rst'), 'w') as rst_readme:
+
+    long_description = pypandoc.convert_text(desc, "rst", format="md")
+    with open(path.join(HERE, "README.rst"), "w") as rst_readme:
         rst_readme.write(long_description)
 except (ImportError, OSError, IOError):
     long_description = desc
@@ -52,7 +53,7 @@ setup(
     package_dir={"pypbomb": "pypbomb"},
     package_data={
         "pypbomb": [path.join("lookup_data", "*")],
-        "pypbomb.tests": [path.join("lookup_data", "*")]
+        "pypbomb.tests": [path.join("lookup_data", "*")],
     },
     description="Tools for designing a detonation tube",
     long_description=long_description,

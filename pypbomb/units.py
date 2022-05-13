@@ -7,11 +7,7 @@ import pint
 from numpy import ndarray
 
 
-def check_pint_quantity(
-        quantity,
-        dimension_type,
-        ensure_positive=False
-):
+def check_pint_quantity(quantity, dimension_type, ensure_positive=False):
     """
     Checks to make sure that a quantity is an instance of a pint quantity, and
     that it has the correct units. Currently supported dimension types:
@@ -39,8 +35,7 @@ def check_pint_quantity(
     bool
         True if no errors are raised
     """
-    if hasattr(quantity, "magnitude") and \
-            isinstance(quantity.magnitude, ndarray):
+    if hasattr(quantity, "magnitude") and isinstance(quantity.magnitude, ndarray):
         quantity = quantity[0]
 
     ureg = pint.UnitRegistry()
@@ -50,8 +45,8 @@ def check_pint_quantity(
         "volume": (ureg.meter**3).dimensionality.__str__(),
         "temperature": ureg.degC.dimensionality.__str__(),
         "pressure": ureg.psi.dimensionality.__str__(),
-        "velocity": (ureg.meter/ureg.second).dimensionality.__str__(),
-        "density": (ureg.kg/ureg.meter**3).dimensionality.__str__(),
+        "velocity": (ureg.meter / ureg.second).dimensionality.__str__(),
+        "density": (ureg.kg / ureg.meter**3).dimensionality.__str__(),
     }
 
     if dimension_type not in units:
@@ -73,18 +68,15 @@ def check_pint_quantity(
 
     if units[dimension_type] != actual_dimension_type:
         raise ValueError(
-            actual_dimension_type.replace("[", "").replace("]", "") +
-            " is not "
+            actual_dimension_type.replace("[", "").replace("]", "")
+            + " is not "
             + units[dimension_type].replace("[", "").replace("]", "")
         )
 
     return True
 
 
-def parse_quant_input(
-        quant_input,
-        unit_registry
-):
+def parse_quant_input(quant_input, unit_registry):
     """
     Converts a tuple of ``(magnitude, "units")`` to a pint quantity or
     converts a pint quantity to the local registry.
@@ -102,13 +94,8 @@ def parse_quant_input(
         Input as a pint quantity
     """
     if hasattr(quant_input, "magnitude"):
-        return unit_registry.Quantity(
-            quant_input.magnitude,
-            quant_input.units.format_babel()
-        )
+        return unit_registry.Quantity(quant_input.magnitude, quant_input.units.format_babel())
     elif hasattr(quant_input, "__iter__") and len(quant_input) == 2:
         return unit_registry.Quantity(quant_input[0], quant_input[1])
     else:
-        raise ValueError(
-            "Bad quantity input: {0}".format(quant_input)
-        )
+        raise ValueError("Bad quantity input: {0}".format(quant_input))
