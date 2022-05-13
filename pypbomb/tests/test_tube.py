@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import warnings
 from math import sqrt
 
 import cantera as ct
@@ -196,7 +197,7 @@ class TestDDT:
     tube_diameter = tube._Q(1, "meter")
 
     # define gas mixture and relevant pint quantities
-    mechanism = "gri30.cti"
+    mechanism = "gri30.yaml"
     gas = ct.Solution(mechanism)
     gas.TP = 300, 101325
     initial_temperature = tube._Q(gas.T, "K")
@@ -280,7 +281,7 @@ class TestDDT:
                 self.species_dict,
                 self.mechanism,
                 tube._U,
-                phase_specification="gri30_mix",
+                phase_specification="gri30",
             )
 
             assert 0.5 * result <= test_runup.magnitude <= 1.5 * result
@@ -509,7 +510,7 @@ class TestTube:
         density = quant(7.9, "g/cm**3")
         poisson_ratio = 0.28
         reactant_mixture = dict(H2=1 / 3, O2=2 / 3)
-        mechanism = "gri30.cti"
+        mechanism = "gri30.yaml"
 
         # the initial pressure should cause the reflected detonation pressure
         # to be equal to the tube's max pressure, accounting for dynamic load
@@ -551,7 +552,7 @@ class TestTube:
         tube_od = quant(6.625, "in")
         initial_temperature = quant(300, "K")
         reactant_mixture = dict(H2=2 / 3, O2=1 / 3)
-        mechanism = "gri30.cti"
+        mechanism = "gri30.yaml"
         elastic_modulus = quant(200, "GPa")
         density = quant(7.9, "g/cm**3")
         poisson_ratio = 0.28
@@ -710,16 +711,16 @@ class TestTube:
     def test_get_elastic_modulus(self):
         ureg = thermochem._U
         test = tube.Tube.get_elastic_modulus("316L", ureg)
-        assert test == ureg.Quantity(200, "GPa")
+        assert test == ureg.Quantity(197.5, "GPa")
 
     def test_get_density(self):
         ureg = thermochem._U
         test = tube.Tube.get_density("316L", ureg)
-        assert test == ureg.Quantity(7.9, "g/cm^3")
+        assert test == ureg.Quantity(7.97, "g/cm^3")
 
     def test_get_poisson(self):
         test = tube.Tube.get_poisson("316L")
-        assert test == 0.28
+        assert test == 0.27
 
     def test__check_material_good(self):
         test = tube.Tube._check_material("304L")
@@ -735,21 +736,20 @@ class TestTube:
 class TestCollectTubeMaterials:
     def test_good_output(self):
         columns = ["Grade", "Group", "ElasticModulus", "Density", "Poisson"]
+        test_grade = "317"
         data = [
-            ["304", 2.1, 200, 7.8, 0.28],
-            ["304H", 2.1, 200, 7.8, 0.28],
-            ["316", 2.2, 200, 7.9, 0.28],
-            ["316H", 2.2, 200, 7.9, 0.28],
-            ["317", 2.2, 200, 7.9, 0.28],
-            ["304L", 2.3, 200, 7.8, 0.28],
-            ["316L", 2.3, 200, 7.9, 0.28],
+            [test_grade, 2.2, 193.0, 8.0, 0.285],
         ]
-        good_dataframe = pd.DataFrame(data=data, index=None, columns=columns)
-        good_dataframe["ElasticModulus"] = [tube._Q(item, "GPa") for item in good_dataframe["ElasticModulus"]]
-        good_dataframe["Density"] = [tube._Q(item, "g/cm^3") for item in good_dataframe["Density"]]
-        df_test = tube._collect_tube_materials()
+        df_good = pd.DataFrame(data=data, index=None, columns=columns)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", tube.pint.UnitStrippedWarning)
+            df_good["ElasticModulus"] = [tube._Q(item, "GPa") for item in df_good["ElasticModulus"]]
+            df_good["Density"] = [tube._Q(item, "g/cm^3") for item in df_good["Density"]]
+        df_test = tube._collect_tube_materials().filter(columns, axis=1)
+        # checking the whole thing seems both excessive and brittle
+        df_test = df_test[df_test["Grade"] == test_grade].reset_index(drop=True)
 
-        assert df_test.equals(good_dataframe)
+        pd.testing.assert_frame_equal(df_test, df_good)
 
     def test_nonexistent_file(self):
         def fake_exists(*_):
