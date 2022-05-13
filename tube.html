@@ -41,9 +41,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Installation and Testing</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation and Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html#testing">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html#contributing">Contributing</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul class="current">
@@ -310,12 +312,12 @@ vol. 34, no. 4, pp. 499–550, Aug. 2008.
 <li><p><strong>initial_pressure</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Mixture initial pressure</p></li>
 <li><p><strong>species_dict</strong> (<em>dict</em>) – Dictionary containing the species in the mixture as keys, with total
 moles or mole fractions as values</p></li>
-<li><p><strong>mechanism</strong> (<em>str</em>) – Mechanism file name for Cantera. See <code class="docutils literal notranslate"><span class="pre">tools.find_mechanisms()</span></code> for
+<li><p><strong>mechanism</strong> (<em>str</em>) – Mechanism file name for Cantera. See <code class="docutils literal notranslate"><span class="pre">thermochem.find_mechanisms()</span></code> for
 a list of installed mechanisms.</p></li>
 <li><p><strong>unit_registry</strong> (<em>pint.UnitRegistry</em>) – Unit registry for managing units to prevent conflicts with parent
 unit registry</p></li>
 <li><p><strong>phase_specification</strong> (<em>str</em><em>, </em><em>optional</em>) – Phase specification within the mechanism file used to evaluate
-thermophysical properties. If <code class="docutils literal notranslate"><span class="pre">gri30.cti</span></code> is used with no phase
+thermophysical properties. If <code class="docutils literal notranslate"><span class="pre">gri30.yaml</span></code> is used with no phase
 specification viscosity calculations will fail, resulting in
 an error for all blockage ratios less than 0.3.</p></li>
 </ul>
@@ -338,6 +340,7 @@ an error for all blockage ratios less than 0.3.</p></li>
 <dt class="sig sig-object py" id="pypbomb.tube.Flange">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypbomb.tube.</span></span><span class="sig-name descname"><span class="pre">Flange</span></span><a class="headerlink" href="#pypbomb.tube.Flange" title="Permalink to this definition"></a></dt>
 <dd><p>Methods pertaining to flange class and max pressure calculations</p>
+<p>For a list of available materials see <code class="docutils literal notranslate"><span class="pre">Flange.available_materials</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pypbomb.tube.Flange.get_class">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Flange.get_class" title="Permalink to this definition"></a></dt>
@@ -418,6 +421,7 @@ class at the desired pressure.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pypbomb.tube.</span></span><span class="sig-name descname"><span class="pre">Tube</span></span><a class="headerlink" href="#pypbomb.tube.Tube" title="Permalink to this definition"></a></dt>
 <dd><p>Methods for designing and determining operational limits of a detonation
 tube.</p>
+<p>For a list of available materials see <code class="docutils literal notranslate"><span class="pre">Tube.available_materials</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pypbomb.tube.Tube.calculate_max_initial_pressure">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_max_initial_pressure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tube_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tube_od</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mechanism</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elastic_modulus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poisson_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plus_or_minus=0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_dynamic_load_factor=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_registry=&lt;pint.registry.UnitRegistry</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_tol=0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iterations=500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_multiprocessing=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_pressure_state='reflected'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_dlf=False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pypbomb.tube.Tube.calculate_max_initial_pressure" title="Permalink to this definition"></a></dt>

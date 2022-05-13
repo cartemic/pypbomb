@@ -39,9 +39,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Installation and Testing</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation and Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html#testing">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html#contributing">Contributing</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul class="current">
@@ -123,7 +125,7 @@ gas mixture.</p>
 <li><p><strong>initial_temperature</strong> (<em>pint.Quantity</em>) – Mixture initial temperature</p></li>
 <li><p><strong>initial_pressure</strong> (<em>pint.Quantity</em>) – Mixture initial pressure</p></li>
 <li><p><strong>species</strong> (<em>dict</em><em> or </em><em>str</em>) – Species definition for cantera</p></li>
-<li><p><strong>mechanism</strong> (<em>str</em>) – String of mechanism to use (e.g. <code class="docutils literal notranslate"><span class="pre">gri30.cti</span></code>)</p></li>
+<li><p><strong>mechanism</strong> (<em>str</em>) – String of mechanism to use (e.g. <code class="docutils literal notranslate"><span class="pre">gri30.yaml</span></code>)</p></li>
 <li><p><strong>phase_specification</strong> (<em>str</em><em>, </em><em>optional</em>) – Phase specification for cantera solution</p></li>
 <li><p><strong>unit_registry</strong> (<em>pint.UnitRegistry</em><em>, </em><em>optional</em>) – Unit registry for managing units to prevent conflicts with parent
 unit registry</p></li>
@@ -149,7 +151,7 @@ using customized sdtoolbox functions.</p>
 <li><p><strong>initial_temperature</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Mixture initial temperature</p></li>
 <li><p><strong>initial_pressure</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Mixture initial pressure</p></li>
 <li><p><strong>species_dict</strong> (<em>dict</em>) – Dictionary of initial reactant mixture</p></li>
-<li><p><strong>mechanism</strong> (<em>str</em>) – Mechanism to use for chemical calculations, e.g. <code class="docutils literal notranslate"><span class="pre">gri30.cti</span></code></p></li>
+<li><p><strong>mechanism</strong> (<em>str</em>) – Mechanism to use for chemical calculations, e.g. <code class="docutils literal notranslate"><span class="pre">gri30.yaml</span></code></p></li>
 <li><p><strong>unit_registry</strong> (<em>pint.UnitRegistry</em><em>, </em><em>optional</em>) – Pint unit registry</p></li>
 <li><p><strong>use_multiprocessing</strong> (<em>bool</em><em>, </em><em>optional</em>) – True to use multiprocessing for CJ state calculation, which is faster
 but requires the function to be run from <code class="docutils literal notranslate"><span class="pre">__main__</span></code></p></li>
@@ -180,7 +182,7 @@ but requires the function to be run from <code class="docutils literal notransla
 <dd><p>Figure out which mechanisms the local cantera install has access to.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>return_directory</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether or not to return the location of the mechanism files as well
+<dd class="field-odd"><p><strong>return_directory</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to return the location of the mechanism files as well
 as its contents. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

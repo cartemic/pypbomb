@@ -41,9 +41,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Installation and Testing</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation and Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html#testing">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html#contributing">Contributing</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul class="current">
@@ -192,12 +194,12 @@ vol. 34, no. 4, pp. 499–550, Aug. 2008.
 <li><p><strong>initial_pressure</strong> (<em>pint.Quantity</em><em> or </em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>str</em><em>]</em>) – Mixture initial pressure</p></li>
 <li><p><strong>species_dict</strong> (<em>dict</em>) – Dictionary containing the species in the mixture as keys, with total
 moles or mole fractions as values</p></li>
-<li><p><strong>mechanism</strong> (<em>str</em>) – Mechanism file name for Cantera. See <code class="docutils literal notranslate"><span class="pre">tools.find_mechanisms()</span></code> for
+<li><p><strong>mechanism</strong> (<em>str</em>) – Mechanism file name for Cantera. See <code class="docutils literal notranslate"><span class="pre">thermochem.find_mechanisms()</span></code> for
 a list of installed mechanisms.</p></li>
 <li><p><strong>unit_registry</strong> (<em>pint.UnitRegistry</em>) – Unit registry for managing units to prevent conflicts with parent
 unit registry</p></li>
 <li><p><strong>phase_specification</strong> (<em>str</em><em>, </em><em>optional</em>) – Phase specification within the mechanism file used to evaluate
-thermophysical properties. If <code class="docutils literal notranslate"><span class="pre">gri30.cti</span></code> is used with no phase
+thermophysical properties. If <code class="docutils literal notranslate"><span class="pre">gri30.yaml</span></code> is used with no phase
 specification viscosity calculations will fail, resulting in
 an error for all blockage ratios less than 0.3.</p></li>
 </ul>
