@@ -1,6 +1,3 @@
-Installation and Testing
-========================
-
 Installation
 ------------
 
@@ -106,7 +103,7 @@ build them locally, run the following command from within the docs/ directory.
 Sweet! Your new documentation should now be in pypbomb/docs/_build/html.
 
 If you've made and documented some modifications that you'd like to contribute,
-please feel free to submit a pull request to the develop branch of this repo.
+please see the `section on contributing <#contributing>`_.
 
 Testing
 -------
@@ -124,3 +121,21 @@ coverage from the top level pypbomb directory.
 .. code-block:: bash
 
    (myenv)$ pytest -vv cov=./
+
+Contributing
+------------
+Pypbomb is open source, and contributing is encouraged. If you would like to
+contribute some modifications you've made, please submit a pull request to
+the development branch.
+
+This project uses isort, black, and flake8 to maintain some semblance of code
+quality. It is my experience that this is helpful for further development and
+maintenance. Before submitting your code for PR, please use these tools first
+in order to maintain a somewhat consistent code style. This can be easily
+done using the ``prepare.sh`` script in the top level project directory.
+
+In addition to running the script manually, it is recommended to install a
+pre-commit hook in order to prevent any commits that aren't properly styled or
+have linter gripes. This just makes it easier on everybody. pre-commit is one
+of the dev requirements, so if you've installed those, all you need to do is
+run ``pre-commit install`` and you should be all set up!
