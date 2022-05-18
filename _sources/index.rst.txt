@@ -30,6 +30,10 @@ Pypbomb
    :alt: JOSS badge
    :target: https://joss.theoj.org/papers/288143539a2e4f5ab1b83cbee4e17052
 
+.. image:: https://zenodo.org/badge/130134402.svg
+   :alt: DOI
+   :target: https://zenodo.org/badge/latestdoi/130134402
+
 
 For when you want the detonations to stay on the inside.
 
