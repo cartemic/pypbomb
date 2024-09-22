@@ -19,13 +19,12 @@ import multiprocessing as mp
 import typing
 import warnings
 from dataclasses import dataclass
-from typing import Any, Optional
+from typing import Optional
 
 import cantera as ct
 import numpy as np
 
-FloatArray = np.ndarray[Any, np.dtype[np.floating]]
-MoleFractions = str | dict[str, float]
+from pypbomb._types import FloatArray, MoleFractions
 
 
 @dataclass(frozen=True)
