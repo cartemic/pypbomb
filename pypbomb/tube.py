@@ -1022,8 +1022,7 @@ class Tube:
 
         # calculate critical velocity
         crit_velocity = (
-            (elastic_modulus**2 * tube_thickness**2)
-            / (3.0 * density**2 * radius**2 * (1.0 - poisson_ratio**2))
+            (elastic_modulus**2 * tube_thickness**2) / (3.0 * density**2 * radius**2 * (1.0 - poisson_ratio**2))
         ) ** (1.0 / 4)
 
         # set limits for "approximately Vcrit"

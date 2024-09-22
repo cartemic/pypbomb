@@ -14,7 +14,7 @@
 import os
 import sys
 
-from pypbomb import __version__ as release  # noqa:F401,E402
+from src import __version__ as release  # noqa:F401,E402
 
 sys.path.insert(0, os.path.abspath("../"))
 

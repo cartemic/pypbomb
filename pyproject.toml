@@ -1,3 +1,42 @@
+[project]
+name = "pypbomb"
+version = "2.0.0"
+description = "Tools for designing a detonation tube"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.12"
+authors = [{name = "Mick Carter", email = "cartemic@proton.me"}]
+classifiers = [
+    "Private :: Do Not Upload",  # todo: remove this once things are ready
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "cantera==3.*",
+    "numpy==2.*",
+    "pint",  # todo: deprecated, remove when possible
+    "scipy",  # todo: deprecated, remove when possible
+    "pandas",  # todo: deprecated, remove when possible
+]
+
+[project.optional-dependencies]
+pint = ["pint"]
+
+[tool.uv]
+dev-dependencies = [
+    "ruff",
+    "black",  # todo: remove this dependency
+    "isort",  # todo: remove this dependency
+    "flake8",  # todo: remove this dependency
+    "mock",
+    "pytest",
+    "pytest-cov",
+    "ipython",
+]
+
+[tool.uv.sources]
+pypbomb = {path = "src"}
+
+# todo: convert to ruff
 [tool.black]
 line-length = 120
 
