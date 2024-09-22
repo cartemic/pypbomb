@@ -653,7 +653,7 @@ class DDT:
         units.check_pint_quantity(initial_pressure, "pressure", ensure_positive=True)
 
         # calculate laminar flame speed
-        laminar_fs = thermochem.calculate_laminar_flame_speed(
+        laminar_fs = thermochem.laminar_flame_speed(
             initial_temperature,
             initial_pressure,
             species_dict,

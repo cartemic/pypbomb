@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Pypbomb requires the use of some functionality from the shock and detonation
 toolbox from the Explosion Dynamics Laboratory at Cal Tech [1]. SDToolbox is,
@@ -17,31 +16,35 @@ design it is recommended to use the full SDToolbox.
 """
 
 import multiprocessing as mp
+import typing
 import warnings
+from dataclasses import dataclass
+from typing import Any, Optional
 
 import cantera as ct
 import numpy as np
 
+FloatArray = np.ndarray[Any, np.dtype[np.floating]]
+MoleFractions = str | dict[str, float]
+
+
+@dataclass(frozen=True)
+class CurveFit:
+    a: float
+    b: float
+    c: float
+    r2: float
+
+    @staticmethod
+    def empty() -> "CurveFit":
+        return CurveFit(a=np.nan, b=np.nan, c=np.nan, r2=np.nan)
+
 
 # noinspection SpellCheckingInspection
-def cj_curve_fit(x, y):
+def cj_curve_fit(x: FloatArray, y: FloatArray) -> CurveFit:
     """
-    Determines least squares fit of parabolic data. This is a vectorized
-    version of ``sdtoolbox.PostShock.LSQ_CJspeed`` using ``np.linalg.lstsq``.
-
-    Parameters
-    ----------
-    x : np.array
-        Independent data points for curve fitting
-    y : np.array
-        Dependent data points for curve fitting
-    Returns
-    -------
-    tuple
-        A tuple containing ``(a, b, c, r_squared)`` where ``a``, ``b``, and
-        ``c`` are the coefficients of quadratic function
-        :math:`ax^2 + bx + c = 0` and ``r_squared`` is the :math:`R^2` value
-        of the curve fit.
+    Determines the least squares fit of parabolic data. This is a vectorized version of
+    ``sdtoolbox.PostShock.LSQ_CJspeed`` using ``np.linalg.lstsq``.
     """
     x = np.array(
         (
@@ -54,7 +57,23 @@ def cj_curve_fit(x, y):
     thetas = fit[0]
     ss_res = fit[1][0]
     ss_tot = np.sum(np.square(y - np.mean(y)))
-    return (*np.flip(thetas), 1 - ss_res / ss_tot)
+    # As of 2.1, numpy does not support shape typing, which hoses up type hinting. They recommend using `typing.cast`
+    # to signal to the type checker that we know what we're doing [1,2].
+    # [1] https://numpy.org/doc/2.1/reference/typing.html
+    # [2] https://docs.python.org/3/library/typing.html#typing.cast
+    return CurveFit(
+        a=typing.cast(float, thetas[2]),
+        b=typing.cast(float, thetas[1]),
+        c=typing.cast(float, thetas[0]),
+        r2=1 - ss_res / ss_tot,
+    )
+
+
+@dataclass(frozen=True)
+class CjResult:
+    speed: float
+    r2: Optional[float]
+    state: Optional[ct.Solution]
 
 
 class Detonation:
@@ -65,43 +84,26 @@ class Detonation:
     @classmethod
     def cj_state(
         cls,
-        working_gas,
-        initial_state_gas,
-        error_tol_temperature,
-        error_tol_velocity,
-        density_ratio,
-        max_iterations=500,
-    ):
+        working_gas: ct.Solution,
+        initial_state_gas: ct.Solution,
+        error_tol_temperature: float,
+        error_tol_velocity: float,
+        density_ratio: float,
+        max_iterations: typing.Optional[int] = 500,
+    ) -> float:
         """
-        Calculates the Chapman-Jouguet state and wave speed using Reynolds'
-        iterative method.
+        Calculates the Chapman-Jouguet state and wave speed using Reynolds' iterative method.
+        ``working_gas`` object is mutated into the CJ state
 
         This function corresponds to ``sdtoolbox.PostShock.CJ_calc``
 
-        Parameters
-        ----------
-        working_gas : cantera.Solution
-            Working gas mixture used for calculations.
-        initial_state_gas : ct.Solution
-            Working gas mixture in its initial, undetonated state.
-        error_tol_temperature : float
-            Temperature error tolerance for iteration, in Kelvin.
-        error_tol_velocity : float
-            Velocity error tolerance for iteration, in m/s.
-        density_ratio : float
-            Density ratio.
-        max_iterations : int, optional
-            Maximum number of loop iterations used to calculate output. Default
-            is 500.
-
-        Returns
-        -------
-        tuple(`ct.Solution`, `float`)
-            A tuple containing:
-
-            * Gas mixture at equilibrium state (`ct.Solution`)
-            * Initial velocity resulting in the input density ratio, in m/s
-              (`float`)
+        :param working_gas: Working gas mixture used for calculations.
+        :param initial_state_gas: Working gas mixture in its initial, undetonated state.
+        :param error_tol_temperature: Temperature error tolerance for iteration, in Kelvin.
+        :param error_tol_velocity: Velocity error tolerance for iteration, in m/s.
+        :param density_ratio: Density ratio.
+        :param max_iterations: Maximum number of loop iterations used to calculate output.
+        :return: Initial velocity resulting in the input density ratio, in m/s
         """
         # initial state
         initial_volume = 1 / initial_state_gas.density
@@ -130,7 +132,7 @@ class Detonation:
                     "No convergence within {0} iterations".format(max_iterations),
                     Warning,
                 )
-                return [working_gas, guess_velocity]
+                return guess_velocity
 
             # calculate unperturbed enthalpy and press. error for current guess
             [error_enthalpy, error_pressure] = GetError.equilibrium(working_gas, initial_state_gas, guess_velocity)
@@ -186,16 +188,16 @@ class Detonation:
             guess_velocity += delta_velocity
             Properties.equilibrium(working_gas, guess_density, guess_temperature)
 
-        return [working_gas, guess_velocity]
+        return guess_velocity
 
     @classmethod
     def _calculate_over_ratio_range(
         cls,
-        current_state_number,
+        idx: int,
         current_density_ratio,
         initial_temperature,
         initial_pressure,
-        species_mole_fractions,
+        mole_fractions,
         mechanism,
         error_tol_temperature,
         error_tol_velocity,
@@ -204,15 +206,15 @@ class Detonation:
         initial_state_gas.TPX = [
             initial_temperature,
             initial_pressure,
-            species_mole_fractions,
+            mole_fractions,
         ]
         working_gas = ct.Solution(mechanism)
         working_gas.TPX = [
             initial_temperature,
             initial_pressure,
-            species_mole_fractions,
+            mole_fractions,
         ]
-        [_, current_velocity] = cls.cj_state(
+        current_velocity = cls.cj_state(
             working_gas,
             initial_state_gas,
             error_tol_temperature,
@@ -220,67 +222,90 @@ class Detonation:
             current_density_ratio,
         )
 
-        return current_state_number, current_velocity
+        return idx, current_velocity
 
-    # noinspection SpellCheckingInspection
+    @classmethod
+    def _cj_speed_parallel(
+        cls,
+        initial_temperature: float,
+        initial_pressure: float,
+        mole_fractions: MoleFractions,
+        mechanism: str,
+        error_tol_temperature: float,
+        error_tol_velocity: float,
+        density_ratio_array: FloatArray,
+    ) -> list[tuple[int, float]]:
+        args = [
+            [
+                idx,
+                ratio,
+                initial_temperature,
+                initial_pressure,
+                mole_fractions,
+                mechanism,
+                error_tol_temperature,
+                error_tol_velocity,
+            ]
+            for idx, ratio in enumerate(density_ratio_array)
+        ]
+        with mp.Pool() as p:
+            result = p.starmap(cls._calculate_over_ratio_range, args)
+
+        return result
+
+    @classmethod
+    def _cj_speed_serial(
+        cls,
+        initial_temperature: float,
+        initial_pressure: float,
+        mole_fractions: MoleFractions,
+        mechanism: str,
+        error_tol_temperature: float,
+        error_tol_velocity: float,
+        density_ratio_array: FloatArray,
+    ) -> list[tuple[int, float]]:
+        return list(
+            map(
+                cls._calculate_over_ratio_range,
+                [item for item in range(len(density_ratio_array))],
+                density_ratio_array,
+                [initial_temperature for _ in density_ratio_array],
+                [initial_pressure for _ in density_ratio_array],
+                [mole_fractions for _ in density_ratio_array],
+                [mechanism for _ in density_ratio_array],
+                [error_tol_temperature for _ in density_ratio_array],
+                [error_tol_velocity for _ in density_ratio_array],
+            )
+        )
+
     @classmethod
     def cj_speed(
         cls,
-        initial_pressure,
-        initial_temperature,
-        species_mole_fractions,
-        mechanism,
-        use_multiprocessing=False,
-        return_r_squared=False,
-        return_state=False,
-    ):
+        initial_pressure: float,
+        initial_temperature: float,
+        mole_fractions: MoleFractions,
+        mechanism: str,
+        parallelize=False,
+        with_state=False,
+    ) -> CjResult:
         """
         Calculates the Chapman-Jouguet detonation velocity of a gaseous mixture.
 
-        This is a modified version of ``sdtoolbox.PostShock.CJspeed``.
-        Specifically, it has been changed to allow for CJ state output, and
-        to allow the use of multiprocessing to speed up the curve fit.
+        This is a modified version of ``sdtoolbox.PostShock.CJspeed``. Specifically, it has been changed to allow for
+        CJ state output, and to allow the use of multiprocessing to speed up the curve fit.
 
-        Parameters
-        ----------
-        initial_pressure : float
-            Initial pressure in Pascals
-        initial_temperature : float
-            Initial temperature in Kelvin
-        species_mole_fractions : str or dict
-            Reactant species mole fractions
-        mechanism : str
-            Cti file containing mechanism data (e.g. ``gri30.yaml``)
-        use_multiprocessing : bool, optional
-            Use multiprocessing to speed up CJ speed calculation
-        return_r_squared : bool, optional
-            Return the :math:`R^2` value of the CJ speed vs. density ratio fit
-        return_state : bool, optional
-            Return the CJ state corresponding to the calculated velocity
-
-        Returns
-        -------
-        dict
-            Dictionary with the following keys:
-
-            * ``"cj speed"``: Chapman-Jouguet wave speed (`float`)
-            * ``"R^2"``:  R-squared value of the CJ speed vs. density ratio fit
-              (`float`). Only exists if `return_r_squared` is set to ``True``.
-            * ``"cj state"``: Cantera solution object describing the CJ state
-              (`ct.Solution`). Only exists if `return_state` is set to ``True``.
-
-
+        :param initial_pressure: Initial pressure in Pascals
+        :param initial_temperature: Initial temperature in Kelvin
+        :param mole_fractions: Reactant species mole fractions
+        :param mechanism: Cti file containing mechanism data (e.g. ``gri30.yaml``)
+        :param parallelize: Use multiprocessing to speed up CJ speed calculation
+        :param with_state: Include Return the CJ state corresponding to the calculated velocity
+        :return:
         """
-        # DECLARATIONS
         num_steps = 20
         max_density_ratio = 2.0
         min_density_ratio = 1.5
-        a = 0
-        b = 0
-        c = 0
-
-        if use_multiprocessing:
-            pool = mp.Pool()
+        fit: CurveFit = CurveFit.empty()
 
         # Set error tolerances for CJ state calculation
         error_tol_temperature = 1e-4
@@ -292,89 +317,60 @@ class Detonation:
         adjusted_density_ratio = 0.0
 
         while (counter <= 4) and ((r_squared < 0.99999) or (delta_r_squared < 1e-7)):
-            density_ratio_array = np.linspace(min_density_ratio, max_density_ratio, num_steps + 1)
+            density_ratios = np.linspace(min_density_ratio, max_density_ratio, num_steps + 1)
 
-            if use_multiprocessing:
-                # parallel loop through density ratios
-                stargs = [
-                    [
-                        number,
-                        ratio,
-                        initial_temperature,
-                        initial_pressure,
-                        species_mole_fractions,
-                        mechanism,
-                        error_tol_temperature,
-                        error_tol_velocity,
-                    ]
-                    for number, ratio in zip(range(len(density_ratio_array)), density_ratio_array)
-                ]
-                # noinspection PyUnboundLocalVariable
-                result = pool.starmap(cls._calculate_over_ratio_range, stargs)
-
-            else:
-                # no multiprocessing, just use map
-                result = list(
-                    map(
-                        cls._calculate_over_ratio_range,
-                        [item for item in range(len(density_ratio_array))],
-                        density_ratio_array,
-                        [initial_temperature for _ in density_ratio_array],
-                        [initial_pressure for _ in density_ratio_array],
-                        [species_mole_fractions for _ in density_ratio_array],
-                        [mechanism for _ in density_ratio_array],
-                        [error_tol_temperature for _ in density_ratio_array],
-                        [error_tol_velocity for _ in density_ratio_array],
-                    )
+            if parallelize:
+                speeds = cls._cj_speed_parallel(
+                    initial_temperature=initial_temperature,
+                    initial_pressure=initial_pressure,
+                    mole_fractions=mole_fractions,
+                    mechanism=mechanism,
+                    error_tol_temperature=error_tol_temperature,
+                    error_tol_velocity=error_tol_velocity,
+                    density_ratio_array=density_ratios,
                 )
 
-            result.sort()
-            cj_velocity_calculations = np.array([item for (_, item) in result])
+            else:
+                speeds = cls._cj_speed_serial(
+                    initial_temperature=initial_temperature,
+                    initial_pressure=initial_pressure,
+                    mole_fractions=mole_fractions,
+                    mechanism=mechanism,
+                    error_tol_temperature=error_tol_temperature,
+                    error_tol_velocity=error_tol_velocity,
+                    density_ratio_array=density_ratios,
+                )
 
-            # Get curve fit
-            a, b, c, r_squared = cj_curve_fit(density_ratio_array, cj_velocity_calculations)
-            adjusted_density_ratio = -b / (2.0 * a)
+            speeds.sort()
+            cj_velocity_calculations = np.array(tuple(s for (_, s) in speeds))
+
+            fit = cj_curve_fit(density_ratios, cj_velocity_calculations)
+            adjusted_density_ratio = -fit.b / (2.0 * fit.a)
 
             min_density_ratio = adjusted_density_ratio * (1 - 0.001)
             max_density_ratio = adjusted_density_ratio * (1 + 0.001)
             counter += 1
 
-        if use_multiprocessing:
-            pool.close()
+        cj_speed = fit.a * adjusted_density_ratio**2 + fit.b * adjusted_density_ratio + fit.c
 
-        cj_speed = a * adjusted_density_ratio**2 + b * adjusted_density_ratio + c
-
-        if return_state:
+        if with_state:
             initial_state_gas = ct.Solution(mechanism)
-            working_gas = ct.Solution(mechanism)
-            initial_state_gas.TPX = [
-                initial_temperature,
-                initial_pressure,
-                species_mole_fractions,
-            ]
-            working_gas.TPX = [
-                initial_temperature,
-                initial_pressure,
-                species_mole_fractions,
-            ]
-            cls.cj_state(
-                working_gas,
-                initial_state_gas,
-                error_tol_temperature,
-                error_tol_velocity,
-                adjusted_density_ratio,
-            )
+            state = ct.Solution(mechanism)
+            initial_state_gas.TPX = [initial_temperature, initial_pressure, mole_fractions]
+            state.TPX = [initial_temperature, initial_pressure, mole_fractions]
 
-        if return_r_squared and return_state:
-            # noinspection PyUnboundLocalVariable
-            return {"cj speed": cj_speed, "R^2": r_squared, "cj state": working_gas}
-        elif return_state:
-            # noinspection PyUnboundLocalVariable
-            return {"cj speed": cj_speed, "cj state": working_gas}
-        elif return_r_squared:
-            return {"cj speed": cj_speed, "R^2": r_squared}
+            # All we want from this call is to mutate the working gas into CJ state; guess velocity is not needed.
+            _ = cls.cj_state(
+                working_gas=state,
+                initial_state_gas=initial_state_gas,
+                error_tol_temperature=error_tol_temperature,
+                error_tol_velocity=error_tol_velocity,
+                density_ratio=adjusted_density_ratio,
+            )
         else:
-            return {"cj speed": cj_speed}
+            state = None
+
+        return CjResult(speed=cj_speed, r2=r_squared, state=state)
 
 
 class Properties:
