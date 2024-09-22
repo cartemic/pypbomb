@@ -5,10 +5,10 @@ from pypbomb import sd
 
 
 def test_curve_fit():
-    expected = sd.CurveFit(a=7.0, b=2.0, c=12.0, r2=1.0)
+    expected = sd.cj.CurveFit(a=7.0, b=2.0, c=12.0, r2=1.0)
     x_values = np.linspace(0, 10, 100)
     y_values = expected.a * np.power(x_values, 2) + expected.b * x_values + expected.c
-    test = sd.cj_curve_fit(x_values, y_values)
+    test = sd.cj.curve_fit(x_values, y_values)
 
     assert np.isclose(test.a, expected.a)
     assert np.isclose(test.b, expected.b)
@@ -23,7 +23,7 @@ class TestCalculateCJSpeed:
         Regression test against SDToolbox CJ speed calc (serial calculation)
         """
         expected = 2353.2706464533471
-        test = sd.Detonation.cj_speed(
+        test = sd.cj.speed(
             initial_pressure=101325,
             initial_temperature=300,
             mole_fractions="H2:0.5333 O2:0.26667 AR:0.2",
@@ -41,7 +41,7 @@ class TestCalculateCJSpeed:
         Regression test against SDToolbox CJ speed calc (parallel calculation)
         """
         expected = 2353.2706464533471
-        test = sd.Detonation.cj_speed(
+        test = sd.cj.speed(
             initial_pressure=101325,
             initial_temperature=300,
             mole_fractions={"H2": 0.5333, "O2": 0.26667, "AR": 0.2},
@@ -55,7 +55,7 @@ class TestCalculateCJSpeed:
 
     @staticmethod
     def test_with_state():
-        test = sd.Detonation.cj_speed(
+        test = sd.cj.speed(
             initial_pressure=101325,
             initial_temperature=300,
             mole_fractions="H2:0.5333 O2:0.26667 AR:0.2",
@@ -77,7 +77,7 @@ def test_calculate_cj_state():
     working_gas = Solution(mechanism)
     working_gas.TPX = 300, 101325 * 2, {"H2": 1}
 
-    v_test = sd.Detonation.cj_state(working_gas, initial_gas, 1e-5, 1e-5, 1.5)
+    v_test = sd.cj._calc_cj_guess_at_density_ratio_and_set_state(working_gas, initial_gas, 1e-5, 1e-5, 1.5)
     v_expected = 1700.36
     # relaxed velocity requirement -- new version of cantera
     assert np.isclose(v_test, v_expected, 1e-4), "CJ velocity calculation out of spec"

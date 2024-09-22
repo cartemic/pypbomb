@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 PURPOSE:
     Unit tests for accessories.py

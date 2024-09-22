@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import os
 import warnings
 from math import sqrt
@@ -529,7 +527,7 @@ class TestTube:
             unit_registry=unit_registry,
             use_multiprocessing=False,
         )
-        test_state = thermochem.calculate_reflected_shock_state(
+        test_state = thermochem.reflected_cj_shock(
             initial_temperature,
             calc_initial,
             reactant_mixture,
@@ -574,7 +572,7 @@ class TestTube:
             unit_registry=unit_registry,
             use_multiprocessing=True,
         )
-        test_state = thermochem.calculate_reflected_shock_state(
+        test_state = thermochem.reflected_cj_shock(
             initial_temperature,
             calc_initial,
             reactant_mixture,

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Tools for designing and determining operational parameters of a closed-end
 detonation tube with optical access.
@@ -14,8 +13,8 @@ import pandas as pd
 import pint
 
 from . import thermochem, units
-from .thermochem import _U
 
+_U = pint.UnitRegistry()
 _Q = _U.Quantity
 
 
@@ -195,7 +194,7 @@ def _get_flange_limits_from_csv():
                     pressures = []
                     for pressure in flange_limits[key]:
                         if pressure < 0:
-                            pressures.append(np.NaN)
+                            pressures.append(np.nan)
                         else:
                             pressures.append(_Q(float(pressure), "bar"))
                     flange_limits[key] = pressures
@@ -654,12 +653,11 @@ class DDT:
 
         # calculate laminar flame speed
         laminar_fs = thermochem.laminar_flame_speed(
-            initial_temperature,
-            initial_pressure,
+            initial_temperature.to("Pa").magnitude,
+            initial_pressure.to("K").magnitude,
             species_dict,
             mechanism,
             phase_specification,
-            unit_registry,
         )
 
         # calculate density ratio across the deflagration assuming adiabatic
@@ -677,16 +675,15 @@ class DDT:
         density_ratio = np.prod(density)
 
         # find sound speed in products at adiabatic flame temperature
-        sound_speed = thermochem.get_eq_sound_speed(
-            (working_gas.T, "K"),
-            (working_gas.P, "Pa"),
+        sound_speed = thermochem.sound_speed_eq(
+            working_gas.T,
+            working_gas.P,
             species_dict,
             mechanism,
             phase_specification,
-            unit_registry,
         )
 
-        def eq4_1():
+        def eq4_1():  # todo: separate this out, pass args as needed
             """
             Calculate runup distance for blockage ratios <= 0.1 using equation
             4.1 from G. Ciccarelli and S. Dorofeev, “Flame acceleration and
@@ -721,7 +718,7 @@ class DDT:
             runup = gamma / cc * (1 / kappa * np.log(gamma * d_over_h) + kk) * tube_diameter
             return runup.to(tube_diameter.units.format_babel())
 
-        def eq4_4():
+        def eq4_4():  # todo: separate this out, pass args as needed
             """
             Calculate runup for blockage ratios between 0.3 and 0.75 using
             equation 4.4 in G. Ciccarelli and S. Dorofeev, “Flame acceleration
@@ -875,7 +872,7 @@ class Tube:
     available_materials = list(TUBE_MATERIALS.Grade.values)
 
     @classmethod
-    def calculate_max_stress(cls, initial_temperature, material, welded, unit_registry=thermochem._U):
+    def calculate_max_stress(cls, initial_temperature, material, welded, unit_registry=_U):
         """
         Finds the maximum allowable stress of a tube material at the tube's
         initial temperature
@@ -1158,19 +1155,18 @@ class Tube:
         counter = 0
         error_tol = abs(error_tol)
 
-        state = thermochem.calculate_reflected_shock_state(
+        shock = thermochem.reflected_cj_shock(
             initial_temperature,
             initial_pressure,
             species_dict,
             mechanism,
-            unit_registry,
             use_multiprocessing,
         )
 
         dlf = cls.dynamic_load_factor(
             tube_id,
             tube_od,
-            state["cj"]["speed"],
+            shock.cj.speed,
             elastic_modulus,
             density,
             poisson_ratio,
@@ -1182,15 +1178,14 @@ class Tube:
             counter += 1
 
             # update initial pressure guess
-            initial_pressure = initial_pressure * max_pressure.magnitude / (dlf * state["reflected"]["state"].P)
+            initial_pressure = initial_pressure * max_pressure.magnitude / (dlf * shock.reflected.state.P)
 
             # get reflected shock pressure
-            state = thermochem.calculate_reflected_shock_state(
+            shock = thermochem.reflected_cj_shock(
                 initial_temperature,
                 initial_pressure,
                 species_dict,
                 mechanism,
-                unit_registry,
                 use_multiprocessing,
             )
 
@@ -1198,7 +1193,7 @@ class Tube:
                 dlf = cls.dynamic_load_factor(
                     tube_id,
                     tube_od,
-                    state["cj"]["speed"],
+                    shock.cj.speed,
                     elastic_modulus,
                     density,
                     poisson_ratio,
@@ -1207,7 +1202,7 @@ class Tube:
             else:
                 dlf = 1.0
 
-            error = (state[max_pressure_state]["state"].P * dlf - max_pressure.magnitude) / max_pressure.magnitude
+            error = (shock[max_pressure_state]["state"].P * dlf - max_pressure.magnitude) / max_pressure.magnitude
 
         if return_dlf:
             return initial_pressure, dlf

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Extra unit management tools for pint quantities
 """

@@ -1,237 +1,152 @@
-# -*- coding: utf-8 -*-
 """
 This module contains functions for performing thermochemical calculations using
 ``cantera`` and ``pypbomb.sd``.
 """
 
 import os
+from dataclasses import dataclass
 
 import cantera as ct
 import numpy as np
-import pint
 
-from . import sd, units
+from pypbomb import _validate, sd
+from pypbomb._types import MoleFractions
+from pypbomb.sd.cj import CjResult
+from pypbomb.sd.reflect import ReflectedShock
 
-_U = pint.UnitRegistry()
 
-
-def calculate_laminar_flame_speed(
-    initial_temperature,
-    initial_pressure,
-    species,
-    mechanism,
-    phase_specification="",
-    unit_registry=_U,
-):
+def laminar_flame_speed(
+    initial_temperature: float,
+    initial_pressure: float,
+    species: MoleFractions,
+    mechanism: str,
+    phase_specification: str = "",
+) -> float:
     """
-    This function uses cantera to calculate the laminar flame speed of a given
-    gas mixture.
+    Calculates the laminar flame speed of a given gas mixture using Cantera.
 
-    Parameters
-    ----------
-    initial_temperature : pint.Quantity
-        Mixture initial temperature
-    initial_pressure : pint.Quantity
-        Mixture initial pressure
-    species : dict or str
-        Species definition for cantera
-    mechanism : str
-        String of mechanism to use (e.g. ``gri30.yaml``)
-    phase_specification : str, optional
-        Phase specification for cantera solution
-    unit_registry : pint.UnitRegistry, optional
-        Unit registry for managing units to prevent conflicts with parent
-        unit registry
-
-    Returns
-    -------
-    pint.Quantity
-        Laminar flame speed
+    :param initial_temperature: Mixture initial temperature (K)
+    :param initial_pressure: Mixture initial pressure (Pa)
+    :param species: Species definition for cantera
+    :param mechanism: String of mechanism to use, e.g. ``gri30.yaml``
+    :param phase_specification: Phase specification for cantera solution
+    :return: Laminar flame speed (m/s)
     """
+    _validate.temperature(initial_temperature)
+    _validate.pressure(initial_pressure)
+
     gas = ct.Solution(mechanism, phase_specification)
-    quant = unit_registry.Quantity
-
-    initial_pressure = units.parse_quant_input(initial_pressure, unit_registry)
-    initial_temperature = units.parse_quant_input(initial_temperature, unit_registry)
-    units.check_pint_quantity(initial_pressure, "pressure", ensure_positive=True)
-    units.check_pint_quantity(initial_temperature, "temperature", ensure_positive=True)
-
-    gas.TPX = (
-        initial_temperature.to("K").magnitude,
-        initial_pressure.to("Pa").magnitude,
-        species,
-    )
+    gas.TPX = initial_temperature, initial_pressure, species
 
     # find laminar flame speed
     flame = ct.FreeFlame(gas)
     flame.set_refine_criteria(ratio=3, slope=0.1, curve=0.1)
     flame.solve(loglevel=0)
 
-    return quant(flame.velocity[0], "m/s")
+    return flame.velocity[0]
 
 
-# noinspection SpellCheckingInspection
-def get_eq_sound_speed(temperature, pressure, species, mechanism, phase_specification="", unit_registry=_U):
+def sound_speed_eq(
+    temperature: float,
+    pressure: float,
+    species: MoleFractions,
+    mechanism: str,
+    phase_specification: str = "",
+):
     """
-    Calculates the equilibrium speed of sound in a mixture
+    Calculate the equilibrium speed of sound in a mixture
 
-    Parameters
-    ----------
-    temperature : pint.Quantity or Tuple[float, str]
-        Mixture initial temperature
-    pressure : pint.Quantity or Tuple[float, str]
-        Mixture initial pressure
-    species : dict or str
-        Species definition for cantera
-    mechanism : str
-        Desired chemical mechanism
-    phase_specification : str, optional
-        Phase specification for cantera solution
-    unit_registry : pint.UnitRegistry, optional
-        Unit registry for managing units to prevent conflicts with parent
-        unit registry
-
-    Returns
-    -------
-    sound_speed : pint.Quantity or Tuple[float, str]
-        local speed of sound
+    :param temperature: Mixture temperature (K)
+    :param pressure: Mixture pressure (Pa)
+    :param species: Species definition for cantera
+    :param mechanism: Desired chemical mechanism
+    :param phase_specification: Phase specification for cantera solution
+    :return: Local speed of sound in given mixture at chemical equilibrium
     """
-    quant = unit_registry.Quantity
+    _validate.temperature(temperature)
+    _validate.pressure(pressure)
 
-    pressure = units.parse_quant_input(pressure, unit_registry)
-    temperature = units.parse_quant_input(temperature, unit_registry)
-    units.check_pint_quantity(pressure, "pressure", ensure_positive=True)
-    units.check_pint_quantity(temperature, "temperature", ensure_positive=True)
-
-    working_gas = ct.Solution(mechanism, phase_specification)
-    working_gas.TPX = [
-        temperature.to("K").magnitude,
-        pressure.to("Pa").magnitude,
-        species,
-    ]
+    gas = ct.Solution(mechanism, phase_specification)
+    gas.TPX = [temperature, pressure, species]
 
     pressures = np.zeros(2)
     densities = np.zeros(2)
 
     # equilibrate gas at input conditions and collect pressure, density
-    working_gas.equilibrate("TP")
-    pressures[0] = working_gas.P
-    densities[0] = working_gas.density
+    gas.equilibrate("TP")
+    pressures[0] = gas.P
+    densities[0] = gas.density
 
     # perturb pressure and equilibrate with constant P, s to get dp/drho|s
     pressures[1] = 1.0001 * pressures[0]
-    working_gas.SP = working_gas.s, pressures[1]
-    working_gas.equilibrate("SP")
-    densities[1] = working_gas.density
+    gas.SP = gas.s, pressures[1]
+    gas.equilibrate("SP")
+    densities[1] = gas.density
 
-    # calculate sound speed
-    sound_speed = np.sqrt(np.diff(pressures) / np.diff(densities))[0]
-
-    return quant(sound_speed, "m/s")
+    return np.sqrt(np.diff(pressures) / np.diff(densities))[0]
 
 
-def calculate_reflected_shock_state(
+@dataclass(frozen=True)
+class ReflectedCjShock:
+    cj: CjResult
+    reflected: ReflectedShock
+
+
+def reflected_cj_shock(  # todo: tests
     initial_temperature,
     initial_pressure,
-    species_dict,
+    species,
     mechanism,
-    unit_registry=_U,
-    use_multiprocessing=False,
-):
+    parallelize: bool = False,
+) -> ReflectedCjShock:
     """
-    Calculates the thermodynamic and chemical state of a reflected shock
-    using customized sdtoolbox functions.
+    Calculates the CJ state along with the state after shock reflection using customized sdtoolbox functions.
 
-    Parameters
-    ----------
-    initial_temperature : pint.Quantity or Tuple[float, str]
-        Mixture initial temperature
-    initial_pressure : pint.Quantity or Tuple[float, str]
-        Mixture initial pressure
-    species_dict : dict
-        Dictionary of initial reactant mixture
-    mechanism : str
-        Mechanism to use for chemical calculations, e.g. ``gri30.yaml``
-    unit_registry : pint.UnitRegistry, optional
-        Pint unit registry
-    use_multiprocessing : bool, optional
-        True to use multiprocessing for CJ state calculation, which is faster
-        but requires the function to be run from ``__main__``
-
-    Returns
-    -------
-    dict
-        Dictionary containing keys
-
-        * ``reflected`` and
-        * ``cj``.
-
-        Each of these keys corresponds to a dictionary containing the keys
-
-        * ``speed``, indicating the related wave speed, and
-        * ``state``, which is a Cantera gas object at the specified state.
+    :param initial_temperature: Mixture initial temperature (K)
+    :param initial_pressure: Mixture initial pressure (Pa)
+    :param species: Species definition for cantera
+    :param mechanism: Mechanism to use for chemical calculations, e.g. ``gri30.yaml``
+    :param parallelize: Use multiprocessing for CJ state calculation, which is faster but requires the function to be
+        run from ``__main__``, which may not behave well when used via Jupyter
+    :return:
     """
-    quant = unit_registry.Quantity
+    _validate.temperature(initial_temperature)
+    _validate.pressure(initial_pressure)
 
-    # define gas objects
     initial_gas = ct.Solution(mechanism)
-    reflected_gas = ct.Solution(mechanism)
+    initial_gas.TPX = [initial_temperature, initial_pressure, species]
 
-    # define gas states
-    initial_temperature = initial_temperature.to("K").magnitude
-    initial_pressure = initial_pressure.to("Pa").magnitude
-
-    initial_gas.TPX = [initial_temperature, initial_pressure, species_dict]
-    reflected_gas.TPX = [initial_temperature, initial_pressure, species_dict]
-
-    # get CJ state
-    cj_calcs = sd.Detonation.cj_speed(
-        initial_pressure,
-        initial_temperature,
-        species_dict,
-        mechanism,
-        return_state=True,
-        use_multiprocessing=use_multiprocessing,
+    cj = sd.cj.speed(
+        initial_pressure=initial_pressure,
+        initial_temperature=initial_temperature,
+        mole_fractions=species,
+        mechanism=mechanism,
+        parallelize=parallelize,
+        with_state=True,
+    )
+    reflected = sd.reflect.shock(
+        mechanism=mechanism,
+        initial_state_gas=initial_gas,
+        post_shock_gas=cj.state,
+        incident_shock_speed=cj.speed,
     )
 
-    # get reflected state
-    [_, reflected_speed, reflected_gas] = sd.Reflection.reflect(
-        initial_gas, cj_calcs["cj state"], reflected_gas, cj_calcs["cj speed"]
-    )
-
-    return {
-        "reflected": {"speed": quant(reflected_speed, "m/s"), "state": reflected_gas},
-        "cj": {
-            "speed": quant(cj_calcs["cj speed"], "m/s"),
-            "state": cj_calcs["cj state"],
-        },
-    }
+    return ReflectedCjShock(cj=cj, reflected=reflected)
 
 
-def find_mechanisms(return_directory=False):
+@dataclass(frozen=True)
+class FoundMechanisms:
+    mechanisms: set[str]
+    path: str
+
+
+def find_mechanisms(filetypes: tuple[str] = (".cti", ".xml", ".yaml")) -> FoundMechanisms:
     """
     Figure out which mechanisms the local cantera install has access to.
 
-    Parameters
-    ----------
-    return_directory : bool, optional
-        Whether to return the location of the mechanism files as well
-        as its contents. Defaults to ``False``.
-
-    Returns
-    -------
-    set or tuple
-        Set of available mechanisms in the cantera data directory. If
-        `return_directory` is set to True, a tuple is returned where the first
-        item is the set of available mechanisms, and the second is the location
-        of the cantera data directory.
+    :return:
     """
-    mechanism_path = os.path.join(os.path.split(os.path.abspath(ct.__file__))[0], "data")
+    path = os.path.join(os.path.split(os.path.abspath(ct.__file__))[0], "data")
+    mechanisms = {item for item in os.listdir(path) if item.endswith(filetypes)}
 
-    mechanism_filetypes = (".cti", ".xml", ".yaml")
-    available = {item for item in os.listdir(mechanism_path) if item.endswith(mechanism_filetypes)}
-
-    if return_directory:
-        return available, mechanism_path
-    else:
-        return available
+    return FoundMechanisms(mechanisms=mechanisms, path=path)
