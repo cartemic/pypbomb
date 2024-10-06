@@ -1,8 +1,0 @@
-Grade,Group,ElasticModulus,Density,Poisson,PropertySource
-304,2.1,196.5,7.955,0.27,https://www.azom.com/properties.aspx?ArticleID=965
-304H,2.1,196.5,7.955,0.27,https://www.azom.com/properties.aspx?ArticleID=965
-316,2.2,197.5,7.97,0.27,https://www.azom.com/properties.aspx?ArticleID=863
-316H,2.2,197.5,7.97,0.27,https://www.azom.com/properties.aspx?ArticleID=863
-317,2.2,193,8,0.285,https://www.azom.com/article.aspx?ArticleID=6799
-304L,2.3,196.5,7.955,0.27,https://www.azom.com/properties.aspx?ArticleID=965
-316L,2.3,197.5,7.97,0.27,https://www.azom.com/properties.aspx?ArticleID=863

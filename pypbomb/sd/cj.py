@@ -2,12 +2,11 @@ import multiprocessing as mp
 import typing
 import warnings
 from dataclasses import dataclass
-from typing import Optional
 
 import cantera as ct
 import numpy as np
 
-from pypbomb._types import FloatArray, MoleFractions
+from pypbomb._types import FloatArray, SpeciesDefinition
 from pypbomb.sd import error, properties
 
 
@@ -24,10 +23,10 @@ class CurveFit:
 
 
 @dataclass(frozen=True)
-class CjResult:
+class CjShock:
     speed: float
-    r2: Optional[float]
-    state: Optional[ct.Solution]
+    speed_r2: float
+    state: ct.Solution
 
 
 def curve_fit(x: FloatArray, y: FloatArray) -> CurveFit:
@@ -107,7 +106,11 @@ def _calc_cj_guess_at_density_ratio_and_set_state(
         # perturb temperature
         delta_temperature = 0.02 * guess_temperature
         perturbed_temperature = guess_temperature + delta_temperature
-        properties.set_equilibrium(working_gas=working_gas, density=guess_density, temperature=perturbed_temperature)
+        properties.set_equilibrium(
+            working_gas=working_gas,
+            density=guess_density,
+            temperature=perturbed_temperature,
+        )
 
         # calculate error rates for temperature perturbed state
         err_perturbed = error.equilibrium(
@@ -122,7 +125,11 @@ def _calc_cj_guess_at_density_ratio_and_set_state(
         delta_velocity = 0.02 * guess_velocity
         perturbed_velocity = guess_velocity + delta_velocity
         perturbed_temperature = guess_temperature
-        properties.set_equilibrium(working_gas=working_gas, density=guess_density, temperature=perturbed_temperature)
+        properties.set_equilibrium(
+            working_gas=working_gas,
+            density=guess_density,
+            temperature=perturbed_temperature,
+        )
 
         # calculate error rates for velocity perturbed state
         err_perturbed = error.equilibrium(
@@ -157,7 +164,11 @@ def _calc_cj_guess_at_density_ratio_and_set_state(
         # apply deltas and equilibrate
         guess_temperature += delta_temperature
         guess_velocity += delta_velocity
-        properties.set_equilibrium(working_gas=working_gas, density=guess_density, temperature=guess_temperature)
+        properties.set_equilibrium(
+            working_gas=working_gas,
+            density=guess_density,
+            temperature=guess_temperature,
+        )
 
     return guess_velocity
 
@@ -167,7 +178,7 @@ def _calc_density_ratio_speed(
     current_density_ratio: float,
     initial_temperature: float,
     initial_pressure: float,
-    mole_fractions: MoleFractions,
+    species: SpeciesDefinition,
     mechanism: str,
     error_tol_temperature: float,
     error_tol_velocity: float,
@@ -176,13 +187,13 @@ def _calc_density_ratio_speed(
     initial_state_gas.TPX = [
         initial_temperature,
         initial_pressure,
-        mole_fractions,
+        species,
     ]
     working_gas = ct.Solution(mechanism)
     working_gas.TPX = [
         initial_temperature,
         initial_pressure,
-        mole_fractions,
+        species,
     ]
     current_velocity = _calc_cj_guess_at_density_ratio_and_set_state(
         working_gas=working_gas,
@@ -198,7 +209,7 @@ def _calc_density_ratio_speed(
 def _calc_speed_parallel(
     initial_temperature: float,
     initial_pressure: float,
-    mole_fractions: MoleFractions,
+    species: SpeciesDefinition,
     mechanism: str,
     error_tol_temperature: float,
     error_tol_velocity: float,
@@ -210,7 +221,7 @@ def _calc_speed_parallel(
             ratio,
             initial_temperature,
             initial_pressure,
-            mole_fractions,
+            species,
             mechanism,
             error_tol_temperature,
             error_tol_velocity,
@@ -226,7 +237,7 @@ def _calc_speed_parallel(
 def _calc_speed_serial(
     initial_temperature: float,
     initial_pressure: float,
-    mole_fractions: MoleFractions,
+    species: SpeciesDefinition,
     mechanism: str,
     error_tol_temperature: float,
     error_tol_velocity: float,
@@ -239,7 +250,7 @@ def _calc_speed_serial(
             density_ratio_array,
             [initial_temperature for _ in density_ratio_array],
             [initial_pressure for _ in density_ratio_array],
-            [mole_fractions for _ in density_ratio_array],
+            [species for _ in density_ratio_array],
             [mechanism for _ in density_ratio_array],
             [error_tol_temperature for _ in density_ratio_array],
             [error_tol_velocity for _ in density_ratio_array],
@@ -247,14 +258,13 @@ def _calc_speed_serial(
     )
 
 
-def speed(
+def shock(
     initial_pressure: float,
     initial_temperature: float,
-    mole_fractions: MoleFractions,
+    species: SpeciesDefinition,
     mechanism: str,
     parallelize=False,
-    with_state=False,
-) -> CjResult:
+) -> CjShock:
     """
     Calculates the Chapman-Jouguet detonation velocity of a gaseous mixture.
 
@@ -263,12 +273,11 @@ def speed(
 
     :param initial_pressure: Initial pressure (Pa)
     :param initial_temperature: Initial temperature (K)
-    :param mole_fractions: Reactant species mole fractions
+    :param species: Reactant species mole fractions
     :param mechanism: Cti file containing mechanism data, e.g. ``gri30.yaml``
     :param parallelize: Use multiprocessing for CJ state calculation, which is faster but requires the function to
         be run from ``__main__``, which may not behave well when used via Jupyter
-    :param with_state: Include Return the CJ state corresponding to the calculated velocity
-    :return:
+    :return: Chapman-Jouguet detonation velocity (m/s)
     """
     num_steps = 20
     max_density_ratio = 2.0
@@ -291,7 +300,7 @@ def speed(
             speeds = _calc_speed_parallel(
                 initial_temperature=initial_temperature,
                 initial_pressure=initial_pressure,
-                mole_fractions=mole_fractions,
+                species=species,
                 mechanism=mechanism,
                 error_tol_temperature=error_tol_temperature,
                 error_tol_velocity=error_tol_velocity,
@@ -302,7 +311,7 @@ def speed(
             speeds = _calc_speed_serial(
                 initial_temperature=initial_temperature,
                 initial_pressure=initial_pressure,
-                mole_fractions=mole_fractions,
+                species=species,
                 mechanism=mechanism,
                 error_tol_temperature=error_tol_temperature,
                 error_tol_velocity=error_tol_velocity,
@@ -321,21 +330,19 @@ def speed(
 
     cj_speed = fit.a * adjusted_density_ratio**2 + fit.b * adjusted_density_ratio + fit.c
 
-    if with_state:
-        initial_state_gas = ct.Solution(mechanism)
-        cj_state = ct.Solution(mechanism)
-        initial_state_gas.TPX = [initial_temperature, initial_pressure, mole_fractions]
-        cj_state.TPX = [initial_temperature, initial_pressure, mole_fractions]
+    # calculate CJ shock state
+    initial_state_gas = ct.Solution(mechanism)
+    cj_state = ct.Solution(mechanism)
+    initial_state_gas.TPX = [initial_temperature, initial_pressure, species]
+    cj_state.TPX = [initial_temperature, initial_pressure, species]
 
-        # All we want from this call is to mutate the working gas into CJ state; guess velocity is not needed.
-        _ = _calc_cj_guess_at_density_ratio_and_set_state(
-            working_gas=cj_state,
-            initial_state_gas=initial_state_gas,
-            error_tol_temperature=error_tol_temperature,
-            error_tol_velocity=error_tol_velocity,
-            density_ratio=adjusted_density_ratio,
-        )
-    else:
-        cj_state = None
+    # All we want from this call is to mutate the working gas into CJ state; guess velocity is not needed.
+    _ = _calc_cj_guess_at_density_ratio_and_set_state(
+        working_gas=cj_state,
+        initial_state_gas=initial_state_gas,
+        error_tol_temperature=error_tol_temperature,
+        error_tol_velocity=error_tol_velocity,
+        density_ratio=adjusted_density_ratio,
+    )
 
-    return CjResult(speed=cj_speed, r2=r_squared, state=cj_state)
+    return CjShock(speed=cj_speed, speed_r2=r_squared, state=cj_state)

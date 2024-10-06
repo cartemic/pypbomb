@@ -23,17 +23,16 @@ class TestCalculateCJSpeed:
         Regression test against SDToolbox CJ speed calc (serial calculation)
         """
         expected = 2353.2706464533471
-        test = sd.cj.speed(
+        test = sd.cj.shock(
             initial_pressure=101325,
             initial_temperature=300,
-            mole_fractions="H2:0.5333 O2:0.26667 AR:0.2",
+            species="H2:0.5333 O2:0.26667 AR:0.2",
             mechanism="gri30.yaml",
             parallelize=False,
-            with_state=False,
         )
 
         assert np.isclose(expected, test.speed)
-        assert test.state is None
+        assert isinstance(test.state, Solution)
 
     @staticmethod
     def test_parallel():
@@ -41,29 +40,15 @@ class TestCalculateCJSpeed:
         Regression test against SDToolbox CJ speed calc (parallel calculation)
         """
         expected = 2353.2706464533471
-        test = sd.cj.speed(
+        test = sd.cj.shock(
             initial_pressure=101325,
             initial_temperature=300,
-            mole_fractions={"H2": 0.5333, "O2": 0.26667, "AR": 0.2},
+            species={"H2": 0.5333, "O2": 0.26667, "AR": 0.2},
             mechanism="gri30.yaml",
             parallelize=True,
-            with_state=False,
         )
 
         assert np.isclose(expected, test.speed)
-        assert test.state is None
-
-    @staticmethod
-    def test_with_state():
-        test = sd.cj.speed(
-            initial_pressure=101325,
-            initial_temperature=300,
-            mole_fractions="H2:0.5333 O2:0.26667 AR:0.2",
-            mechanism="gri30.yaml",
-            parallelize=True,
-            with_state=True,
-        )
-
         assert isinstance(test.state, Solution)
 
 

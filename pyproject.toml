@@ -1,44 +1,37 @@
-[project]
+[tool.poetry]
 name = "pypbomb"
 version = "2.0.0"
 description = "Tools for designing a detonation tube"
+authors = ["Mick Carter <cartemic@proton.me>"]
+license = "LICENSE"
 readme = "README.md"
-license = {file = "LICENSE"}
-requires-python = ">=3.12"
-authors = [{name = "Mick Carter", email = "cartemic@proton.me"}]
 classifiers = [
     "Private :: Do Not Upload",  # todo: remove this once things are ready
     "Programming Language :: Python :: 3.12",
 ]
-dependencies = [
-    "cantera==3.*",
-    "numpy==2.*",
-    "pint",  # todo: deprecated, remove when possible
-    "scipy",  # todo: deprecated, remove when possible
-    "pandas",  # todo: deprecated, remove when possible
-]
 
-[project.optional-dependencies]
-pint = ["pint"]
+[tool.poetry.dependencies]
+python = "^3.12"
+cantera = "^3.0.1"
+numpy = "^2.1.2"
 
-[tool.uv]
-dev-dependencies = [
-    "ruff",
-    "black",  # todo: remove this dependency
-    "isort",  # todo: remove this dependency
-    "flake8",  # todo: remove this dependency
-    "mock",
-    "pytest",
-    "pytest-cov",
-    "ipython",
-]
+[tool.poetry.group.dev.dependencies]
+coverage = {extras = ["toml"], version = "^7.6.1"}
+ipython = "^8.27.0"
+pytest = "^8.3.3"
+pytest-cov = "^5.0.0"
+ruff = "^0.6.8"
 
-[tool.uv.sources]
-pypbomb = {path = "src"}
+[tool.poetry.group.pint.dependencies]
+pint = "^0.24.3"
 
-# todo: convert to ruff
-[tool.black]
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
 line-length = 120
 
-[tool.isort]
-profile = "black"
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402", "F401"]
+"_validate.py" = ["E741"]  # short variable names are nice in these functions

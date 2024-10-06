@@ -244,5 +244,3 @@ modules.xml
 tube_py\ method\ dependencies.md
 
 # End of https://www.gitignore.io/api/windows,python,microsoftoffice,matlab
-
-*.lock

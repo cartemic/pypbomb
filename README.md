@@ -49,11 +49,11 @@ from pypbomb import Tube
 ureg = pint.UnitRegistry()
 quant = ureg.Quantity
 
-initial_pressure = Tube.calculate_max_initial_pressure(
+initial_pressure = Tube.max_initial_pressure(
     tube_id=quant(5.76, "in"),
     tube_od=quant(6.625, "in"),
     initial_temperature=quant(70, "degF"),
-    species_dict={"H2":2, "O2":1},
+    species_dict={"H2": 2, "O2": 1},
     mechanism="gri30.yaml",
     max_pressure=(2, "kpsi"),
     elastic_modulus=quant(200, "GPa"),

@@ -13,4 +13,4 @@ SDToolbox.
     http://shepherd.caltech.edu/EDL/PublicResources/sdt/
 """
 
-from . import cj, error, properties, reflect  # noqa: F401
+from . import cj, error, properties, reflect

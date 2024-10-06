@@ -1,9 +1,10 @@
 import os
+import warnings
 
 import numpy as np
 
-from .. import thermochem
-from ..thermochem import find_mechanisms
+from pypbomb import thermochem
+from pypbomb.thermochem import find_mechanisms
 
 
 def test_laminar_flame_speed():
@@ -33,7 +34,9 @@ def test_sound_speed_eq():
     press = 101325
     species = {"O2": 1, "N2": 3.76}
     mechanism = "gri30.yaml"
-    test = thermochem.sound_speed_eq(temp, press, species, mechanism)
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", UserWarning)
+        test = thermochem.equilibrium_sound_speed(temp, press, species, mechanism)
 
     assert np.isclose(ideal_gas_calc, test, 0.005)
 
@@ -50,7 +53,7 @@ def test_reflected_cj_shock():
         initial_pressure=initial_pressure,
         species=species_dict,
         mechanism=mechanism,
-        parallelize=True,
+        parallelize_cj_calc=True,
     )
 
 

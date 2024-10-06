@@ -93,7 +93,7 @@ def parse_quant_input(quant_input, unit_registry):
         Input as a pint quantity
     """
     if hasattr(quant_input, "magnitude"):
-        return unit_registry.Quantity(quant_input.magnitude, quant_input.units.format_babel())
+        return unit_registry.Quantity(quant_input.magnitude, quant_input.units.format_babel(locale="en_US"))
     elif hasattr(quant_input, "__iter__") and len(quant_input) == 2:
         return unit_registry.Quantity(quant_input[0], quant_input[1])
     else:

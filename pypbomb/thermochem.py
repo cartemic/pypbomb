@@ -1,6 +1,5 @@
 """
-This module contains functions for performing thermochemical calculations using
-``cantera`` and ``pypbomb.sd``.
+Functions for performing thermochemical calculations using ``cantera`` and ``pypbomb.sd``.
 """
 
 import os
@@ -10,15 +9,15 @@ import cantera as ct
 import numpy as np
 
 from pypbomb import _validate, sd
-from pypbomb._types import MoleFractions
-from pypbomb.sd.cj import CjResult
+from pypbomb._types import SpeciesDefinition
+from pypbomb.sd.cj import CjShock
 from pypbomb.sd.reflect import ReflectedShock
 
 
 def laminar_flame_speed(
     initial_temperature: float,
     initial_pressure: float,
-    species: MoleFractions,
+    species: SpeciesDefinition,
     mechanism: str,
     phase_specification: str = "",
 ) -> float:
@@ -46,10 +45,10 @@ def laminar_flame_speed(
     return flame.velocity[0]
 
 
-def sound_speed_eq(
+def equilibrium_sound_speed(
     temperature: float,
     pressure: float,
-    species: MoleFractions,
+    species: SpeciesDefinition,
     mechanism: str,
     phase_specification: str = "",
 ):
@@ -88,16 +87,16 @@ def sound_speed_eq(
 
 @dataclass(frozen=True)
 class ReflectedCjShock:
-    cj: CjResult
+    cj: CjShock
     reflected: ReflectedShock
 
 
-def reflected_cj_shock(  # todo: tests
-    initial_temperature,
-    initial_pressure,
-    species,
-    mechanism,
-    parallelize: bool = False,
+def reflected_cj_shock(
+    initial_temperature: float,
+    initial_pressure: float,
+    species: SpeciesDefinition,
+    mechanism: str,
+    parallelize_cj_calc: bool = False,
 ) -> ReflectedCjShock:
     """
     Calculates the CJ state along with the state after shock reflection using customized sdtoolbox functions.
@@ -106,8 +105,8 @@ def reflected_cj_shock(  # todo: tests
     :param initial_pressure: Mixture initial pressure (Pa)
     :param species: Species definition for cantera
     :param mechanism: Mechanism to use for chemical calculations, e.g. ``gri30.yaml``
-    :param parallelize: Use multiprocessing for CJ state calculation, which is faster but requires the function to be
-        run from ``__main__``, which may not behave well when used via Jupyter
+    :param parallelize_cj_calc: Use multiprocessing for CJ state calculation, which is faster but requires the function
+        to be run from ``__main__``, which may not behave well when used via Jupyter
     :return:
     """
     _validate.temperature(initial_temperature)
@@ -116,13 +115,12 @@ def reflected_cj_shock(  # todo: tests
     initial_gas = ct.Solution(mechanism)
     initial_gas.TPX = [initial_temperature, initial_pressure, species]
 
-    cj = sd.cj.speed(
+    cj = sd.cj.shock(
         initial_pressure=initial_pressure,
         initial_temperature=initial_temperature,
-        mole_fractions=species,
+        species=species,
         mechanism=mechanism,
-        parallelize=parallelize,
-        with_state=True,
+        parallelize=parallelize_cj_calc,
     )
     reflected = sd.reflect.shock(
         mechanism=mechanism,
